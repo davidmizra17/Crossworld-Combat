@@ -10,15 +10,49 @@ import java.util.Random;
  *
  * @author davidmizrahi
  */
-public class CharacterManipulation {
+public class Studio {
     
+    private String name;
     
-    PriorityQueue pq ;
+    private Character character;
     
-    public CharacterManipulation(){
-      
-        this.pq= new PriorityQueue();
+    private PriorityQueue pq;
+    
+    public Studio(String name, Character character){
+        
+        this.name = name;
+       
+        this.character = character;
+        
+        this.pq = new PriorityQueue();
+        
+        
     }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+    public PriorityQueue getPq() {
+        return pq;
+    }
+
+    public void setPq(PriorityQueue pq) {
+        this.pq = pq;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     
     
     public int AssignPriorityLevel(Character character){
@@ -46,22 +80,36 @@ public class CharacterManipulation {
         if(ProbHabilidades <= 0.6)
         {
             elementCounter+= 1; 
+            
             habilidades = true;
         }
         if(ProbPuntosDeVida <= 0.7) {
+        
             elementCounter+= 1; 
-        puntosDeVida = true;
+        
+            puntosDeVida = true;
         }
         if(ProbFuerza <= 0.5) {
+            
             elementCounter+= 1; 
-        fuerza = true;
+        
+            fuerza = true;
         }
+        
         if(ProbAgilidad <= 0.4) {
+            
             elementCounter+= 1; 
-        agilidad = true;
+        
+            agilidad = true;
         }
         
        switch (elementCounter) {
+           
+           case 4:
+               
+               character.setPriorityLevel(1);
+        
+               break;
     
            case 3:
         
@@ -114,7 +162,7 @@ public class CharacterManipulation {
        } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            // Liberar el semáforo correspondiente
+            // release the corresponding semaphore
             pq.getQueueSemaphores()[characterLevel - 1].release();
         }
         
@@ -122,5 +170,8 @@ public class CharacterManipulation {
         
         
     }
-
+    
+    
+    
+    
 }

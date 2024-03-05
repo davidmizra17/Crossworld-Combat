@@ -28,7 +28,7 @@ public class CrossWorldCombat {
             Character character5= new Character(9,1,3);
             
             
-            CharacterManipulation cm = new CharacterManipulation();
+            Administrator cm = new Administrator();
             
             
   
