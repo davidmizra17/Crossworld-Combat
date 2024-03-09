@@ -58,12 +58,12 @@ public class Studio {
     public int AssignPriorityLevel(Character character){
         
         //variable to keep track of how many variables are of "quality"
-        int elementCounter = 0;
+        int qualityElementCounter = 0;
         
-        boolean habilidades = false;
-        boolean puntosDeVida = false;
-        boolean fuerza = false;
-        boolean agilidad = false;
+        double skills = 0.0;
+        double healthPoints = 0.0;
+        double strength = 0.0;
+        double agility = 0.0;
         
         
         
@@ -71,39 +71,51 @@ public class Studio {
         
 
         
-        double ProbHabilidades = random.nextDouble();
-        double ProbPuntosDeVida = random.nextDouble();
-        double ProbFuerza = random.nextDouble();
-        double ProbAgilidad = random.nextDouble();
+        double ProbSkills = random.nextDouble();
+        double ProbHealthPoints = random.nextDouble();
+        double ProbStrength = random.nextDouble();
+        double ProbAgility = random.nextDouble();
         
         
-        if(ProbHabilidades <= 0.6)
+        if(ProbSkills <= 0.6)
         {
-            elementCounter+= 1; 
+            qualityElementCounter+= 1; 
             
-            habilidades = true;
-        }
-        if(ProbPuntosDeVida <= 0.7) {
-        
-            elementCounter+= 1; 
-        
-            puntosDeVida = true;
-        }
-        if(ProbFuerza <= 0.5) {
+            skills = ProbSkills*10;
             
-            elementCounter+= 1; 
-        
-            fuerza = true;
+            character.setSkills(skills);
         }
         
-        if(ProbAgilidad <= 0.4) {
+        if(ProbHealthPoints <= 0.7) {
+        
+            qualityElementCounter+= 1; 
+        
+            healthPoints = ProbHealthPoints*10;
             
-            elementCounter+= 1; 
-        
-            agilidad = true;
+            character.setHealthPoints(healthPoints);
         }
         
-       switch (elementCounter) {
+        if(ProbStrength <= 0.5) {
+            
+            qualityElementCounter+= 1; 
+        
+            strength = ProbStrength*10;
+            
+            character.setStrength(strength);
+        }
+        
+        if(ProbAgility <= 0.4) {
+            
+            qualityElementCounter+= 1; 
+        
+            agility = ProbAgility*10;
+            
+            character.setAgility(agility);
+        }
+        
+        
+        
+       switch (qualityElementCounter) {
            
            case 4:
                
@@ -131,7 +143,7 @@ public class Studio {
            
            default:
         
-               if (elementCounter == 0) {
+               if (qualityElementCounter == 0) {
             
                    character.setPriorityLevel(3);
         

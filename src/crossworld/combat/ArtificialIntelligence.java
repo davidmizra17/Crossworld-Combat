@@ -7,10 +7,14 @@ package crossworld.combat;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
+
+
 /**
  *
  * @author davidmizrahi
  */
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class ArtificialIntelligence extends Thread {
     
     private Semaphore sem;
@@ -79,12 +83,20 @@ public class ArtificialIntelligence extends Thread {
     @Override
     public void run(){
         while(true){
+            try {
+                String outcome = fightOutcome();
+                System.out.println("Fight Outcome:\n");
+                System.out.println(outcome);
+                System.out.println("-------------------");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
     }
     
     
-    public void fightOutcome() throws InterruptedException{
+    public String fightOutcome() throws InterruptedException{
         
         Random random = new Random();
         
@@ -97,6 +109,8 @@ public class ArtificialIntelligence extends Thread {
         if(fightProb <= winnerCase){
             //choose winner
             //borrar perdedor de la simulacion y agregar ganador a la lista de ganadores
+            String winner = pickWinner();
+            return winner;
         }
         else if(fightProb <= winnerCase + tiedCase){
             //tie
@@ -107,17 +121,59 @@ public class ArtificialIntelligence extends Thread {
             
             sem.release();
             
+            return "Tie";
+            
         }
         
         else{
             //no combat
+            return "No Combat";
         }
+        
 
        
         
     }
     
-    public void pickWinner(){
+    public String pickWinner(){
+        
+        Character RegularShowFighter = new Character();
+        Character AvatarFighter = new Character();
+        
+        int RSCounter = 0;
+        int AvCounter = 0;
+        
+        
+        RegularShowFighter = this.firstFighter;
+        AvatarFighter = this.secondFighter;
+        
+        
+        double skillTest = AvatarFighter.getSkills() - RegularShowFighter.getSkills();
+        double healthTest = AvatarFighter.getHealthPoints() - RegularShowFighter.getHealthPoints();
+        double strengthTest = AvatarFighter.getStrength() - RegularShowFighter.getStrength();
+        double agilityTest = AvatarFighter.getAgility()- RegularShowFighter.getAgility();
+        
+        if(skillTest < 0) RSCounter++;
+        else AvCounter++;
+        
+        
+        if(healthTest < 0)RSCounter++;
+        else AvCounter++;
+        
+        if(strengthTest < 0)RSCounter++;
+        else AvCounter++;
+        
+        if(agilityTest < 0)RSCounter++;
+        else AvCounter++;
+        
+        
+        
+        
+        
+        
+        
+        return RSCounter > AvCounter ? "Winner is Regular Show" : "Winner is Avatar";
+        
         
     }
     
