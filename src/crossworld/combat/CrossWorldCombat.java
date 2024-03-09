@@ -34,13 +34,13 @@ public class CrossWorldCombat {
   
             
             
-            
-            cm.EnqueueProcess(character);
-            cm.EnqueueProcess(character1);
-            cm.EnqueueProcess(character2);
-            cm.EnqueueProcess(character3);
-            cm.EnqueueProcess(character4);
-            cm.EnqueueProcess(character5);
+//            
+//            cm.EnqueueProcess(character);
+//            cm.EnqueueProcess(character1);
+//            cm.EnqueueProcess(character2);
+//            cm.EnqueueProcess(character3);
+//            cm.EnqueueProcess(character4);
+//            cm.EnqueueProcess(character5);
     
     }
     }

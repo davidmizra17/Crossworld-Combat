@@ -5,10 +5,12 @@
         <group>
             <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/PriorityQueue.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/Character.java</file>
-            <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/CharacterManipulation.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/Queue.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/Nodo.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/Administrator.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/ArtificialIntelligence.java</file>
             <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/CrossWorldCombat.java</file>
+            <file>file:/Users/davidmizrahi/NetBeansProjects/CrossWorld-Combat/src/crossworld/combat/Studio.java</file>
         </group>
     </open-files>
 </project-private>
