@@ -82,8 +82,11 @@ public class ArtificialIntelligence extends Thread {
     
     @Override
     public void run(){
+        
         while(true){
             try {
+                
+                sleep(10000);
                 String outcome = fightOutcome();
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
@@ -107,8 +110,6 @@ public class ArtificialIntelligence extends Thread {
         double noCombatCase = 0.33;
         
         if(fightProb <= winnerCase){
-            //choose winner
-            //borrar perdedor de la simulacion y agregar ganador a la lista de ganadores
             String winner = pickWinner();
             return winner;
         }
@@ -127,6 +128,10 @@ public class ArtificialIntelligence extends Thread {
         
         else{
             //no combat
+            this.admin.getRegularShow().getReinforcementQueue().enqueue(firstFighter);
+                    
+            this.admin.getAvatar().getReinforcementQueue().enqueue(secondFighter);
+            
             return "No Combat";
         }
         
@@ -165,11 +170,6 @@ public class ArtificialIntelligence extends Thread {
         
         if(agilityTest < 0)RSCounter++;
         else AvCounter++;
-        
-        
-        
-        
-        
         
         
         return RSCounter > AvCounter ? "Winner is Regular Show" : "Winner is Avatar";

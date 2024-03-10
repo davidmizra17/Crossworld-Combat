@@ -18,6 +18,9 @@ public class Studio {
     
     private PriorityQueue pq;
     
+    private Queue<Character> reinforcementQueue;
+
+   
     public Studio(String name, Character character){
         
         this.name = name;
@@ -25,6 +28,8 @@ public class Studio {
         this.character = character;
         
         this.pq = new PriorityQueue();
+        
+        this.reinforcementQueue = new Queue();
         
         
     }
@@ -52,6 +57,15 @@ public class Studio {
     public void setName(String name) {
         this.name = name;
     }
+    
+     public Queue<Character> getReinforcementQueue() {
+        return reinforcementQueue;
+    }
+
+    public void setReinforcementQueue(Queue<Character> reinforcementQueue) {
+        this.reinforcementQueue = reinforcementQueue;
+    }
+    
 
     
     

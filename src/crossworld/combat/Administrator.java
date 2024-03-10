@@ -25,7 +25,7 @@ public class Administrator extends Thread{
     
     private ArtificialIntelligence ai;
     
-    private PriorityQueue pq ;
+    
     
     public Administrator(Character character, Studio regularShow, Studio avatar, ArtificialIntelligence ai) {
         
@@ -39,7 +39,7 @@ public class Administrator extends Thread{
         
         this.ai = ai;
         
-        this.pq= new PriorityQueue();
+        
     }
 
     public ArtificialIntelligence getAi() {
@@ -82,14 +82,6 @@ public class Administrator extends Thread{
         this.character = character;
     }
 
-    public PriorityQueue getPq() {
-        return pq;
-    }
-
-    public void setPq(PriorityQueue pq) {
-        this.pq = pq;
-    }
-    
     @Override
     public void run(){
         
