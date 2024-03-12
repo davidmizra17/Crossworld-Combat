@@ -20,7 +20,7 @@ public class Studio {
     
     private Queue<Character> reinforcementQueue;
 
-   
+   public Studio(){};
     public Studio(String name, Character character){
         
         this.name = name;

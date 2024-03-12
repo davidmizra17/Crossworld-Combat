@@ -26,6 +26,7 @@ public class Administrator extends Thread{
     private ArtificialIntelligence ai;
     
     
+    public Administrator(){};
     
     public Administrator(Character character, Studio regularShow, Studio avatar, ArtificialIntelligence ai) {
         

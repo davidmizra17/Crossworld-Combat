@@ -28,6 +28,8 @@ public class ArtificialIntelligence extends Thread {
     private Administrator admin;
     
     
+    public ArtificialIntelligence(){};
+    
     public ArtificialIntelligence(Character firstFighter, Character secondFighter, Administrator admin){
         
         this.sem = new Semaphore(0);
