@@ -20,6 +20,7 @@ public class CreateCharacter {
     private double healthPoints;
     private double strength;
     private double agility;
+    private Character newcharacter;
     
     public CreateCharacter(){
         
@@ -135,6 +136,20 @@ public class CreateCharacter {
         
         return this.getPriorityLevel();
         
+    }
+     
+    public Character NewCharacter(int ID){
+        
+        this.ID = ID;
+        this.counter = 0;
+        this.priorityLevel = AssignPriorityLevel();
+        newcharacter = new Character(ID,priorityLevel,counter);
+        newcharacter.setSkills(skills);
+        newcharacter.setHealthPoints(healthPoints);
+        newcharacter.setAgility(agility);
+        newcharacter.setStrength(strength);
+        
+        return newcharacter;
     }
     
     public double getSkills() {

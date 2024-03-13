@@ -11,6 +11,8 @@ import java.util.Random;
  * @author davidmizrahi
  */
 public class CrossWorldCombat {
+    
+    private Character avatar;
 
     /**
      * @param args the command line arguments
@@ -30,7 +32,10 @@ public class CrossWorldCombat {
 //            
 //            Administrator cm = new Administrator();
         int ID = 1;
+
         CreateCharacter newcharacter = new CreateCharacter(ID);
+        
+        newcharacter.NewCharacter(ID);
         
         
         
