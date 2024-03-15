@@ -28,9 +28,9 @@ public class Administrator extends Thread{
     
     public Administrator(){};
     
-    public Administrator(Character character, Studio regularShow, Studio avatar, ArtificialIntelligence ai) {
+    public Administrator(Studio regularShow, Studio avatar, ArtificialIntelligence ai, Semaphore sem) {
         
-        this.sem = new Semaphore(0);
+        this.sem = sem;
         
         this.character = character;
         

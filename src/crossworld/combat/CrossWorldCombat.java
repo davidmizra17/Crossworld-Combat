@@ -31,29 +31,32 @@ public class CrossWorldCombat {
 //            
 //            
 //            Administrator cm = new Administrator();
-        int ID = 1;
+//        int ID = 1;
+//
+//        CreateCharacter newcharacter = new CreateCharacter(ID);
+//        
+//        newcharacter.NewCharacter(ID);
+//        
+//        
+//        
+//        
+//        System.out.print(newcharacter.getPriorityLevel());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getSkills());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getHealthPoints());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getAgility());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getStrength());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getID());
+//        System.out.print("\n");
+//        System.out.print(newcharacter.getCounter());
+//            
 
-        CreateCharacter newcharacter = new CreateCharacter(ID);
-        
-        newcharacter.NewCharacter(ID);
-        
-        
-        
-        
-        System.out.print(newcharacter.getPriorityLevel());
-        System.out.print("\n");
-        System.out.print(newcharacter.getSkills());
-        System.out.print("\n");
-        System.out.print(newcharacter.getHealthPoints());
-        System.out.print("\n");
-        System.out.print(newcharacter.getAgility());
-        System.out.print("\n");
-        System.out.print(newcharacter.getStrength());
-        System.out.print("\n");
-        System.out.print(newcharacter.getID());
-        System.out.print("\n");
-        System.out.print(newcharacter.getCounter());
-            
+
+
             
   
             

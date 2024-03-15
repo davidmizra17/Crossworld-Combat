@@ -20,8 +20,17 @@ public class Studio {
     
     private Queue<Character> reinforcementQueue;
   
-   public Studio(){};
-    public Studio(String name, Character character){
+   public Studio()
+   {
+        this.name = name;
+       
+        this.character = character;
+        
+        this.pq = new PriorityQueue();
+        
+        this.reinforcementQueue = new Queue();
+   };
+    public Studio(Character character){
         
         this.name = name;
        
@@ -174,21 +183,21 @@ public class Studio {
 
    
     
-    public void EnqueueProcess(Character character){
+    public void EnqueueProcess(){
         
         
         
         
-        int characterLevel = AssignPriorityLevel(character);
+        int characterLevel = AssignPriorityLevel(this.character);
         
        try{
            pq.getQueueSemaphores()[characterLevel - 1].acquire();
-           pq.getReadyQueues()[characterLevel - 1].enqueue(character);
+           pq.getReadyQueues()[characterLevel - 1].enqueue(this.character);
            
        } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            // release the corresponding semaphore
+//             release the corresponding semaphore
             pq.getQueueSemaphores()[characterLevel - 1].release();
         }
         

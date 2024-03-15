@@ -6,6 +6,7 @@ package Views;
 
 import crossworld.combat.Administrator;
 import crossworld.combat.ArtificialIntelligence;
+import crossworld.combat.CreateCharacter;
 import crossworld.combat.Studio;
 import java.util.concurrent.Semaphore;
 import javax.swing.JPanel;
@@ -24,7 +25,8 @@ public class GUI extends javax.swing.JFrame {
     private ArtificialIntelligence AI;
     private Studio avatar;
     private Studio regularShow;
-    
+    private CreateCharacter newCharacter;
+    private int ID_Counter;
     
     public GUI() {
         
@@ -32,13 +34,63 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        this.admin = new Administrator();
+        
         this.AI = new ArtificialIntelligence();
+        
+        
+        this.newCharacter = new CreateCharacter();
+        
         this.avatar = new Studio();
         this.regularShow = new Studio();
         
-        Semaphore s = new Semaphore(0);
-        Semaphore AI_Sem = new Semaphore(0);
+        crossworld.combat.Character[] character_avatar = new crossworld.combat.Character[3];
+        crossworld.combat.Character[] character_regularShow = new crossworld.combat.Character[3];
+        
+        
+        for (int i = 0; i < character_avatar.length; i++) {
+            
+            
+            
+            ID_Counter++;            
+            character_avatar[i] = newCharacter.NewCharacter(ID_Counter);
+            
+        }
+        
+     for (int i = 0; i < character_regularShow.length; i++) {
+            ID_Counter++;
+            character_regularShow[i] = newCharacter.NewCharacter(ID_Counter);
+            
+        }
+        
+        
+                    this.avatar.setCharacter(character_avatar[0]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[1]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[2]);
+                    this.avatar.EnqueueProcess();
+                    
+                    
+                    this.regularShow.setCharacter(character_regularShow[0]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[1]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[2]);
+                    this.regularShow.EnqueueProcess();
+                    
+                    Semaphore s = new Semaphore(0);
+                    Semaphore AI_Sem = new Semaphore(0);
+                    
+                    this.admin = new Administrator(this.avatar, this.regularShow, this.AI, s);
+        
+        
+
+        
+        
+        
+        
+        
+        
         
         getAI().setSem(AI_Sem);
         
