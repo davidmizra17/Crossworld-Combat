@@ -19,7 +19,7 @@ public class Studio {
     private PriorityQueue pq;
     
     private Queue<Character> reinforcementQueue;
-
+  
    public Studio(){};
     public Studio(String name, Character character){
         
