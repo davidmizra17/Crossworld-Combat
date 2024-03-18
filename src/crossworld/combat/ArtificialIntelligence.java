@@ -88,7 +88,7 @@ public class ArtificialIntelligence extends Thread {
         while(true){
             try {
                 
-                sleep(10000);
+                sleep(1500);
                 String outcome = fightOutcome();
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
@@ -105,7 +105,8 @@ public class ArtificialIntelligence extends Thread {
         
         Random random = new Random();
         
-        double fightProb = random.nextDouble();
+//        double fightProb = random.nextDouble();
+        double fightProb = 0.35;
         
         double winnerCase = 0.4;
         double tiedCase = 0.27;
@@ -117,12 +118,12 @@ public class ArtificialIntelligence extends Thread {
         }
         else if(fightProb <= winnerCase + tiedCase){
             //tie
-            sem.acquire();
+//            sem.acquire();
             
             this.admin.getRegularShow().getPq().getReadyQueues()[0].enqueue(firstFighter);
             this.admin.getAvatar().getPq().getReadyQueues()[0].enqueue(secondFighter);
             
-            sem.release();
+//            sem.release();
             
             return "Tie";
             

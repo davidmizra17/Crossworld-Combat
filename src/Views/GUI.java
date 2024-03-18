@@ -9,6 +9,8 @@ import crossworld.combat.ArtificialIntelligence;
 import crossworld.combat.CreateCharacter;
 import crossworld.combat.Studio;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -28,7 +30,7 @@ public class GUI extends javax.swing.JFrame {
     private CreateCharacter newCharacter;
     private int ID_Counter;
     
-    public GUI() {
+    public GUI(){
         
         
         initComponents();
@@ -43,8 +45,8 @@ public class GUI extends javax.swing.JFrame {
         this.avatar = new Studio();
         this.regularShow = new Studio();
         
-        crossworld.combat.Character[] character_avatar = new crossworld.combat.Character[3];
-        crossworld.combat.Character[] character_regularShow = new crossworld.combat.Character[3];
+        crossworld.combat.Character[] character_avatar = new crossworld.combat.Character[8];
+        crossworld.combat.Character[] character_regularShow = new crossworld.combat.Character[8];
         
         
         for (int i = 0; i < character_avatar.length; i++) {
@@ -69,6 +71,18 @@ public class GUI extends javax.swing.JFrame {
                     this.avatar.EnqueueProcess();
                     this.avatar.setCharacter(character_avatar[2]);
                     this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[3]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[4]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[5]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[6]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[7]);
+                    this.avatar.EnqueueProcess();
+                    
+                    
                     
                     
                     this.regularShow.setCharacter(character_regularShow[0]);
@@ -77,6 +91,17 @@ public class GUI extends javax.swing.JFrame {
                     this.regularShow.EnqueueProcess();
                     this.regularShow.setCharacter(character_regularShow[2]);
                     this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[3]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[4]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[5]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[6]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[7]);
+                    this.regularShow.EnqueueProcess();
+                    
                     
                     Semaphore s = new Semaphore(0);
                     Semaphore AI_Sem = new Semaphore(0);
@@ -86,16 +111,40 @@ public class GUI extends javax.swing.JFrame {
         
 
         
+//        ArtificialIntelligence(crossworld.combat.Character firstFighter, crossworld.combat.Character secondFighter, Administrator admin)
+
+
         
         
         
+//        getAdmin().start();
         
-        
-        
+
+//        getAdmin().setFighters();
+
         getAI().setSem(AI_Sem);
+        getAI().setAdmin(admin);
+        for (int i = 0; i < 15; i++) {
+            
+            getAdmin().setFighters();
         
-        getAI().start();
-        getAdmin().start();
+            String outcome;
+        try {
+            outcome = getAI().fightOutcome();
+             System.out.println("Fight Outcome:\n");
+                System.out.println(outcome);
+                System.out.println("-------------------");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        }
+        
+//        getAdmin().start();
+        
+//        
+//        getAI().start();
+        
         
         
     }

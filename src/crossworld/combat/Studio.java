@@ -180,6 +180,18 @@ public class Studio {
         return character.getPriorityLevel();
         
     }
+    
+    public Character getFighter() {
+        if (!this.pq.getReadyQueues()[0].isEmpty()) {
+            return this.pq.getReadyQueues()[0].dequeue();
+        } else if (!this.pq.getReadyQueues()[1].isEmpty()) {
+            return this.pq.getReadyQueues()[1].dequeue();
+        } else if (!this.pq.getReadyQueues()[2].isEmpty()) {
+            return this.pq.getReadyQueues()[2].dequeue();
+        } else {
+            return null;
+        }
+    }
 
    
     

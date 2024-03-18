@@ -14,6 +14,8 @@ public class Queue<T> {
     private Nodo<T> front;
     
     private Nodo<T> rear;
+
+    
     
     private int size;
     
@@ -28,7 +30,29 @@ public class Queue<T> {
         
         this.size = 0;
     }
-    
+    public Nodo<T> getFront() {
+        return front;
+    }
+
+    public void setFront(Nodo<T> front) {
+        this.front = front;
+    }
+
+    public Nodo<T> getRear() {
+        return rear;
+    }
+
+    public void setRear(Nodo<T> rear) {
+        this.rear = rear;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
     /**
      *
      * @return de tipo booleano para saber si la cola esta vacia
@@ -123,6 +147,8 @@ public class Queue<T> {
     
         return size;
     }
+    
+   
     
     /**
      *Se desencola el primer elemento en ingresar a la cola

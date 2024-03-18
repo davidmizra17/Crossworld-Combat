@@ -88,7 +88,8 @@ public class Administrator extends Thread{
         
         while(true){
             
-            getCharacters();
+            setFighters();
+            sem.release();
 //            getAi().
             
         }
@@ -97,28 +98,14 @@ public class Administrator extends Thread{
 }
     
     
-    public void getCharacters(){
+    public void setFighters(){
         
-        try {
-            //retrieve 1 character from priority queue 1 from each studio
-
-            sem.acquire();
-            Character regularShow = this.regularShow.getPq().getReadyQueues()[0].dequeue();
-            getAi().setFirstFighter(regularShow);
-            
-            Character avatar = this.avatar.getPq().getReadyQueues()[0].dequeue();
-            getAi().setSecondFighter(avatar);
-            
-            sem.release();
-            
-            
-            
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Character firstFighter = getRegularShow().getFighter();
         
+        getAi().setFirstFighter(firstFighter);
+        Character secondFighter = getAvatar().getFighter();
         
+        getAi().setSecondFighter(secondFighter);
         
         
     }
