@@ -6,6 +6,7 @@ package crossworld.combat;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
+import javax.swing.JTextField;
 
 
 
@@ -27,6 +28,19 @@ public class ArtificialIntelligence extends Thread {
     
     private Administrator admin;
     
+    private int TimeSleep = 10000;
+    
+    JTextField textField;
+    JTextField skillsAvatar;
+    JTextField skillsRS;
+    JTextField hpAvatar;
+    JTextField hpRS;
+    JTextField agilityAvatar;
+    JTextField agilityRS;
+    JTextField strengthAvatar;
+    JTextField strengthRS;
+    JTextField idAvatar;
+    JTextField idRS;
     
     public ArtificialIntelligence(){};
     
@@ -39,13 +53,21 @@ public class ArtificialIntelligence extends Thread {
         this.winners = new Lista();
         
     }
-
+    
     public Lista<Character> getWinners() {
         return winners;
     }
 
     public void setWinners(Lista<Character> winners) {
         this.winners = winners;
+    }
+    
+    public int getTimeSleep(){
+        return TimeSleep;
+    }
+    
+    public void setTimeSleep(int time){
+        this.TimeSleep = time*1000;
     }
 
     public Administrator getAdmin() {
@@ -87,11 +109,21 @@ public class ArtificialIntelligence extends Thread {
         
         while(true){
             try {
-                
-                sleep(10000);
+                sleep(TimeSleep);
                 String outcome = fightOutcome();
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
+                textField.setText(outcome);
+                idAvatar.setText(Double.toString(secondFighter.getID()));
+                skillsAvatar.setText(Double.toString(secondFighter.getSkills()));
+                hpAvatar.setText(Double.toString(secondFighter.getHealthPoints()));
+                agilityAvatar.setText(Double.toString(secondFighter.getAgility()));
+                strengthAvatar.setText(Double.toString(secondFighter.getStrength()));
+                idRS.setText(Double.toString(firstFighter.getID()));
+                skillsRS.setText(Double.toString(firstFighter.getSkills()));
+                hpRS.setText(Double.toString(firstFighter.getHealthPoints()));
+                agilityRS.setText(Double.toString(firstFighter.getAgility()));
+                strengthRS.setText(Double.toString(firstFighter.getStrength()));
                 System.out.println("-------------------");
             } catch (InterruptedException ex) {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,6 +132,49 @@ public class ArtificialIntelligence extends Thread {
         }
     }
     
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
+    }
+    
+    public void setSkillsAvatar(JTextField textField) {
+        this.skillsAvatar = textField;
+    }
+        
+    public void setSkillsRS(JTextField textField) {
+        this.skillsRS = textField;
+    }
+            
+    public void setHpAvatar(JTextField textField) {
+        this.hpAvatar = textField;
+    }
+                
+    public void setHpRS(JTextField textField) {
+        this.hpRS = textField;
+    }
+                    
+    public void setAgilityAvatar(JTextField textField) {
+        this.agilityAvatar = textField;
+    }
+                        
+    public void setAgilityRS(JTextField textField) {
+        this.agilityRS = textField;
+    }
+                            
+    public void setStrengthAvatar(JTextField textField) {
+        this.strengthAvatar = textField;
+    }
+                                
+    public void setStrengthRS(JTextField textField) {
+        this.strengthRS = textField;
+    }
+    
+    public void setIdAvatar(JTextField textField) {
+        this.idAvatar = textField;
+    }
+        
+    public void setIdRS(JTextField textField) {
+        this.idRS = textField;
+    }
     
     public String fightOutcome() throws InterruptedException{
         
