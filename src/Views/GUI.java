@@ -54,13 +54,13 @@ public class GUI extends javax.swing.JFrame {
             
             
             ID_Counter++;            
-            character_avatar[i] = newCharacter.NewCharacter(ID_Counter);
+            character_avatar[i] = newCharacter.NewCharacter("AVATAR", ID_Counter);
             
         }
         
      for (int i = 0; i < character_regularShow.length; i++) {
             ID_Counter++;
-            character_regularShow[i] = newCharacter.NewCharacter(ID_Counter);
+            character_regularShow[i] = newCharacter.NewCharacter("REGULAR SHOW", ID_Counter);
             
         }
         
@@ -120,10 +120,13 @@ public class GUI extends javax.swing.JFrame {
 //        getAdmin().start();
         
 
-//        getAdmin().setFighters();
+        
 
         getAI().setSem(AI_Sem);
         getAI().setAdmin(admin);
+//        getAdmin().setFighters();
+        int cycle_counter = 0;
+//        getAdmin().start();
         for (int i = 0; i < 15; i++) {
             
             getAdmin().setFighters();
@@ -134,6 +137,19 @@ public class GUI extends javax.swing.JFrame {
              System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
                 System.out.println("-------------------");
+                
+                getAI().setCycle_counter(getAI().getCycle_counter() + 1);
+                
+                cycle_counter = getAI().getCycle_counter();
+                
+                
+                
+                getAdmin().setCycle_counter(cycle_counter);
+                getAdmin().getAvatar().getCharacterFromReinforcement();
+                getAdmin().getRegularShow().getCharacterFromReinforcement();
+                
+                
+                
         } catch (InterruptedException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }

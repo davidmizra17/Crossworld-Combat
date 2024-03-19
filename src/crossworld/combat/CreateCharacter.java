@@ -138,7 +138,7 @@ public class CreateCharacter {
         
     }
      
-    public Character NewCharacter(int ID){
+    public Character NewCharacter(String name, int ID){
         
         this.ID = ID;
         this.counter = 0;

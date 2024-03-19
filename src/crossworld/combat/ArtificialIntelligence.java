@@ -27,6 +27,7 @@ public class ArtificialIntelligence extends Thread {
     
     private Administrator admin;
     
+    private int cycle_counter;
     
     public ArtificialIntelligence(){};
     
@@ -37,6 +38,7 @@ public class ArtificialIntelligence extends Thread {
         this.secondFighter = secondFighter;
         this.admin = admin;
         this.winners = new Lista();
+        this.cycle_counter = 0;
         
     }
 
@@ -47,6 +49,15 @@ public class ArtificialIntelligence extends Thread {
     public void setWinners(Lista<Character> winners) {
         this.winners = winners;
     }
+
+    public int getCycle_counter() {
+        return cycle_counter;
+    }
+
+    public void setCycle_counter(int cycle_counter) {
+        this.cycle_counter = cycle_counter;
+    }
+    
 
     public Administrator getAdmin() {
         return admin;
@@ -90,9 +101,18 @@ public class ArtificialIntelligence extends Thread {
                 
                 sleep(1500);
                 String outcome = fightOutcome();
+                
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
                 System.out.println("-------------------");
+                
+                
+                this.cycle_counter++;
+                
+                getAdmin().setCycle_counter(this.cycle_counter);
+                getAdmin().getAvatar().getCharacterFromReinforcement();
+                getAdmin().getRegularShow().getCharacterFromReinforcement();
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -106,7 +126,7 @@ public class ArtificialIntelligence extends Thread {
         Random random = new Random();
         
 //        double fightProb = random.nextDouble();
-        double fightProb = 0.35;
+        double fightProb = 0.95;
         
         double winnerCase = 0.4;
         double tiedCase = 0.27;

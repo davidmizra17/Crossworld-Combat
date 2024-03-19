@@ -25,6 +25,7 @@ public class Administrator extends Thread{
     
     private ArtificialIntelligence ai;
     
+    private int cycle_counter;
     
     public Administrator(){};
     
@@ -40,6 +41,8 @@ public class Administrator extends Thread{
         
         this.ai = ai;
         
+        this.cycle_counter = 0;
+        
         
     }
 
@@ -54,6 +57,15 @@ public class Administrator extends Thread{
     public Semaphore getSem() {
         return sem;
     }
+
+    public int getCycle_counter() {
+        return cycle_counter;
+    }
+
+    public void setCycle_counter(int cycle_counter) {
+        this.cycle_counter = cycle_counter;
+    }
+    
 
     public void setSem(Semaphore sem) {
         this.sem = sem;
@@ -89,6 +101,7 @@ public class Administrator extends Thread{
         while(true){
             
             setFighters();
+            if(getCycle_counter() == 8) setStarvationCounter();
             sem.release();
 //            getAi().
             
@@ -109,5 +122,39 @@ public class Administrator extends Thread{
         
         
     }
+    
+    public void setStarvationCounter(){
+        
+        
+        
+        Nodo RS_aux = getRegularShow().getReinforcementQueue().getFront();
+        Nodo AV_aux = getAvatar().getReinforcementQueue().getFront();
+        
+        Character temp = null;
+        
+        while(RS_aux != null){
+            
+            temp = (Character) RS_aux.getInfo();
+            
+            temp.setCounter(temp.getCounter() + 1);
+            
+            RS_aux = RS_aux.getpNext();
+        }
+        
+        
+        temp = null;
+        
+        while(AV_aux != null){
+            
+            temp = (Character) AV_aux.getInfo();
+            
+            temp.setCounter(temp.getCounter() + 1);
+            
+            AV_aux = AV_aux.getpNext();
+            
+        }
+        
+    }
 
 }
+
