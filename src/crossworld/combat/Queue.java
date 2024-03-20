@@ -4,6 +4,7 @@
  */
 package crossworld.combat;
 
+
 /**
  *
  * @author davidmizrahi
@@ -121,15 +122,21 @@ public class Queue<T> {
     /**
      *Imnprime los elementos de la cola
      */
-    public void printQueue(){
+    public String printQueue(){
+        
+        String q = "";
     
         if(!isEmpty()){
         
             Nodo<T> temp = front;
             
-            while(temp != null){
+            crossworld.combat.Character aux = null;
             
-                System.out.print(temp.getInfo() + "->");
+            while(temp != null){
+                
+                aux = (crossworld.combat.Character)temp.getInfo();
+            
+                q += aux.getID() + "->";
                 
                 temp = temp.getpNext();
             }
@@ -137,6 +144,8 @@ public class Queue<T> {
             System.out.println("null");
        
         }else{System.out.println("Queue is empty.");}
+        
+        return q;
     }
     
     /**

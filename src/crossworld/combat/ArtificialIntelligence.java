@@ -4,6 +4,7 @@
  */
 package crossworld.combat;
 
+import Views.GUI;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import javax.swing.JTextField;
@@ -16,6 +17,8 @@ import javax.swing.JTextField;
  */
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 public class ArtificialIntelligence extends Thread {
     
     private Semaphore sem;
@@ -33,20 +36,64 @@ public class ArtificialIntelligence extends Thread {
 
     private int TimeSleep = 10000;
     
-    JTextField textField;
-    JTextField skillsAvatar;
-    JTextField skillsRS;
-    JTextField hpAvatar;
-    JTextField hpRS;
-    JTextField agilityAvatar;
-    JTextField agilityRS;
-    JTextField strengthAvatar;
-    JTextField strengthRS;
-    JTextField idAvatar;
-    JTextField idRS;
+    private JTextField textField;
+    private JTextField skillsAvatar;
+    private JTextField skillsRS;
+    private JTextField hpAvatar;
+    private JTextField hpRS;
+    private JTextField agilityAvatar;
+    private JTextField agilityRS;
+    private JTextField strengthAvatar;
+    private JTextField strengthRS;
+    private JTextField idAvatar;
+    private JTextField idRS;
+    
+    private JTextArea AVQ1; 
+    private JTextArea AVQ2; 
+    private JTextArea AVQ3;
+    
+    private JTextArea RSQ1; 
+    private JTextArea RSQ2; 
+    private JTextArea RSQ3; 
+    
+    
+//    private GUI gui;
+    
+    
 
     
-    public ArtificialIntelligence(){};
+    public ArtificialIntelligence(){
+        
+        
+        
+        this.textField = new JTextField();
+        this.skillsAvatar = new JTextField();
+        this.skillsRS = new JTextField();
+        this.hpAvatar = new JTextField();
+        this.hpRS = new JTextField();
+        this.agilityAvatar = new JTextField();
+        this.agilityRS = new JTextField();
+        this.strengthAvatar = new JTextField();
+        this.strengthRS = new JTextField();
+        this.idAvatar = new JTextField();
+        this.idRS = new JTextField();
+        
+        this.AVQ1 = new JTextArea();
+        this.AVQ2 = new JTextArea();
+        this.AVQ2 = new JTextArea();
+        
+        this.RSQ1 = new JTextArea();
+        this.RSQ2= new JTextArea();
+        this.RSQ3 = new JTextArea();
+//        this.gui = new GUI();
+        
+        
+        
+    };
+
+   
+
+   
     
     public ArtificialIntelligence(Character firstFighter, Character secondFighter, Administrator admin){
         
@@ -57,12 +104,34 @@ public class ArtificialIntelligence extends Thread {
         this.winners = new Lista();
         this.cycle_counter = 0;
         
+        //INITIALIZE JTEXTFIELD VARIABLES
+        this.textField = new JTextField();
+        this.skillsAvatar = new JTextField();
+        this.skillsRS = new JTextField();
+        this.hpAvatar = new JTextField();
+        this.hpRS = new JTextField();
+        this.agilityAvatar = new JTextField();
+        this.agilityRS = new JTextField();
+        this.strengthAvatar = new JTextField();
+        this.strengthRS = new JTextField();
+        this.idAvatar = new JTextField();
+        this.idRS = new JTextField();
+        
+        
+        
+        
+        
+        
+        
+        
     }
+   
     
     public Lista<Character> getWinners() {
         return winners;
     }
 
+    
     public void setWinners(Lista<Character> winners) {
         this.winners = winners;
     }
@@ -116,6 +185,59 @@ public class ArtificialIntelligence extends Thread {
     public void setSecondFighter(Character secondFighter) {
         this.secondFighter = secondFighter;
     }
+
+    public JTextField getTextField() {
+        return textField;
+    }
+
+    public JTextField getSkillsAvatar() {
+        return skillsAvatar;
+    }
+
+    public JTextField getSkillsRS() {
+        return skillsRS;
+    }
+
+    public JTextField getHpAvatar() {
+        return hpAvatar;
+    }
+
+    public JTextField getHpRS() {
+        return hpRS;
+    }
+
+    public JTextField getAgilityAvatar() {
+        return agilityAvatar;
+    }
+
+    public JTextField getAgilityRS() {
+        return agilityRS;
+    }
+
+    public JTextField getStrengthAvatar() {
+        return strengthAvatar;
+    }
+
+    public JTextField getStrengthRS() {
+        return strengthRS;
+    }
+
+    public JTextField getIdAvatar() {
+        return idAvatar;
+    }
+
+    public JTextField getIdRS() {
+        return idRS;
+    }
+    
+    
+     public JTextArea getAVQ1() {
+        return AVQ1;
+    }
+
+    public void setAVQ1(JTextArea AVQ1) {
+        this.AVQ1 = AVQ1;
+    }
     
     
     @Override
@@ -123,11 +245,13 @@ public class ArtificialIntelligence extends Thread {
         
         while(true){
             try {
-
-                sleep(TimeSleep);
+                    
+                sleep(1570);
+                 getAdmin().setFighters();
 
                 String outcome = fightOutcome();
                 
+                SwingUtilities.invokeLater(() -> {
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
                 textField.setText(outcome);
@@ -141,7 +265,11 @@ public class ArtificialIntelligence extends Thread {
                 hpRS.setText(Double.toString(firstFighter.getHealthPoints()));
                 agilityRS.setText(Double.toString(firstFighter.getAgility()));
                 strengthRS.setText(Double.toString(firstFighter.getStrength()));
+//                printQueues();
+                
                 System.out.println("-------------------");
+                
+                });
                 
                 
                 this.cycle_counter++;
@@ -150,12 +278,56 @@ public class ArtificialIntelligence extends Thread {
                 getAdmin().getAvatar().getCharacterFromReinforcement();
                 getAdmin().getRegularShow().getCharacterFromReinforcement();
                 
+                
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
     }
+
+    public JTextArea getAVQ2() {
+        return AVQ2;
+    }
+
+    public void setAVQ2(JTextArea AVQ2) {
+        this.AVQ2 = AVQ2;
+    }
+
+    public JTextArea getAVQ3() {
+        return AVQ3;
+    }
+
+    public void setAVQ3(JTextArea AVQ3) {
+        this.AVQ3 = AVQ3;
+    }
+
+    public JTextArea getRSQ1() {
+        return RSQ1;
+    }
+
+    public void setRSQ1(JTextArea RSQ1) {
+        this.RSQ1 = RSQ1;
+    }
+
+    public JTextArea getRSQ2() {
+        return RSQ2;
+    }
+
+    public void setRSQ2(JTextArea RSQ2) {
+        this.RSQ2 = RSQ2;
+    }
+
+    public JTextArea getRSQ3() {
+        return RSQ3;
+    }
+
+    public void setRSQ3(JTextArea RSQ3) {
+        this.RSQ3 = RSQ3;
+    }
+    
+    
     
     public void setTextField(JTextField textField) {
         this.textField = textField;
@@ -205,8 +377,8 @@ public class ArtificialIntelligence extends Thread {
         
         Random random = new Random();
         
-//        double fightProb = random.nextDouble();
-        double fightProb = 0.95;
+        double fightProb = random.nextDouble();
+////        double fightProb = 0.35;
         
         double winnerCase = 0.4;
         double tiedCase = 0.27;
@@ -279,6 +451,23 @@ public class ArtificialIntelligence extends Thread {
         
         
     }
+    
+     public void printQueues(){
+    
+        this.AVQ1.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[0].printQueue());
+        this.AVQ2.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[1].printQueue());
+        this.AVQ3.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[2].printQueue());
+        
+        this.RSQ1.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[0].printQueue());
+        this.RSQ2.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[1].printQueue());
+        this.RSQ3.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[2].printQueue());
+        
+        
+        
+        
+        
+}
+    
     
     
     

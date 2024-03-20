@@ -11,10 +11,13 @@ import crossworld.combat.Studio;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.util.concurrent.Semaphore;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -40,7 +43,7 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         
-//        this.AI = new ArtificialIntelligence(admin);
+        this.AI = new ArtificialIntelligence();
         
         
         this.newCharacter = new CreateCharacter();
@@ -71,6 +74,22 @@ public class GUI extends javax.swing.JFrame {
         
         
                    
+                    this.avatar.setCharacter(character_avatar[0]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[1]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[2]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[3]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[4]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[5]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[6]);
+                    this.avatar.EnqueueProcess();
+                    this.avatar.setCharacter(character_avatar[7]);
+                    this.avatar.EnqueueProcess();
                     this.avatar.setCharacter(character_avatar[8]);
                     this.avatar.EnqueueProcess();
                     this.avatar.setCharacter(character_avatar[9]);
@@ -96,6 +115,24 @@ public class GUI extends javax.swing.JFrame {
                     this.avatar.setCharacter(character_avatar[19]);
                     this.avatar.EnqueueProcess();
 
+                    
+                    
+                    this.regularShow.setCharacter(character_regularShow[0]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[1]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[2]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[3]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[4]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[5]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[6]);
+                    this.regularShow.EnqueueProcess();
+                    this.regularShow.setCharacter(character_regularShow[7]);
+                    this.regularShow.EnqueueProcess();
                     this.regularShow.setCharacter(character_regularShow[8]);
                     this.regularShow.EnqueueProcess();
                     this.regularShow.setCharacter(character_regularShow[9]);
@@ -125,8 +162,9 @@ public class GUI extends javax.swing.JFrame {
                     Semaphore s = new Semaphore(0);
                     Semaphore AI_Sem = new Semaphore(0);
                     
-                    this.AI = new ArtificialIntelligence(avatar.getCharacter(),regularShow.getCharacter(),admin);
-                    this.admin = new Administrator(this.avatar, this.regularShow, this.AI, s);
+//                    this.AI = new ArtificialIntelligence(avatar.getCharacter(),regularShow.getCharacter(),admin);
+                    this.admin = new Administrator(this.regularShow, this.avatar, this.AI, s);
+                    
         
         
 
@@ -144,52 +182,25 @@ public class GUI extends javax.swing.JFrame {
 
         getAI().setSem(AI_Sem);
         getAI().setAdmin(admin);
+//        getAI().setGui(this);
 //        getAdmin().setFighters();
+        String outcome = "";
         int cycle_counter = 0;
 //        getAdmin().start();
-        for (int i = 0; i < 15; i++) {
-            
-            getAdmin().setFighters();
-        
-            String outcome;
-//        try {
-//            outcome = getAI().fightOutcome();
-//             System.out.println("Fight Outcome:\n");
-//                System.out.println(outcome);
-//                System.out.println("-------------------");
-//                
-//                getAI().setCycle_counter(getAI().getCycle_counter() + 1);
-//                
-//                cycle_counter = getAI().getCycle_counter();
-//                
-//                
-//                
-//                getAdmin().setCycle_counter(cycle_counter);
-//                getAdmin().getAvatar().getCharacterFromReinforcement();
-//                getAdmin().getRegularShow().getCharacterFromReinforcement();
-//                
-//                
-//                
-//        } catch (InterruptedException ex) {
-//            
-//            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//            
-        }
-        
-//        getAdmin().start();
-        
-//        
-//        getAI().start();
+//        getAI().testFunc();
+//getAdmin().start();
+//getAI().start();
 
-//        getAdmin().start();
-//        getAI().start();
-//        getAdmin().start();
+     
+
+        
 
         
         
     }
     
+    
+   
     
 
     public Administrator getAdmin() {
@@ -255,12 +266,24 @@ public class GUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AVPriorityQ3 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AVPriorityQ2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        AVPriorityQ1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         simulationStart = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        RSPriorityQ3 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        RSPriorityQ2 = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        RSPriorityQ1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         TimeControl = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -297,6 +320,24 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setText("Colas");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 80, 40));
 
+        AVPriorityQ3.setColumns(20);
+        AVPriorityQ3.setRows(5);
+        jScrollPane1.setViewportView(AVPriorityQ3);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, -1, -1));
+
+        AVPriorityQ2.setColumns(20);
+        AVPriorityQ2.setRows(5);
+        jScrollPane2.setViewportView(AVPriorityQ2);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+
+        AVPriorityQ1.setColumns(20);
+        AVPriorityQ1.setRows(5);
+        jScrollPane3.setViewportView(AVPriorityQ1);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 610));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -325,7 +366,7 @@ public class GUI extends javax.swing.JFrame {
                 simulationStartActionPerformed(evt);
             }
         });
-        getContentPane().add(simulationStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
+        getContentPane().add(simulationStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -333,7 +374,25 @@ public class GUI extends javax.swing.JFrame {
         jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 80, 40));
 
         jLabel5.setText("Un Show Mas");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 80, 40));
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 90, 40));
+
+        RSPriorityQ3.setColumns(20);
+        RSPriorityQ3.setRows(5);
+        jScrollPane4.setViewportView(RSPriorityQ3);
+
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+
+        RSPriorityQ2.setColumns(20);
+        RSPriorityQ2.setRows(5);
+        jScrollPane5.setViewportView(RSPriorityQ2);
+
+        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
+
+        RSPriorityQ1.setColumns(20);
+        RSPriorityQ1.setRows(5);
+        jScrollPane6.setViewportView(RSPriorityQ1);
+
+        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 460, 610));
 
@@ -346,31 +405,31 @@ public class GUI extends javax.swing.JFrame {
                 TimeControlActionPerformed(evt);
             }
         });
-        getContentPane().add(TimeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, -1, -1));
+        getContentPane().add(TimeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, -1, -1));
 
         jLabel6.setText("Fighter Un Show Mas");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 130, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 140, 40));
 
-        jLabel7.setText("Resultado");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 50, 40));
+        jLabel7.setText("Resultado del Combate");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 150, 40));
 
         jLabel8.setText("ID");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 20, 40));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 20, 40));
 
         jLabel9.setText("Skills");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 30, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 40, 40));
 
         jLabel10.setText("Health Points");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, -1, 40));
 
         jLabel11.setText("Agility");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 40, 40));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 60, 40));
 
         jLabel12.setText("Strength");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 50, 40));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 60, 40));
 
         jLabel13.setText("Inteligencia Artificial");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 110, 40));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, 40));
 
         IDavatar.setEditable(false);
         IDavatar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -485,9 +544,17 @@ public class GUI extends javax.swing.JFrame {
 
     private void simulationStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simulationStartActionPerformed
         // TODO add your handling code here:
-        getAdmin().start();
-        getAI().start();
 //        getAdmin().start();
+//        getAI().start();
+//        getAdmin().start();
+        getAI().setAVQ1(AVPriorityQ1);
+        getAI().setAVQ2(AVPriorityQ2);
+        getAI().setAVQ3(AVPriorityQ3);
+                
+        getAI().setRSQ1(RSPriorityQ1);
+        getAI().setRSQ2(RSPriorityQ2);
+        getAI().setRSQ3(RSPriorityQ3);
+        
         getAI().setTextField(ResultadoIA);
         getAI().setIdAvatar(IDavatar);
         getAI().setSkillsAvatar(SkillsAvatar);
@@ -499,6 +566,20 @@ public class GUI extends javax.swing.JFrame {
         getAI().setHpRS(HPrs);
         getAI().setAgilityRS(Agilityrs);
         getAI().setStrengthRS(Strengthrs);
+        
+        
+
+          getAI().start();
+
+
+//          IDavatar.setText(getAI().getIdAvatar().getText());
+//          SkillsAvatar.setText(getAI().getSkillsAvatar().getText());
+//          HPavatar.setText(getAI().getHpAvatar().getText());
+//          Agilityavatar.setText(getAI().getAgilityAvatar().getText());
+//          Strengthavatar.setText(getAI().getStrengthAvatar().getText());
+          
+          
+        
         
         
         
@@ -599,6 +680,9 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AVPriorityQ1;
+    private javax.swing.JTextArea AVPriorityQ2;
+    private javax.swing.JTextArea AVPriorityQ3;
     private javax.swing.JTextField ActividadIA;
     private javax.swing.JTextField Agilityavatar;
     private javax.swing.JTextField Agilityrs;
@@ -606,6 +690,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField HPrs;
     private javax.swing.JTextField IDavatar;
     private javax.swing.JTextField IDrs;
+    private javax.swing.JTextArea RSPriorityQ1;
+    private javax.swing.JTextArea RSPriorityQ2;
+    private javax.swing.JTextArea RSPriorityQ3;
     private javax.swing.JTextField ResultadoIA;
     private javax.swing.JTextField SkillsAvatar;
     private javax.swing.JTextField Skillsrs;
@@ -630,6 +717,133 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton simulationStart;
     // End of variables declaration//GEN-END:variables
+
+//    public CreateCharacter getNewCharacter() {
+//        return newCharacter;
+//    }
+//
+//    public void setNewCharacter(CreateCharacter newCharacter) {
+//        this.newCharacter = newCharacter;
+//    }
+//
+//    public int getID_Counter() {
+//        return ID_Counter;
+//    }
+//
+//    public void setID_Counter(int ID_Counter) {
+//        this.ID_Counter = ID_Counter;
+//    }
+//
+//    public JTextField getActividadIA() {
+//        return ActividadIA;
+//    }
+//
+//    public void setActividadIA(JTextField ActividadIA) {
+//        this.ActividadIA = ActividadIA;
+//    }
+//
+//    public JTextField getAgilityavatar() {
+//        return Agilityavatar;
+//    }
+//
+//    public void setAgilityavatar(JTextField Agilityavatar) {
+//        this.Agilityavatar = Agilityavatar;
+//    }
+//
+//    public JTextField getAgilityrs() {
+//        return Agilityrs;
+//    }
+//
+//    public void setAgilityrs(JTextField Agilityrs) {
+//        this.Agilityrs = Agilityrs;
+//    }
+//
+//    public JTextField getHPavatar() {
+//        return HPavatar;
+//    }
+//
+//    public void setHPavatar(JTextField HPavatar) {
+//        this.HPavatar = HPavatar;
+//    }
+//
+//    public JTextField getHPrs() {
+//        return HPrs;
+//    }
+//
+//    public void setHPrs(JTextField HPrs) {
+//        this.HPrs = HPrs;
+//    }
+//
+//    public JTextField getIDavatar() {
+//        return IDavatar;
+//    }
+//
+//    public void setIDavatar(JTextField IDavatar) {
+//        this.IDavatar = IDavatar;
+//    }
+//
+//    public JTextField getIDrs() {
+//        return IDrs;
+//    }
+//
+//    public void setIDrs(JTextField IDrs) {
+//        this.IDrs = IDrs;
+//    }
+//
+//    public JTextField getResultadoIA() {
+//        return ResultadoIA;
+//    }
+//
+//    public void setResultadoIA(JTextField ResultadoIA) {
+//        this.ResultadoIA = ResultadoIA;
+//    }
+//
+//    public JTextField getSkillsAvatar() {
+//        return SkillsAvatar;
+//    }
+//
+//    public void setSkillsAvatar(JTextField SkillsAvatar) {
+//        this.SkillsAvatar = SkillsAvatar;
+//    }
+//
+//    public JTextField getSkillsrs() {
+//        return Skillsrs;
+//    }
+//
+//    public void setSkillsrs(JTextField Skillsrs) {
+//        this.Skillsrs = Skillsrs;
+//    }
+//
+//    public JTextField getStrengthavatar() {
+//        return Strengthavatar;
+//    }
+//
+//    public void setStrengthavatar(JTextField Strengthavatar) {
+//        this.Strengthavatar = Strengthavatar;
+//    }
+//
+//    public JTextField getStrengthrs() {
+//        return Strengthrs;
+//    }
+//
+//    public void setStrengthrs(JTextField Strengthrs) {
+//        this.Strengthrs = Strengthrs;
+//    }
+//
+//    public JButton getTimeControl() {
+//        return TimeControl;
+//    }
+//
+//    public void setTimeControl(JButton TimeControl) {
+//        this.TimeControl = TimeControl;
+//    }
 }
+
