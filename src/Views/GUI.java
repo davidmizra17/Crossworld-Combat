@@ -287,7 +287,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TimeControl = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -306,6 +305,10 @@ public class GUI extends javax.swing.JFrame {
         Agilityrs = new javax.swing.JTextField();
         Strengthrs = new javax.swing.JTextField();
         ActividadIA = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        Victoriasavatar = new javax.swing.JTextField();
+        Victoriasrs = new javax.swing.JTextField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -410,9 +413,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setText("Fighter Un Show Mas");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 140, 40));
 
-        jLabel7.setText("Resultado del Combate");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 150, 40));
-
         jLabel8.setText("ID");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 20, 40));
 
@@ -429,7 +429,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 60, 40));
 
         jLabel13.setText("Inteligencia Artificial");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, 40));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 100, 40));
 
         IDavatar.setEditable(false);
         IDavatar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -483,7 +483,7 @@ public class GUI extends javax.swing.JFrame {
                 ResultadoIAActionPerformed(evt);
             }
         });
-        getContentPane().add(ResultadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 100, -1));
+        getContentPane().add(ResultadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 120, -1));
 
         IDrs.setEditable(false);
         IDrs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -537,7 +537,31 @@ public class GUI extends javax.swing.JFrame {
                 ActividadIAActionPerformed(evt);
             }
         });
-        getContentPane().add(ActividadIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 100, -1));
+        getContentPane().add(ActividadIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 110, -1));
+
+        jLabel14.setText("Resultado del Combate");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 120, 40));
+
+        jLabel15.setText("Victorias");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 60, 40));
+
+        Victoriasavatar.setEditable(false);
+        Victoriasavatar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Victoriasavatar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VictoriasavatarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Victoriasavatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 100, -1));
+
+        Victoriasrs.setEditable(false);
+        Victoriasrs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Victoriasrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VictoriasrsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Victoriasrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 380, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -566,6 +590,9 @@ public class GUI extends javax.swing.JFrame {
         getAI().setHpRS(HPrs);
         getAI().setAgilityRS(Agilityrs);
         getAI().setStrengthRS(Strengthrs);
+        getAI().setVictoriasAvatar(Victoriasavatar);
+        getAI().setVictoriasRS(Victoriasrs);
+        getAI().setActividadAI(ActividadIA);
         
         
 
@@ -644,6 +671,14 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ActividadIAActionPerformed
 
+    private void VictoriasavatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VictoriasavatarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VictoriasavatarActionPerformed
+
+    private void VictoriasrsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VictoriasrsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VictoriasrsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -699,17 +734,20 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Strengthavatar;
     private javax.swing.JTextField Strengthrs;
     private javax.swing.JButton TimeControl;
+    private javax.swing.JTextField Victoriasavatar;
+    private javax.swing.JTextField Victoriasrs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

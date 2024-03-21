@@ -36,6 +36,10 @@ public class ArtificialIntelligence extends Thread {
 
     private int TimeSleep = 10000;
     
+    private int victoryAvatar = 0;
+    
+    private int victoryRS = 0;
+    
     private JTextField textField;
     private JTextField skillsAvatar;
     private JTextField skillsRS;
@@ -47,6 +51,9 @@ public class ArtificialIntelligence extends Thread {
     private JTextField strengthRS;
     private JTextField idAvatar;
     private JTextField idRS;
+    private JTextField victoriasAvatar;
+    private JTextField victoriasRS;
+    private JTextField actividadAI;
     
     private JTextArea AVQ1; 
     private JTextArea AVQ2; 
@@ -77,6 +84,9 @@ public class ArtificialIntelligence extends Thread {
         this.strengthRS = new JTextField();
         this.idAvatar = new JTextField();
         this.idRS = new JTextField();
+        this.victoriasAvatar = new JTextField();
+        this.victoriasRS = new JTextField();
+        this.actividadAI = new JTextField();
         
         this.AVQ1 = new JTextArea();
         this.AVQ2 = new JTextArea();
@@ -116,6 +126,9 @@ public class ArtificialIntelligence extends Thread {
         this.strengthRS = new JTextField();
         this.idAvatar = new JTextField();
         this.idRS = new JTextField();
+        this.victoriasAvatar = new JTextField();
+        this.victoriasRS = new JTextField();
+        this.actividadAI = new JTextField();
         
         
         
@@ -123,7 +136,48 @@ public class ArtificialIntelligence extends Thread {
         
         
         
-        
+    }
+
+    public JTextField getActividadAI() {
+        return actividadAI;
+    }
+
+    public void setActividadAI(JTextField actividadAI) {
+        this.actividadAI = actividadAI;
+    }
+
+    
+    
+    public JTextField getVictoriasAvatar() {
+        return victoriasAvatar;
+    }
+
+    public void setVictoriasAvatar(JTextField victoriasAvatar) {
+        this.victoriasAvatar = victoriasAvatar;
+    }
+
+    public JTextField getVictoriasRS() {
+        return victoriasRS;
+    }
+
+    public void setVictoriasRS(JTextField victoriasRS) {
+        this.victoriasRS = victoriasRS;
+    }
+
+    public int getVictoryAvatar() {
+        return victoryAvatar;
+    }
+
+    public void setVictoryAvatar(int victoryAvatar) {
+        this.victoryAvatar = victoryAvatar;
+    }
+
+    public int getVictoryRS() {
+        return victoryRS;
+    }
+
+    public void setVictoryRS(int victoryRS) {
+        this.victoryRS = victoryRS;
     }
    
     
@@ -247,6 +301,8 @@ public class ArtificialIntelligence extends Thread {
             try {
                     
                 sleep(TimeSleep);
+                actividadAI.setText("Decidiendo");
+                sleep(500);
                  getAdmin().setFighters();
 
                 String outcome = fightOutcome();
@@ -254,6 +310,13 @@ public class ArtificialIntelligence extends Thread {
                 SwingUtilities.invokeLater(() -> {
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
+                
+                if(outcome == "Winner is Avatar"){
+                    this.victoryAvatar++;
+                } else if (outcome == "Winner is Regular Show"){
+                    this.victoryRS++;
+                }
+                actividadAI.setText("Esperando");
                 textField.setText(outcome);
                 idAvatar.setText(Double.toString(secondFighter.getID()));
                 skillsAvatar.setText(String.format("%.2f",secondFighter.getSkills() ));
@@ -265,6 +328,8 @@ public class ArtificialIntelligence extends Thread {
                 hpRS.setText(String.format("%.2f",firstFighter.getHealthPoints()));
                 agilityRS.setText(String.format("%.2f",firstFighter.getAgility()));
                 strengthRS.setText(String.format("%.2f",firstFighter.getStrength()));
+                victoriasAvatar.setText(Integer.toString(victoryAvatar));
+                victoriasRS.setText(Integer.toString(victoryRS));
                 printQueues();
                 
                 System.out.println("-------------------");
