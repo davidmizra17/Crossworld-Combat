@@ -224,6 +224,8 @@ public class Studio {
         
         double rand = random.nextDouble();
         
+        if(!this.getReinforcementQueue().isEmpty()){
+        
         Character characterFromReinforcement = this.getReinforcementQueue().dequeue();
         
         if(rand <= 0.4){
@@ -234,7 +236,7 @@ public class Studio {
             
             this.getReinforcementQueue().enqueue(characterFromReinforcement);
         }
-        
+        }
     }
     
     

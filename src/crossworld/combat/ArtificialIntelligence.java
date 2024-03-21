@@ -141,7 +141,7 @@ public class ArtificialIntelligence extends Thread {
     }
     
     public void setTimeSleep(int time){
-        this.TimeSleep = time*1000;
+        this.TimeSleep = time;
     }
 
     public int getCycle_counter() {
@@ -265,7 +265,7 @@ public class ArtificialIntelligence extends Thread {
                 hpRS.setText(Double.toString(firstFighter.getHealthPoints()));
                 agilityRS.setText(Double.toString(firstFighter.getAgility()));
                 strengthRS.setText(Double.toString(firstFighter.getStrength()));
-//                printQueues();
+                printQueues();
                 
                 System.out.println("-------------------");
                 
@@ -392,8 +392,8 @@ public class ArtificialIntelligence extends Thread {
             //tie
 //            sem.acquire();
             
-            this.admin.getRegularShow().getPq().getReadyQueues()[0].enqueue(firstFighter);
-            this.admin.getAvatar().getPq().getReadyQueues()[0].enqueue(secondFighter);
+            this.admin.getRegularShow().getPq().getReadyQueues()[firstFighter.getPriorityLevel() - 1].enqueue(firstFighter);
+            this.admin.getAvatar().getPq().getReadyQueues()[secondFighter.getPriorityLevel() - 1].enqueue(secondFighter);
             
 //            sem.release();
             

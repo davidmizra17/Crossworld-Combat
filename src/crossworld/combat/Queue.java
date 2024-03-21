@@ -100,7 +100,8 @@ public class Queue<T> {
             
             
         }else{
-        Nodo<T> aux = front;
+        
+            Nodo<T> aux = front;
         
         while(aux != rear){
             
@@ -109,7 +110,7 @@ public class Queue<T> {
             
         }
         
-        rear.setpNext(node);
+        aux.setpNext(node);
         
     }
         rear = node;

@@ -162,40 +162,12 @@ public class GUI extends javax.swing.JFrame {
                     Semaphore s = new Semaphore(0);
                     Semaphore AI_Sem = new Semaphore(0);
                     
-//                    this.AI = new ArtificialIntelligence(avatar.getCharacter(),regularShow.getCharacter(),admin);
+
                     this.admin = new Administrator(this.regularShow, this.avatar, this.AI, s);
                     
-        
-        
-
-        
-//        ArtificialIntelligence(crossworld.combat.Character firstFighter, crossworld.combat.Character secondFighter, Administrator admin)
-
-
-        
-        
-        
-//        getAdmin().start();
-        
-
-        
-
+   
         getAI().setSem(AI_Sem);
         getAI().setAdmin(admin);
-//        getAI().setGui(this);
-//        getAdmin().setFighters();
-        String outcome = "";
-        int cycle_counter = 0;
-//        getAdmin().start();
-//        getAI().testFunc();
-//getAdmin().start();
-//getAI().start();
-
-     
-
-        
-
-        
         
     }
     
@@ -568,7 +540,7 @@ public class GUI extends javax.swing.JFrame {
         getAI().setStrengthRS(Strengthrs);
         
         
-
+//          getAdmin().start();
           getAI().start();
 
 
