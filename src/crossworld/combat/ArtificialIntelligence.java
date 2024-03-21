@@ -246,7 +246,7 @@ public class ArtificialIntelligence extends Thread {
         while(true){
             try {
                     
-                sleep(1570);
+                sleep(TimeSleep);
                  getAdmin().setFighters();
 
                 String outcome = fightOutcome();
@@ -256,27 +256,27 @@ public class ArtificialIntelligence extends Thread {
                 System.out.println(outcome);
                 textField.setText(outcome);
                 idAvatar.setText(Double.toString(secondFighter.getID()));
-                skillsAvatar.setText(Double.toString(secondFighter.getSkills()));
-                hpAvatar.setText(Double.toString(secondFighter.getHealthPoints()));
-                agilityAvatar.setText(Double.toString(secondFighter.getAgility()));
-                strengthAvatar.setText(Double.toString(secondFighter.getStrength()));
+                skillsAvatar.setText(String.format("%.2f",secondFighter.getSkills() ));
+                hpAvatar.setText(String.format("%.2f",secondFighter.getHealthPoints()));
+                agilityAvatar.setText(String.format("%.2f",secondFighter.getAgility()));
+                strengthAvatar.setText(String.format("%.2f",secondFighter.getStrength()));
                 idRS.setText(Double.toString(firstFighter.getID()));
-                skillsRS.setText(Double.toString(firstFighter.getSkills()));
-                hpRS.setText(Double.toString(firstFighter.getHealthPoints()));
-                agilityRS.setText(Double.toString(firstFighter.getAgility()));
-                strengthRS.setText(Double.toString(firstFighter.getStrength()));
-//                printQueues();
+                skillsRS.setText(String.format("%.2f",firstFighter.getSkills()));
+                hpRS.setText(String.format("%.2f",firstFighter.getHealthPoints()));
+                agilityRS.setText(String.format("%.2f",firstFighter.getAgility()));
+                strengthRS.setText(String.format("%.2f",firstFighter.getStrength()));
+                printQueues();
                 
                 System.out.println("-------------------");
                 
                 });
                 
                 
-                this.cycle_counter++;
-                
-                getAdmin().setCycle_counter(this.cycle_counter);
-                getAdmin().getAvatar().getCharacterFromReinforcement();
-                getAdmin().getRegularShow().getCharacterFromReinforcement();
+//                this.cycle_counter++;
+//                
+//                getAdmin().setCycle_counter(this.cycle_counter);
+//                getAdmin().getAvatar().getCharacterFromReinforcement();
+//                getAdmin().getRegularShow().getCharacterFromReinforcement();
                 
                 
                 
@@ -392,8 +392,8 @@ public class ArtificialIntelligence extends Thread {
             //tie
 //            sem.acquire();
             
-            this.admin.getRegularShow().getPq().getReadyQueues()[0].enqueue(firstFighter);
-            this.admin.getAvatar().getPq().getReadyQueues()[0].enqueue(secondFighter);
+            this.admin.getRegularShow().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].enqueue(firstFighter);
+            this.admin.getAvatar().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].enqueue(secondFighter);
             
 //            sem.release();
             

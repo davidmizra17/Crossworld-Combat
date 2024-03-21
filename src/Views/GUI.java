@@ -593,7 +593,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String timewanted = JOptionPane.showInputDialog(null, "Introduzca el tiempo (en segundos) que quieres que tarde la Inteligencia Artificial en decidir el resultado de la batalla: ");
         int time = Integer.valueOf(timewanted);
-        getAI().setTimeSleep(time*1000);
+        getAI().setTimeSleep(time);
     }//GEN-LAST:event_TimeControlActionPerformed
 
     private void IDavatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDavatarActionPerformed
