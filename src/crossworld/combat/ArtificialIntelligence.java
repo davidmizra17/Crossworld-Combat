@@ -58,10 +58,12 @@ public class ArtificialIntelligence extends Thread {
     private JTextArea AVQ1; 
     private JTextArea AVQ2; 
     private JTextArea AVQ3;
+    private JTextArea AVRQ;
     
     private JTextArea RSQ1; 
     private JTextArea RSQ2; 
     private JTextArea RSQ3; 
+    private JTextArea RSRQ;
     
     
 //    private GUI gui;
@@ -91,10 +93,12 @@ public class ArtificialIntelligence extends Thread {
         this.AVQ1 = new JTextArea();
         this.AVQ2 = new JTextArea();
         this.AVQ2 = new JTextArea();
+        this.AVRQ = new JTextArea();
         
         this.RSQ1 = new JTextArea();
         this.RSQ2= new JTextArea();
         this.RSQ3 = new JTextArea();
+        this.RSRQ = new JTextArea();
 //        this.gui = new GUI();
         
         
@@ -144,6 +148,22 @@ public class ArtificialIntelligence extends Thread {
 
     public void setActividadAI(JTextField actividadAI) {
         this.actividadAI = actividadAI;
+    }
+
+    public JTextArea getAVRQ() {
+        return AVRQ;
+    }
+
+    public void setAVRQ(JTextArea AVRQ) {
+        this.AVRQ = AVRQ;
+    }
+
+    public JTextArea getRSRQ() {
+        return RSRQ;
+    }
+
+    public void setRSRQ(JTextArea RSRQ) {
+        this.RSRQ = RSRQ;
     }
 
     
@@ -337,11 +357,15 @@ public class ArtificialIntelligence extends Thread {
                 });
                 
                 
-//                this.cycle_counter++;
-//                
-//                getAdmin().setCycle_counter(this.cycle_counter);
-//                getAdmin().getAvatar().getCharacterFromReinforcement();
-//                getAdmin().getRegularShow().getCharacterFromReinforcement();
+                this.cycle_counter++;
+                
+                Random random = new Random();
+        
+                double rand = random.nextDouble();
+                
+                getAdmin().setCycle_counter(this.cycle_counter);
+                getAdmin().getAvatar().getCharacterFromReinforcement(rand);
+                getAdmin().getRegularShow().getCharacterFromReinforcement(rand);
                 
                 
                 
@@ -522,11 +546,12 @@ public class ArtificialIntelligence extends Thread {
         this.AVQ1.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[0].printQueue());
         this.AVQ2.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[1].printQueue());
         this.AVQ3.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[2].printQueue());
+        this.AVRQ.setText((String)this.admin.getAvatar().getReinforcementQueue().printQueue());
         
         this.RSQ1.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[0].printQueue());
         this.RSQ2.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[1].printQueue());
         this.RSQ3.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[2].printQueue());
-        
+        this.RSRQ.setText((String)this.admin.getRegularShow().getReinforcementQueue().printQueue());
         
         
         
