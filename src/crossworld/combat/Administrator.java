@@ -127,14 +127,12 @@ public class Administrator extends Thread{
                 getAvatar().starvationCounter();
                 getRegularShow().starvationCounter();
                 
-                getAvatar().getCharacterFromReinforcement();
-                getRegularShow().getCharacterFromReinforcement();
+                Random random = new Random();
+                double rand = random.nextDouble();
                 
-
-            
-            
-            
                 
+                getAvatar().getCharacterFromReinforcement(rand);
+                getRegularShow().getCharacterFromReinforcement(rand);
             
             
             } catch (InterruptedException ex) {
@@ -152,19 +150,14 @@ public class Administrator extends Thread{
     
     public void setFighters(){
         
-        if(getRegularShow().getFighter() != null && getAvatar().getFighter() != null){
+
         Character firstFighter = getRegularShow().getFighter();
         
         getAi().setFirstFighter(firstFighter);
         Character secondFighter = getAvatar().getFighter();
         
         getAi().setSecondFighter(secondFighter);
-        
-        }else{
-            if(getRegularShow().getFighter() == null ) System.out.println("regular show esta vacio(?)\n");
-            else System.out.println("avatar esta vacio (?)\n");
-            
-        }
+
         
         
     }

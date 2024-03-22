@@ -218,11 +218,8 @@ public class Studio {
         
     }
     
-    public void getCharacterFromReinforcement(){
+    public void getCharacterFromReinforcement(double rand){
         
-        Random random = new Random();
-        
-        double rand = random.nextDouble();
         
         if(!this.getReinforcementQueue().isEmpty()){
         

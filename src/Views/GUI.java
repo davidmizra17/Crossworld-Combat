@@ -245,6 +245,8 @@ public class GUI extends javax.swing.JFrame {
         AVPriorityQ2 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         AVPriorityQ1 = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        AVReinforcementQ = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         simulationStart = new javax.swing.JButton();
@@ -257,6 +259,8 @@ public class GUI extends javax.swing.JFrame {
         RSPriorityQ2 = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         RSPriorityQ1 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        RSReinforcementQ = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         TimeControl = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -279,6 +283,9 @@ public class GUI extends javax.swing.JFrame {
         Agilityrs = new javax.swing.JTextField();
         Strengthrs = new javax.swing.JTextField();
         ActividadIA = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        Victoriasrs = new javax.swing.JTextField();
+        Victoriasavatar = new javax.swing.JTextField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -297,19 +304,25 @@ public class GUI extends javax.swing.JFrame {
         AVPriorityQ3.setRows(5);
         jScrollPane1.setViewportView(AVPriorityQ3);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, -1, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, 60));
 
         AVPriorityQ2.setColumns(20);
         AVPriorityQ2.setRows(5);
         jScrollPane2.setViewportView(AVPriorityQ2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 60));
 
         AVPriorityQ1.setColumns(20);
         AVPriorityQ1.setRows(5);
         jScrollPane3.setViewportView(AVPriorityQ1);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, 60));
+
+        AVReinforcementQ.setColumns(20);
+        AVReinforcementQ.setRows(5);
+        jScrollPane8.setViewportView(AVReinforcementQ);
+
+        jPanel2.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 610));
 
@@ -353,19 +366,25 @@ public class GUI extends javax.swing.JFrame {
         RSPriorityQ3.setRows(5);
         jScrollPane4.setViewportView(RSPriorityQ3);
 
-        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, 60));
 
         RSPriorityQ2.setColumns(20);
         RSPriorityQ2.setRows(5);
         jScrollPane5.setViewportView(RSPriorityQ2);
 
-        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
+        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, 60));
 
         RSPriorityQ1.setColumns(20);
         RSPriorityQ1.setRows(5);
         jScrollPane6.setViewportView(RSPriorityQ1);
 
-        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 50));
+
+        RSReinforcementQ.setColumns(20);
+        RSReinforcementQ.setRows(5);
+        jScrollPane7.setViewportView(RSReinforcementQ);
+
+        jPanel5.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 460, 610));
 
@@ -512,6 +531,23 @@ public class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(ActividadIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 100, -1));
 
+        jLabel14.setText("Victorias");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+
+        Victoriasrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VictoriasrsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Victoriasrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 100, -1));
+
+        Victoriasavatar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VictoriasavatarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Victoriasavatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 100, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -523,10 +559,13 @@ public class GUI extends javax.swing.JFrame {
         getAI().setAVQ1(AVPriorityQ1);
         getAI().setAVQ2(AVPriorityQ2);
         getAI().setAVQ3(AVPriorityQ3);
+        getAI().setAVRQ(AVReinforcementQ);
+        
                 
         getAI().setRSQ1(RSPriorityQ1);
         getAI().setRSQ2(RSPriorityQ2);
         getAI().setRSQ3(RSPriorityQ3);
+        getAI().setRSRQ(RSReinforcementQ);
         
         getAI().setTextField(ResultadoIA);
         getAI().setIdAvatar(IDavatar);
@@ -539,6 +578,9 @@ public class GUI extends javax.swing.JFrame {
         getAI().setHpRS(HPrs);
         getAI().setAgilityRS(Agilityrs);
         getAI().setStrengthRS(Strengthrs);
+        getAI().setVictoriasAvatar(Victoriasavatar);
+        getAI().setVictoriasRS(Victoriasrs);
+        getAI().setActividadAI(ActividadIA);
         
         
         getAdmin().start();
@@ -619,6 +661,14 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ActividadIAActionPerformed
 
+    private void VictoriasrsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VictoriasrsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VictoriasrsActionPerformed
+
+    private void VictoriasavatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VictoriasavatarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VictoriasavatarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -658,6 +708,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea AVPriorityQ1;
     private javax.swing.JTextArea AVPriorityQ2;
     private javax.swing.JTextArea AVPriorityQ3;
+    private javax.swing.JTextArea AVReinforcementQ;
     private javax.swing.JTextField ActividadIA;
     private javax.swing.JTextField Agilityavatar;
     private javax.swing.JTextField Agilityrs;
@@ -668,17 +719,21 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea RSPriorityQ1;
     private javax.swing.JTextArea RSPriorityQ2;
     private javax.swing.JTextArea RSPriorityQ3;
+    private javax.swing.JTextArea RSReinforcementQ;
     private javax.swing.JTextField ResultadoIA;
     private javax.swing.JTextField SkillsAvatar;
     private javax.swing.JTextField Skillsrs;
     private javax.swing.JTextField Strengthavatar;
     private javax.swing.JTextField Strengthrs;
     private javax.swing.JButton TimeControl;
+    private javax.swing.JTextField Victoriasavatar;
+    private javax.swing.JTextField Victoriasrs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -698,6 +753,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton simulationStart;
     // End of variables declaration//GEN-END:variables
 

@@ -32,11 +32,16 @@ public class ArtificialIntelligence extends Thread {
     private Lista<Character> winners;
     
     private Administrator admin;
+   
     
 
     private int cycle_counter;
 
     private int TimeSleep = 10000;
+
+    private int victoryAvatar = 0;
+    
+    private int victoryRS = 0;
     
     private JTextField textField;
     private JTextField skillsAvatar;
@@ -49,14 +54,20 @@ public class ArtificialIntelligence extends Thread {
     private JTextField strengthRS;
     private JTextField idAvatar;
     private JTextField idRS;
+    private JTextField victoriasAvatar;
+    private JTextField victoriasRS;
+    private JTextField actividadAI;
+
     
     private JTextArea AVQ1; 
     private JTextArea AVQ2; 
     private JTextArea AVQ3;
+    private JTextArea AVRQ;
     
     private JTextArea RSQ1; 
     private JTextArea RSQ2; 
     private JTextArea RSQ3; 
+    private JTextArea RSRQ;
     
     
 //    private GUI gui;
@@ -79,14 +90,20 @@ public class ArtificialIntelligence extends Thread {
         this.strengthRS = new JTextField();
         this.idAvatar = new JTextField();
         this.idRS = new JTextField();
+        this.victoriasAvatar = new JTextField();
+        this.victoriasRS = new JTextField();
+        this.actividadAI = new JTextField();
+        
         
         this.AVQ1 = new JTextArea();
         this.AVQ2 = new JTextArea();
         this.AVQ2 = new JTextArea();
+        this.AVRQ = new JTextArea();
         
         this.RSQ1 = new JTextArea();
         this.RSQ2= new JTextArea();
         this.RSQ3 = new JTextArea();
+        this.RSRQ = new JTextArea();
 //        
 //        this.sync = new Semaphore(0);
 //        this.syncAI = new Semaphore(0);
@@ -122,6 +139,9 @@ public class ArtificialIntelligence extends Thread {
         this.strengthRS = new JTextField();
         this.idAvatar = new JTextField();
         this.idRS = new JTextField();
+        this.victoriasAvatar = new JTextField();
+        this.victoriasRS = new JTextField();
+        this.actividadAI = new JTextField();
         
         
         
@@ -131,7 +151,49 @@ public class ArtificialIntelligence extends Thread {
         
         
     }
+
+    public int getVictoryAvatar() {
+        return victoryAvatar;
+    }
+
+    public void setVictoryAvatar(int victoryAvatar) {
+        this.victoryAvatar = victoryAvatar;
+    }
+
+    public int getVictoryRS() {
+        return victoryRS;
+    }
+
+    public void setVictoryRS(int victoryRS) {
+        this.victoryRS = victoryRS;
+    }
+
+    public JTextField getVictoriasAvatar() {
+        return victoriasAvatar;
+    }
+
+    public void setVictoriasAvatar(JTextField victoriasAvatar) {
+        this.victoriasAvatar = victoriasAvatar;
+    }
+
+    public JTextField getVictoriasRS() {
+        return victoriasRS;
+    }
+
+    public void setVictoriasRS(JTextField victoriasRS) {
+        this.victoriasRS = victoriasRS;
+    }
+
+    public JTextField getActividadAI() {
+        return actividadAI;
+    }
+
+    public void setActividadAI(JTextField actividadAI) {
+        this.actividadAI = actividadAI;
+    }
    
+    
+    
     
     public Lista<Character> getWinners() {
         return winners;
@@ -254,6 +316,24 @@ public class ArtificialIntelligence extends Thread {
     public void setAVQ1(JTextArea AVQ1) {
         this.AVQ1 = AVQ1;
     }
+
+    public JTextArea getAVRQ() {
+        return AVRQ;
+    }
+
+    public void setAVRQ(JTextArea AVRQ) {
+        this.AVRQ = AVRQ;
+    }
+
+    public JTextArea getRSRQ() {
+        return RSRQ;
+    }
+
+    public void setRSRQ(JTextArea RSRQ) {
+        this.RSRQ = RSRQ;
+    }
+    
+    
     
     
     @Override
@@ -263,26 +343,37 @@ public class ArtificialIntelligence extends Thread {
             try {
                     
                 sync.acquire();
-                sleep(1570);
-//                 getAdmin().setFighters();
+                sleep(TimeSleep);
+                actividadAI.setText("Decidiendo");
+                sleep(500);
+
 
                 String outcome = fightOutcome();
                 
+                if(outcome == "Winner is Avatar"){
+                    
+                    this.victoryAvatar++;
+                } else if (outcome == "Winner is Regular Show"){
+                    this.victoryRS++;
+                }
+                
                 SwingUtilities.invokeLater(() -> {
-                System.out.println("Fight Outcome:\n");
-                System.out.println(outcome);
+                actividadAI.setText("Esperando");
                 textField.setText(outcome);
                 idAvatar.setText(Double.toString(secondFighter.getID()));
-                skillsAvatar.setText(Double.toString(secondFighter.getSkills()));
-                hpAvatar.setText(Double.toString(secondFighter.getHealthPoints()));
-                agilityAvatar.setText(Double.toString(secondFighter.getAgility()));
-                strengthAvatar.setText(Double.toString(secondFighter.getStrength()));
+                skillsAvatar.setText(String.format("%.2f",secondFighter.getSkills() ));
+                hpAvatar.setText(String.format("%.2f",secondFighter.getHealthPoints()));
+                agilityAvatar.setText(String.format("%.2f",secondFighter.getAgility()));
+                strengthAvatar.setText(String.format("%.2f",secondFighter.getStrength()));
                 idRS.setText(Double.toString(firstFighter.getID()));
-                skillsRS.setText(Double.toString(firstFighter.getSkills()));
-                hpRS.setText(Double.toString(firstFighter.getHealthPoints()));
-                agilityRS.setText(Double.toString(firstFighter.getAgility()));
-                strengthRS.setText(Double.toString(firstFighter.getStrength()));
+                skillsRS.setText(String.format("%.2f",firstFighter.getSkills()));
+                hpRS.setText(String.format("%.2f",firstFighter.getHealthPoints()));
+                agilityRS.setText(String.format("%.2f",firstFighter.getAgility()));
+                strengthRS.setText(String.format("%.2f",firstFighter.getStrength()));
+                victoriasAvatar.setText(Integer.toString(victoryAvatar));
+                victoriasRS.setText(Integer.toString(victoryRS));
                 printQueues();
+
                 
                 System.out.println("-------------------");
                 
@@ -291,11 +382,7 @@ public class ArtificialIntelligence extends Thread {
                 
                 this.cycle_counter++;
                 
-//                sync.release();
-                
-//                getAdmin().setCycle_counter(this.cycle_counter);
-//                getAdmin().getAvatar().getCharacterFromReinforcement();
-//                getAdmin().getRegularShow().getCharacterFromReinforcement();
+//            
                 
                 
                 syncAI.release();
@@ -476,11 +563,13 @@ public class ArtificialIntelligence extends Thread {
         this.AVQ1.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[0].printQueue());
         this.AVQ2.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[1].printQueue());
         this.AVQ3.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[2].printQueue());
+        this.AVRQ.setText((String)this.admin.getAvatar().getReinforcementQueue().printQueue());
+        
         
         this.RSQ1.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[0].printQueue());
         this.RSQ2.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[1].printQueue());
         this.RSQ3.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[2].printQueue());
-        
+        this.RSRQ.setText((String)this.admin.getRegularShow().getReinforcementQueue().printQueue());
         
         
         
