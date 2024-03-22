@@ -218,15 +218,17 @@ public class Studio {
         
     }
     
-    public void getCharacterFromReinforcement(){
+    public void getCharacterFromReinforcement(double random){
         
-        Random random = new Random();
+//        Random random = new Random();
+//        
+//        double rand = random.nextDouble();
         
-        double rand = random.nextDouble();
+        if(!this.getReinforcementQueue().isEmpty()){
         
         Character characterFromReinforcement = this.getReinforcementQueue().dequeue();
         
-        if(rand <= 0.4){
+        if(random <= 0.4){
             
             this.getPq().getReadyQueues()[0].enqueue(characterFromReinforcement);
             
@@ -234,8 +236,8 @@ public class Studio {
             
             this.getReinforcementQueue().enqueue(characterFromReinforcement);
         }
-        
     }
+}
     
     
     
