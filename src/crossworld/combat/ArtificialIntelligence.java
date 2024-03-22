@@ -21,7 +21,9 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 public class ArtificialIntelligence extends Thread {
     
-    private Semaphore sem;
+    private Semaphore sync;
+    
+    private Semaphore syncAI;
     
     private Character firstFighter;
     
@@ -85,6 +87,9 @@ public class ArtificialIntelligence extends Thread {
         this.RSQ1 = new JTextArea();
         this.RSQ2= new JTextArea();
         this.RSQ3 = new JTextArea();
+//        
+//        this.sync = new Semaphore(0);
+//        this.syncAI = new Semaphore(0);
 //        this.gui = new GUI();
         
         
@@ -97,7 +102,8 @@ public class ArtificialIntelligence extends Thread {
     
     public ArtificialIntelligence(Character firstFighter, Character secondFighter, Administrator admin){
         
-        this.sem = new Semaphore(0);
+        this.sync = new Semaphore(0);
+        this.syncAI = new Semaphore(0);
         this.firstFighter = firstFighter;
         this.secondFighter = secondFighter;
         this.admin = admin;
@@ -162,13 +168,23 @@ public class ArtificialIntelligence extends Thread {
     }
 
    
-    public Semaphore getSem() {
-        return sem;
+    public Semaphore getSemSync() {
+        return sync;
     }
 
-    public void setSem(Semaphore sem) {
-        this.sem = sem;
+    public void setSync(Semaphore sem) {
+        this.sync = sem;
     }
+
+    public Semaphore getSemSyncAI() {
+        return syncAI;
+    }
+
+    public void setSyncAI(Semaphore syncAI) {
+        this.syncAI = syncAI;
+    }
+    
+    
 
     public Character getFirstFighter() {
         return firstFighter;
@@ -246,8 +262,9 @@ public class ArtificialIntelligence extends Thread {
         while(true){
             try {
                     
+                sync.acquire();
                 sleep(1570);
-                 getAdmin().setFighters();
+//                 getAdmin().setFighters();
 
                 String outcome = fightOutcome();
                 
@@ -274,12 +291,14 @@ public class ArtificialIntelligence extends Thread {
                 
                 this.cycle_counter++;
                 
-                getAdmin().setCycle_counter(this.cycle_counter);
-                getAdmin().getAvatar().getCharacterFromReinforcement();
-                getAdmin().getRegularShow().getCharacterFromReinforcement();
+//                sync.release();
+                
+//                getAdmin().setCycle_counter(this.cycle_counter);
+//                getAdmin().getAvatar().getCharacterFromReinforcement();
+//                getAdmin().getRegularShow().getCharacterFromReinforcement();
                 
                 
-                
+                syncAI.release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -236,7 +236,50 @@ public class Studio {
             
             this.getReinforcementQueue().enqueue(characterFromReinforcement);
         }
+        
+       
         }
+        
+    }
+    
+    public void starvationCounter(){
+        
+        Nodo tempQ1 = this.pq.getReadyQueues()[1].getFront();
+        Nodo tempQ2 = this.pq.getReadyQueues()[2].getFront();
+        
+        crossworld.combat.Character aux = null;
+        
+       while(tempQ1 != null){
+           aux = (crossworld.combat.Character) tempQ1.getInfo();
+           
+           aux.setCounter(aux.getCounter() + 1);
+           if(aux.getCounter() == 8) changePriorityLevel(aux);
+           
+           tempQ1 = tempQ1.getpNext();
+       }
+        aux = null;
+        
+        while(tempQ2 != null){
+            aux = (crossworld.combat.Character) tempQ2.getInfo();
+           
+           aux.setCounter(aux.getCounter() + 1);
+           if(aux.getCounter() == 8) changePriorityLevel(aux);
+           
+           tempQ2 = tempQ2.getpNext();
+            
+        }
+        
+    }
+    
+    public void changePriorityLevel(Character character){
+        
+        
+        Character newCharacter = this.pq.getReadyQueues()[character.getPriorityLevel() - 1].dequeue();
+        newCharacter.setPriorityLevel(character.getPriorityLevel() - 1);
+        
+        this.pq.getReadyQueues()[character.getPriorityLevel() - 1].enqueue(newCharacter);
+        
+        
     }
     
     

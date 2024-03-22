@@ -159,14 +159,15 @@ public class GUI extends javax.swing.JFrame {
                     this.regularShow.EnqueueProcess();
 
                     
-                    Semaphore s = new Semaphore(0);
+                    Semaphore sync = new Semaphore(0);
                     Semaphore AI_Sem = new Semaphore(0);
                     
 
-                    this.admin = new Administrator(this.regularShow, this.avatar, this.AI, s);
+                    this.admin = new Administrator(this.regularShow, this.avatar, this.AI, sync, AI_Sem);
                     
    
-        getAI().setSem(AI_Sem);
+        getAI().setSync(sync);
+        getAI().setSyncAI(AI_Sem);
         getAI().setAdmin(admin);
         
     }
@@ -540,8 +541,10 @@ public class GUI extends javax.swing.JFrame {
         getAI().setStrengthRS(Strengthrs);
         
         
-//          getAdmin().start();
-          getAI().start();
+        getAdmin().start();
+        getAI().start();  
+       
+          
 
 
 //          IDavatar.setText(getAI().getIdAvatar().getText());

@@ -15,7 +15,9 @@ import java.util.logging.Logger;
  */
 public class Administrator extends Thread{
     
-    private Semaphore sem;
+    private Semaphore sync;
+    
+    private Semaphore sAI;
     
     private Studio regularShow;
     
@@ -29,9 +31,11 @@ public class Administrator extends Thread{
     
     public Administrator(){};
     
-    public Administrator(Studio regularShow, Studio avatar, ArtificialIntelligence ai, Semaphore sem) {
+    public Administrator(Studio regularShow, Studio avatar, ArtificialIntelligence ai, Semaphore sync, Semaphore sAI) {
         
-        this.sem = sem;
+        this.sync = sync;
+        
+        this.sAI = sAI;
         
         this.character = character;
         
@@ -46,6 +50,16 @@ public class Administrator extends Thread{
         
     }
 
+    public Semaphore getsAI() {
+        return sAI;
+    }
+
+    public void setsAI(Semaphore sAI) {
+        this.sAI = sAI;
+    }
+    
+
+
     public ArtificialIntelligence getAi() {
         return ai;
     }
@@ -54,8 +68,8 @@ public class Administrator extends Thread{
         this.ai = ai;
     }
 
-    public Semaphore getSem() {
-        return sem;
+    public Semaphore getSync() {
+        return sync;
     }
 
     public int getCycle_counter() {
@@ -67,8 +81,8 @@ public class Administrator extends Thread{
     }
     
 
-    public void setSem(Semaphore sem) {
-        this.sem = sem;
+    public void setSync(Semaphore sync) {
+        this.sync = sync;
     }
 
     public Studio getRegularShow() {
@@ -100,9 +114,34 @@ public class Administrator extends Thread{
         
         while(true){
             
-            setFighters();
-            if(getCycle_counter() == 8) setStarvationCounter();
-            sem.release();
+            
+            
+            try {
+                
+                setFighters();
+                sync.release();
+                sAI.acquire();
+                
+                setCycle_counter(this.cycle_counter);
+                
+                getAvatar().starvationCounter();
+                getRegularShow().starvationCounter();
+                
+                getAvatar().getCharacterFromReinforcement();
+                getRegularShow().getCharacterFromReinforcement();
+                
+
+            
+            
+            
+                
+            
+            
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+
 //            getAi().
             
         }
@@ -123,7 +162,7 @@ public class Administrator extends Thread{
         
         }else{
             if(getRegularShow().getFighter() == null ) System.out.println("regular show esta vacio(?)\n");
-            else System.out.println("avatar esta vaio (?)\n");
+            else System.out.println("avatar esta vacio (?)\n");
             
         }
         
@@ -134,7 +173,7 @@ public class Administrator extends Thread{
         
         
         
-        Nodo RS_aux = getRegularShow().getReinforcementQueue().getFront();
+        Nodo RS_aux = getRegularShow().getPq().getReadyQueues()[0].getFront();
         Nodo AV_aux = getAvatar().getReinforcementQueue().getFront();
         
         Character temp = null;
