@@ -19,6 +19,10 @@ public class Studio {
     private PriorityQueue pq;
     
     private Queue<Character> reinforcementQueue;
+    
+    private CreateCharacter randomCharacter;
+    
+    private int idcounter = 41;
   
    public Studio()
    {
@@ -29,6 +33,8 @@ public class Studio {
         this.pq = new PriorityQueue();
         
         this.reinforcementQueue = new Queue();
+        
+        this.randomCharacter = new CreateCharacter();
    };
     public Studio(Character character){
         
@@ -277,6 +283,17 @@ public class Studio {
         this.pq.getReadyQueues()[character.getPriorityLevel() - 1].enqueue(newCharacter);
         
         
+    }
+    
+    public void createNewRandomCharacter(){
+        
+        Character newCharacter = randomCharacter.NewCharacter(idcounter);
+        
+        this.idcounter++;
+        
+        this.setCharacter(newCharacter);
+        
+        EnqueueProcess();
     }
     
     

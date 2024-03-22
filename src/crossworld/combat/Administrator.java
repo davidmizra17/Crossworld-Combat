@@ -133,6 +133,9 @@ public class Administrator extends Thread{
                 
                 getAvatar().getCharacterFromReinforcement(rand);
                 getRegularShow().getCharacterFromReinforcement(rand);
+                
+                
+                AddCharacter();
             
             
             } catch (InterruptedException ex) {
@@ -193,6 +196,15 @@ public class Administrator extends Thread{
             
         }
         
+    }
+    
+    public void AddCharacter(){
+        Random random = new Random();
+        double rand = random.nextDouble();
+        if(rand<=0.8){
+            this.getRegularShow().createNewRandomCharacter();
+            this.getAvatar().createNewRandomCharacter();
+        }
     }
 
 }

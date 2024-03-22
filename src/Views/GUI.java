@@ -62,13 +62,13 @@ public class GUI extends javax.swing.JFrame {
             
             
             ID_Counter++;            
-            character_avatar[i] = newCharacter.NewCharacter("AVATAR", ID_Counter);
+            character_avatar[i] = newCharacter.NewCharacter(ID_Counter);
             
         }
         
         for (int i = 0; i < character_regularShow.length; i++) {
             ID_Counter++;
-            character_regularShow[i] = newCharacter.NewCharacter("REGULAR SHOW", ID_Counter);
+            character_regularShow[i] = newCharacter.NewCharacter(ID_Counter);
             
         }
         
@@ -475,7 +475,7 @@ public class GUI extends javax.swing.JFrame {
                 ResultadoIAActionPerformed(evt);
             }
         });
-        getContentPane().add(ResultadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 100, -1));
+        getContentPane().add(ResultadoIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 100, -1));
 
         IDrs.setEditable(false);
         IDrs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -534,6 +534,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel14.setText("Victorias");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
 
+        Victoriasrs.setEditable(false);
+        Victoriasrs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Victoriasrs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VictoriasrsActionPerformed(evt);
@@ -541,6 +543,8 @@ public class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(Victoriasrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 100, -1));
 
+        Victoriasavatar.setEditable(false);
+        Victoriasavatar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Victoriasavatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VictoriasavatarActionPerformed(evt);
@@ -578,9 +582,11 @@ public class GUI extends javax.swing.JFrame {
         getAI().setHpRS(HPrs);
         getAI().setAgilityRS(Agilityrs);
         getAI().setStrengthRS(Strengthrs);
+        getAI().setVictoriasAvatar(Strengthavatar);
+        getAI().setVictoriasRS(Strengthavatar);
+        getAI().setActividadAI(ActividadIA);
         getAI().setVictoriasAvatar(Victoriasavatar);
         getAI().setVictoriasRS(Victoriasrs);
-        getAI().setActividadAI(ActividadIA);
         
         
         getAdmin().start();
