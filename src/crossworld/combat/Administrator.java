@@ -19,9 +19,9 @@ public class Administrator extends Thread{
     
     private Semaphore sAI;
     
-    private Studio regularShow;
+    private Studio startrek;
     
-    private Studio avatar;
+    private Studio starwars;
     
     private Character character;
     
@@ -31,7 +31,9 @@ public class Administrator extends Thread{
     
     public Administrator(){};
     
-    public Administrator(Studio regularShow, Studio avatar, ArtificialIntelligence ai, Semaphore sync, Semaphore sAI) {
+
+    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sem) {
+
         
         this.sync = sync;
         
@@ -39,9 +41,9 @@ public class Administrator extends Thread{
         
         this.character = character;
         
-        this.regularShow = regularShow;
+        this.startrek = startrek;
         
-        this.avatar = avatar;
+        this.starwars = starwars;
         
         this.ai = ai;
         
@@ -85,20 +87,20 @@ public class Administrator extends Thread{
         this.sync = sync;
     }
 
-    public Studio getRegularShow() {
-        return regularShow;
+    public Studio getStartrek() {
+        return startrek;
     }
 
-    public void setRegularShow(Studio regularShow) {
-        this.regularShow = regularShow;
+    public void setStartrek(Studio startrek) {
+        this.startrek = startrek;
     }
 
-    public Studio getAvatar() {
-        return avatar;
+    public Studio getStarwars() {
+        return starwars;
     }
 
-    public void setAvatar(Studio avatar) {
-        this.avatar = avatar;
+    public void setStarwars(Studio starwars) {
+        this.starwars = starwars;
     }
 
     public Character getCharacter() {
@@ -124,15 +126,15 @@ public class Administrator extends Thread{
                 
                 setCycle_counter(this.cycle_counter);
                 
-                getAvatar().starvationCounter();
-                getRegularShow().starvationCounter();
+                getStartrek().starvationCounter();
+                getStarwars().starvationCounter();
                 
                 Random random = new Random();
                 double rand = random.nextDouble();
                 
                 
-                getAvatar().getCharacterFromReinforcement(rand);
-                getRegularShow().getCharacterFromReinforcement(rand);
+                getStartrek().getCharacterFromReinforcement(rand);
+                getStarwars().getCharacterFromReinforcement(rand);
             
             
             } catch (InterruptedException ex) {
@@ -149,12 +151,12 @@ public class Administrator extends Thread{
     
     
     public void setFighters(){
-        
+      
+        Character firstFighter = getStartrek().getFighter();
 
-        Character firstFighter = getRegularShow().getFighter();
         
         getAi().setFirstFighter(firstFighter);
-        Character secondFighter = getAvatar().getFighter();
+        Character secondFighter = getStarwars().getFighter();
         
         getAi().setSecondFighter(secondFighter);
 
@@ -164,32 +166,32 @@ public class Administrator extends Thread{
     
     public void setStarvationCounter(){
         
-        
-        
-        Nodo RS_aux = getRegularShow().getPq().getReadyQueues()[0].getFront();
-        Nodo AV_aux = getAvatar().getReinforcementQueue().getFront();
+ 
+        Nodo ST_aux = getStartrek().getReinforcementQueue().getFront();
+        Nodo SW_aux = getStarwars().getReinforcementQueue().getFront();
+
         
         Character temp = null;
         
-        while(RS_aux != null){
+        while(ST_aux != null){
             
-            temp = (Character) RS_aux.getInfo();
+            temp = (Character) ST_aux.getInfo();
             
             temp.setCounter(temp.getCounter() + 1);
             
-            RS_aux = RS_aux.getpNext();
+            ST_aux = ST_aux.getpNext();
         }
         
         
         temp = null;
         
-        while(AV_aux != null){
+        while(SW_aux != null){
             
-            temp = (Character) AV_aux.getInfo();
+            temp = (Character) SW_aux.getInfo();
             
             temp.setCounter(temp.getCounter() + 1);
             
-            AV_aux = AV_aux.getpNext();
+            SW_aux = SW_aux.getpNext();
             
         }
         

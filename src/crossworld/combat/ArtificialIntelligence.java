@@ -43,31 +43,35 @@ public class ArtificialIntelligence extends Thread {
     
     private int victoryRS = 0;
     
+    private int victoryStarWars = 0;
+    
+    private int victoryStarTrek = 0;
+    
     private JTextField textField;
-    private JTextField skillsAvatar;
-    private JTextField skillsRS;
-    private JTextField hpAvatar;
-    private JTextField hpRS;
-    private JTextField agilityAvatar;
-    private JTextField agilityRS;
-    private JTextField strengthAvatar;
-    private JTextField strengthRS;
-    private JTextField idAvatar;
-    private JTextField idRS;
-    private JTextField victoriasAvatar;
-    private JTextField victoriasRS;
+    private JTextField skillsStarwars;
+    private JTextField skillsStartrek;
+    private JTextField hpStarwars;
+    private JTextField hpStartrek;
+    private JTextField agilityStarwars;
+    private JTextField agilityStartrek;
+    private JTextField strengthStarwars;
+    private JTextField strengthStartrek;
+    private JTextField idStarwars;
+    private JTextField idStartrek;
+    private JTextField victoriasStarWars;
+    private JTextField victoriasStarTrek;
     private JTextField actividadAI;
+    
+    private JTextArea SWQ1; 
+    private JTextArea SWQ2; 
+    private JTextArea SWQ3;
+    private JTextArea SWRQ;
+    
+    private JTextArea STQ1; 
+    private JTextArea STQ2; 
+    private JTextArea STQ3; 
+    private JTextArea STRQ;
 
-    
-    private JTextArea AVQ1; 
-    private JTextArea AVQ2; 
-    private JTextArea AVQ3;
-    private JTextArea AVRQ;
-    
-    private JTextArea RSQ1; 
-    private JTextArea RSQ2; 
-    private JTextArea RSQ3; 
-    private JTextArea RSRQ;
     
     
 //    private GUI gui;
@@ -80,33 +84,31 @@ public class ArtificialIntelligence extends Thread {
         
         
         this.textField = new JTextField();
-        this.skillsAvatar = new JTextField();
-        this.skillsRS = new JTextField();
-        this.hpAvatar = new JTextField();
-        this.hpRS = new JTextField();
-        this.agilityAvatar = new JTextField();
-        this.agilityRS = new JTextField();
-        this.strengthAvatar = new JTextField();
-        this.strengthRS = new JTextField();
-        this.idAvatar = new JTextField();
-        this.idRS = new JTextField();
-        this.victoriasAvatar = new JTextField();
-        this.victoriasRS = new JTextField();
+
+        this.skillsStarwars = new JTextField();
+        this.skillsStartrek = new JTextField();
+        this.hpStarwars = new JTextField();
+        this.hpStartrek = new JTextField();
+        this.agilityStarwars = new JTextField();
+        this.agilityStartrek = new JTextField();
+        this.strengthStarwars = new JTextField();
+        this.strengthStartrek = new JTextField();
+        this.idStarwars = new JTextField();
+        this.idStartrek = new JTextField();
+        this.victoriasStarWars = new JTextField();
+        this.victoriasStarTrek = new JTextField();
         this.actividadAI = new JTextField();
         
+        this.SWQ1 = new JTextArea();
+        this.SWQ2 = new JTextArea();
+        this.SWQ2 = new JTextArea();
+        this.SWRQ = new JTextArea();
         
-        this.AVQ1 = new JTextArea();
-        this.AVQ2 = new JTextArea();
-        this.AVQ2 = new JTextArea();
-        this.AVRQ = new JTextArea();
-        
-        this.RSQ1 = new JTextArea();
-        this.RSQ2= new JTextArea();
-        this.RSQ3 = new JTextArea();
-        this.RSRQ = new JTextArea();
-//        
-//        this.sync = new Semaphore(0);
-//        this.syncAI = new Semaphore(0);
+        this.STQ1 = new JTextArea();
+        this.STQ2= new JTextArea();
+        this.STQ3 = new JTextArea();
+        this.STRQ = new JTextArea();
+
 //        this.gui = new GUI();
         
         
@@ -129,20 +131,21 @@ public class ArtificialIntelligence extends Thread {
         
         //INITIALIZE JTEXTFIELD VARIABLES
         this.textField = new JTextField();
-        this.skillsAvatar = new JTextField();
-        this.skillsRS = new JTextField();
-        this.hpAvatar = new JTextField();
-        this.hpRS = new JTextField();
-        this.agilityAvatar = new JTextField();
-        this.agilityRS = new JTextField();
-        this.strengthAvatar = new JTextField();
-        this.strengthRS = new JTextField();
-        this.idAvatar = new JTextField();
-        this.idRS = new JTextField();
-        this.victoriasAvatar = new JTextField();
-        this.victoriasRS = new JTextField();
+
+        this.skillsStarwars = new JTextField();
+        this.skillsStartrek = new JTextField();
+        this.hpStarwars = new JTextField();
+        this.hpStartrek = new JTextField();
+        this.agilityStarwars = new JTextField();
+        this.agilityStartrek = new JTextField();
+        this.strengthStarwars = new JTextField();
+        this.strengthStartrek = new JTextField();
+        this.idStarwars = new JTextField();
+        this.idStartrek = new JTextField();
+        this.victoriasStarWars = new JTextField();
+        this.victoriasStarTrek = new JTextField();
         this.actividadAI = new JTextField();
-        
+
         
         
         
@@ -152,37 +155,6 @@ public class ArtificialIntelligence extends Thread {
         
     }
 
-    public int getVictoryAvatar() {
-        return victoryAvatar;
-    }
-
-    public void setVictoryAvatar(int victoryAvatar) {
-        this.victoryAvatar = victoryAvatar;
-    }
-
-    public int getVictoryRS() {
-        return victoryRS;
-    }
-
-    public void setVictoryRS(int victoryRS) {
-        this.victoryRS = victoryRS;
-    }
-
-    public JTextField getVictoriasAvatar() {
-        return victoriasAvatar;
-    }
-
-    public void setVictoriasAvatar(JTextField victoriasAvatar) {
-        this.victoriasAvatar = victoriasAvatar;
-    }
-
-    public JTextField getVictoriasRS() {
-        return victoriasRS;
-    }
-
-    public void setVictoriasRS(JTextField victoriasRS) {
-        this.victoriasRS = victoriasRS;
-    }
 
     public JTextField getActividadAI() {
         return actividadAI;
@@ -190,6 +162,55 @@ public class ArtificialIntelligence extends Thread {
 
     public void setActividadAI(JTextField actividadAI) {
         this.actividadAI = actividadAI;
+    }
+    public JTextArea getSWRQ() {
+        return SWRQ;
+    }
+
+    public void setSWRQ(JTextArea SWRQ) {
+        this.SWRQ = SWRQ;
+    }
+
+    public JTextArea getSTRQ() {
+        return STRQ;
+    }
+
+    public void setSTRQ(JTextArea STRQ) {
+        this.STRQ = STRQ;
+    }
+
+    
+    
+    public JTextField getVictoriasStarWars() {
+        return victoriasStarWars;
+    }
+
+    public void setVictoriasStarWars(JTextField victoriasStarwars) {
+        this.victoriasStarWars = victoriasStarwars;
+    }
+
+    public JTextField getVictoriasStarTrek() {
+        return victoriasStarTrek;
+    }
+
+    public void setVictoriasStarTrek(JTextField victoriasStartrek) {
+        this.victoriasStarTrek = victoriasStartrek;
+    }
+
+    public int getVictoryStarWars() {
+        return victoryStarWars;
+    }
+
+    public void setVictoryStarWars(int victoryStarwars) {
+        this.victoryStarWars = victoryStarwars;
+    }
+
+    public int getVictoryStarTrek() {
+        return victoryStarTrek;
+    }
+
+    public void setVictoryStarTrek(int victoryStartrek) {
+        this.victoryStarTrek = victoryStartrek;
     }
    
     
@@ -268,70 +289,55 @@ public class ArtificialIntelligence extends Thread {
         return textField;
     }
 
-    public JTextField getSkillsAvatar() {
-        return skillsAvatar;
+    public JTextField getSkillsStarwars() {
+        return skillsStarwars;
     }
 
-    public JTextField getSkillsRS() {
-        return skillsRS;
+    public JTextField getSkillsStartrek() {
+        return skillsStartrek;
     }
 
-    public JTextField getHpAvatar() {
-        return hpAvatar;
+    public JTextField getHpStarwars() {
+        return hpStarwars;
     }
 
-    public JTextField getHpRS() {
-        return hpRS;
+    public JTextField getHpStartrek() {
+        return hpStartrek;
     }
 
-    public JTextField getAgilityAvatar() {
-        return agilityAvatar;
+    public JTextField getAgilityStarwars() {
+        return agilityStarwars;
     }
 
-    public JTextField getAgilityRS() {
-        return agilityRS;
+    public JTextField getAgilityStartrek() {
+        return agilityStartrek;
     }
 
-    public JTextField getStrengthAvatar() {
-        return strengthAvatar;
+    public JTextField getStrengthStarwars() {
+        return strengthStarwars;
     }
 
-    public JTextField getStrengthRS() {
-        return strengthRS;
+    public JTextField getStrengthStartrek() {
+        return strengthStartrek;
     }
 
-    public JTextField getIdAvatar() {
-        return idAvatar;
+    public JTextField getIdStarwars() {
+        return idStarwars;
     }
 
-    public JTextField getIdRS() {
-        return idRS;
+    public JTextField getIdStartrek() {
+        return idStartrek;
     }
     
     
-     public JTextArea getAVQ1() {
-        return AVQ1;
+     public JTextArea getSWQ1() {
+        return SWQ1;
     }
 
-    public void setAVQ1(JTextArea AVQ1) {
-        this.AVQ1 = AVQ1;
+    public void setSWQ1(JTextArea AVQ1) {
+        this.SWQ1 = SWQ1;
     }
 
-    public JTextArea getAVRQ() {
-        return AVRQ;
-    }
-
-    public void setAVRQ(JTextArea AVRQ) {
-        this.AVRQ = AVRQ;
-    }
-
-    public JTextArea getRSRQ() {
-        return RSRQ;
-    }
-
-    public void setRSRQ(JTextArea RSRQ) {
-        this.RSRQ = RSRQ;
-    }
     
     
     
@@ -341,11 +347,11 @@ public class ArtificialIntelligence extends Thread {
         
         while(true){
             try {
-                    
-                sync.acquire();
+ 
                 sleep(TimeSleep);
                 actividadAI.setText("Decidiendo");
                 sleep(500);
+                 getAdmin().setFighters();
 
 
                 String outcome = fightOutcome();
@@ -358,20 +364,29 @@ public class ArtificialIntelligence extends Thread {
                 }
                 
                 SwingUtilities.invokeLater(() -> {
+
+                System.out.println("Fight Outcome:\n");
+                System.out.println(outcome);
+                
+                if(outcome == "Winner is Star Wars"){
+                    this.victoryStarWars++;
+                } else if (outcome == "Winner is Star Trek"){
+                    this.victoryStarTrek++;
+                }
                 actividadAI.setText("Esperando");
                 textField.setText(outcome);
-                idAvatar.setText(Double.toString(secondFighter.getID()));
-                skillsAvatar.setText(String.format("%.2f",secondFighter.getSkills() ));
-                hpAvatar.setText(String.format("%.2f",secondFighter.getHealthPoints()));
-                agilityAvatar.setText(String.format("%.2f",secondFighter.getAgility()));
-                strengthAvatar.setText(String.format("%.2f",secondFighter.getStrength()));
-                idRS.setText(Double.toString(firstFighter.getID()));
-                skillsRS.setText(String.format("%.2f",firstFighter.getSkills()));
-                hpRS.setText(String.format("%.2f",firstFighter.getHealthPoints()));
-                agilityRS.setText(String.format("%.2f",firstFighter.getAgility()));
-                strengthRS.setText(String.format("%.2f",firstFighter.getStrength()));
-                victoriasAvatar.setText(Integer.toString(victoryAvatar));
-                victoriasRS.setText(Integer.toString(victoryRS));
+                idStarwars.setText(Double.toString(secondFighter.getID()));
+                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
+                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
+                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
+                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
+                idStartrek.setText(Double.toString(firstFighter.getID()));
+                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
+                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
+                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
+                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
+                victoriasStarWars.setText(Integer.toString(victoryStarWars));
+                victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                 printQueues();
 
                 
@@ -382,7 +397,16 @@ public class ArtificialIntelligence extends Thread {
                 
                 this.cycle_counter++;
                 
-//            
+
+                Random random = new Random();
+        
+                double rand = random.nextDouble();
+                
+                getAdmin().setCycle_counter(this.cycle_counter);
+                getAdmin().getStarwars().getCharacterFromReinforcement(rand);
+                getAdmin().getStartrek().getCharacterFromReinforcement(rand);
+                
+
                 
                 
                 syncAI.release();
@@ -393,44 +417,44 @@ public class ArtificialIntelligence extends Thread {
         }
     }
 
-    public JTextArea getAVQ2() {
-        return AVQ2;
+    public JTextArea getSWQ2() {
+        return SWQ2;
     }
 
-    public void setAVQ2(JTextArea AVQ2) {
-        this.AVQ2 = AVQ2;
+    public void setSWQ2(JTextArea SWQ2) {
+        this.SWQ2 = SWQ2;
     }
 
-    public JTextArea getAVQ3() {
-        return AVQ3;
+    public JTextArea getSWQ3() {
+        return SWQ3;
     }
 
-    public void setAVQ3(JTextArea AVQ3) {
-        this.AVQ3 = AVQ3;
+    public void setSWQ3(JTextArea SWQ3) {
+        this.SWQ3 = SWQ3;
     }
 
-    public JTextArea getRSQ1() {
-        return RSQ1;
+    public JTextArea getSTQ1() {
+        return STQ1;
     }
 
-    public void setRSQ1(JTextArea RSQ1) {
-        this.RSQ1 = RSQ1;
+    public void setSTQ1(JTextArea STQ1) {
+        this.STQ1 = STQ1;
     }
 
-    public JTextArea getRSQ2() {
-        return RSQ2;
+    public JTextArea getSTQ2() {
+        return STQ2;
     }
 
-    public void setRSQ2(JTextArea RSQ2) {
-        this.RSQ2 = RSQ2;
+    public void setSTQ2(JTextArea STQ2) {
+        this.STQ2 = STQ2;
     }
 
-    public JTextArea getRSQ3() {
-        return RSQ3;
+    public JTextArea getSTQ3() {
+        return STQ3;
     }
 
-    public void setRSQ3(JTextArea RSQ3) {
-        this.RSQ3 = RSQ3;
+    public void setSTQ3(JTextArea STQ3) {
+        this.STQ3 = STQ3;
     }
     
     
@@ -439,44 +463,44 @@ public class ArtificialIntelligence extends Thread {
         this.textField = textField;
     }
     
-    public void setSkillsAvatar(JTextField textField) {
-        this.skillsAvatar = textField;
+    public void setSkillsStarwars(JTextField textField) {
+        this.skillsStarwars = textField;
     }
         
-    public void setSkillsRS(JTextField textField) {
-        this.skillsRS = textField;
+    public void setSkillsStartrek(JTextField textField) {
+        this.skillsStartrek = textField;
     }
             
-    public void setHpAvatar(JTextField textField) {
-        this.hpAvatar = textField;
+    public void setHpStarwars(JTextField textField) {
+        this.hpStarwars = textField;
     }
                 
-    public void setHpRS(JTextField textField) {
-        this.hpRS = textField;
+    public void setHpStartrek(JTextField textField) {
+        this.hpStartrek = textField;
     }
                     
-    public void setAgilityAvatar(JTextField textField) {
-        this.agilityAvatar = textField;
+    public void setAgilityStarwars(JTextField textField) {
+        this.agilityStarwars = textField;
     }
                         
-    public void setAgilityRS(JTextField textField) {
-        this.agilityRS = textField;
+    public void setAgilityStartrek(JTextField textField) {
+        this.agilityStartrek = textField;
     }
                             
-    public void setStrengthAvatar(JTextField textField) {
-        this.strengthAvatar = textField;
+    public void setStrengthStarwars(JTextField textField) {
+        this.strengthStarwars = textField;
     }
                                 
-    public void setStrengthRS(JTextField textField) {
-        this.strengthRS = textField;
+    public void setStrengthStartrek(JTextField textField) {
+        this.strengthStartrek = textField;
     }
     
-    public void setIdAvatar(JTextField textField) {
-        this.idAvatar = textField;
+    public void setIdStarwars(JTextField textField) {
+        this.idStarwars = textField;
     }
         
-    public void setIdRS(JTextField textField) {
-        this.idRS = textField;
+    public void setIdStartrek(JTextField textField) {
+        this.idStartrek = textField;
     }
     
     public String fightOutcome() throws InterruptedException{
@@ -497,9 +521,10 @@ public class ArtificialIntelligence extends Thread {
         else if(fightProb <= winnerCase + tiedCase){
             //tie
 //            sem.acquire();
-            
-            this.admin.getRegularShow().getPq().getReadyQueues()[firstFighter.getPriorityLevel() - 1].enqueue(firstFighter);
-            this.admin.getAvatar().getPq().getReadyQueues()[secondFighter.getPriorityLevel() - 1].enqueue(secondFighter);
+
+            this.admin.getStartrek().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].enqueue(firstFighter);
+            this.admin.getStarwars().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].enqueue(secondFighter);
+
             
 //            sem.release();
             
@@ -509,9 +534,9 @@ public class ArtificialIntelligence extends Thread {
         
         else{
             //no combat
-            this.admin.getRegularShow().getReinforcementQueue().enqueue(firstFighter);
+            this.admin.getStartrek().getReinforcementQueue().enqueue(firstFighter);
                     
-            this.admin.getAvatar().getReinforcementQueue().enqueue(secondFighter);
+            this.admin.getStarwars().getReinforcementQueue().enqueue(secondFighter);
             
             return "No Combat";
         }
@@ -523,53 +548,53 @@ public class ArtificialIntelligence extends Thread {
     
     public String pickWinner(){
         
-        Character RegularShowFighter = new Character();
-        Character AvatarFighter = new Character();
+        Character StarTrekFighter = new Character();
+        Character StarWarsFighter = new Character();
         
-        int RSCounter = 0;
-        int AvCounter = 0;
-        
-        
-        RegularShowFighter = this.firstFighter;
-        AvatarFighter = this.secondFighter;
+        int STCounter = 0;
+        int SWCounter = 0;
         
         
-        double skillTest = AvatarFighter.getSkills() - RegularShowFighter.getSkills();
-        double healthTest = AvatarFighter.getHealthPoints() - RegularShowFighter.getHealthPoints();
-        double strengthTest = AvatarFighter.getStrength() - RegularShowFighter.getStrength();
-        double agilityTest = AvatarFighter.getAgility()- RegularShowFighter.getAgility();
-        
-        if(skillTest < 0) RSCounter++;
-        else AvCounter++;
+        StarTrekFighter = this.firstFighter;
+        StarWarsFighter = this.secondFighter;
         
         
-        if(healthTest < 0)RSCounter++;
-        else AvCounter++;
+        double skillTest = StarWarsFighter.getSkills() - StarTrekFighter.getSkills();
+        double healthTest = StarWarsFighter.getHealthPoints() - StarTrekFighter.getHealthPoints();
+        double strengthTest = StarWarsFighter.getStrength() - StarTrekFighter.getStrength();
+        double agilityTest = StarWarsFighter.getAgility()- StarTrekFighter.getAgility();
         
-        if(strengthTest < 0)RSCounter++;
-        else AvCounter++;
-        
-        if(agilityTest < 0)RSCounter++;
-        else AvCounter++;
+        if(skillTest < 0) STCounter++;
+        else SWCounter++;
         
         
-        return RSCounter > AvCounter ? "Winner is Regular Show" : "Winner is Avatar";
+        if(healthTest < 0)STCounter++;
+        else SWCounter++;
+        
+        if(strengthTest < 0)STCounter++;
+        else SWCounter++;
+        
+        if(agilityTest < 0)STCounter++;
+        else SWCounter++;
+        
+        
+        return STCounter > SWCounter ? "Winner is Star Trek" : "Winner is Star Wars";
         
         
     }
     
      public void printQueues(){
-    
-        this.AVQ1.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[0].printQueue());
-        this.AVQ2.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[1].printQueue());
-        this.AVQ3.setText((String)this.admin.getAvatar().getPq().getReadyQueues()[2].printQueue());
-        this.AVRQ.setText((String)this.admin.getAvatar().getReinforcementQueue().printQueue());
+  
+        this.SWQ1.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[0].printQueue());
+        this.SWQ2.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[1].printQueue());
+        this.SWQ3.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[2].printQueue());
+        this.SWRQ.setText((String)this.admin.getStarwars().getReinforcementQueue().printQueue());
         
-        
-        this.RSQ1.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[0].printQueue());
-        this.RSQ2.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[1].printQueue());
-        this.RSQ3.setText((String)this.admin.getRegularShow().getPq().getReadyQueues()[2].printQueue());
-        this.RSRQ.setText((String)this.admin.getRegularShow().getReinforcementQueue().printQueue());
+        this.STQ1.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[0].printQueue());
+        this.STQ2.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[1].printQueue());
+        this.STQ3.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[2].printQueue());
+        this.STRQ.setText((String)this.admin.getStartrek().getReinforcementQueue().printQueue());
+
         
         
         

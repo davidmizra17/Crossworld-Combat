@@ -100,7 +100,7 @@ public class Studio {
         double ProbAgility = random.nextDouble();
         
         
-        if(ProbSkills <= 0.6)
+        if(ProbSkills >= 0.4)
         {
             qualityElementCounter+= 1; 
             
@@ -109,7 +109,7 @@ public class Studio {
             character.setSkills(skills);
         }
         
-        if(ProbHealthPoints <= 0.7) {
+        if(ProbHealthPoints >= 0.3) {
         
             qualityElementCounter+= 1; 
         
@@ -118,7 +118,7 @@ public class Studio {
             character.setHealthPoints(healthPoints);
         }
         
-        if(ProbStrength <= 0.5) {
+        if(ProbStrength >= 0.5) {
             
             qualityElementCounter+= 1; 
         
@@ -127,7 +127,7 @@ public class Studio {
             character.setStrength(strength);
         }
         
-        if(ProbAgility <= 0.4) {
+        if(ProbAgility >= 0.6) {
             
             qualityElementCounter+= 1; 
         
@@ -218,14 +218,20 @@ public class Studio {
         
     }
     
-    public void getCharacterFromReinforcement(double rand){
+
+
+    public void getCharacterFromReinforcement(double random){
         
+//        Random random = new Random();
+//        
+//        double rand = random.nextDouble();
+
         
         if(!this.getReinforcementQueue().isEmpty()){
         
         Character characterFromReinforcement = this.getReinforcementQueue().dequeue();
         
-        if(rand <= 0.4){
+        if(random <= 0.4){
             
             this.getPq().getReadyQueues()[0].enqueue(characterFromReinforcement);
             
@@ -234,9 +240,7 @@ public class Studio {
             this.getReinforcementQueue().enqueue(characterFromReinforcement);
         }
         
-       
-        }
-        
+    }
     }
     
     public void starvationCounter(){
@@ -277,9 +281,12 @@ public class Studio {
         this.pq.getReadyQueues()[character.getPriorityLevel() - 1].enqueue(newCharacter);
         
         
+
     }
-    
-    
-    
-    
 }
+
+    
+    
+    
+    
+
