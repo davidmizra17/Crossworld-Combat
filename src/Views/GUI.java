@@ -59,14 +59,13 @@ public class GUI extends javax.swing.JFrame {
         
         for (int i = 0; i < character_starwars.length; i++) {
             
-            
-            
             ID_Counter++;            
             character_starwars[i] = newCharacter.NewCharacter("STAR WARS", ID_Counter);
             
         }
         
         for (int i = 0; i < character_startrek.length; i++) {
+            
             ID_Counter++;
             character_startrek[i] = newCharacter.NewCharacter("STAR TREK", ID_Counter);
             
@@ -628,6 +627,7 @@ public class GUI extends javax.swing.JFrame {
         
 
           getAI().start();
+//          getAdmin().start();
 
 
 //          IDavatar.setText(getAI().getIdAvatar().getText());
