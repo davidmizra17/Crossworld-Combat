@@ -109,7 +109,26 @@ public class CharacterInformation {
 
     };
     
-    
+    //THIS FUNCTION RETURNS A 2D ARRAY THAT CREATES A RELATIONSHIP BETWEEN NAME AND IMAGE
+    public String[][] generateCharacterInfo(){
+        
+        String[][] characterInfo = new String[40][2];
+        
+        for (int i = 0; i < characterInfo.length; i++) {
+            
+            if(i < STAR_WARS_IMAGES.length){
+                
+                characterInfo[i] = new String[]{STAR_WARS_NAMES[i], STAR_WARS_IMAGES[i]};
+                
+            }else{
+                
+                characterInfo[i] = new String[]{STAR_TREK_NAMES[i], STAR_TREK_IMAGES[i]};
+                
+            }
+            
+        }
+        return characterInfo;
+    }
     
   
         
