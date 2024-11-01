@@ -65,16 +65,19 @@ public class CharacterInformation {
         "src/Assets/StarWarsCharacters/BiggsDarklighter.png",
         "src/Assets/StarWarsCharacters/BobFett.png",
         "src/Assets/StarWarsCharacters/C-3PO_.png",
+        
         "src/Assets/StarWarsCharacters/Chewbacca.png",
         "src/Assets/StarWarsCharacters/DarthVader.png",
         "src/Assets/StarWarsCharacters/EmperorPalpatine.png",
         "src/Assets/StarWarsCharacters/Greedo.png",
         "src/Assets/StarWarsCharacters/HanSolo.png",
+        
         "src/Assets/StarWarsCharacters/JabbaTheHutt.png",
         "src/Assets/StarWarsCharacters/LandoClarissian.png",
         "src/Assets/StarWarsCharacters/Leiaorgana.png",
         "src/Assets/StarWarsCharacters/LukeSkywalker.png",
         "src/Assets/StarWarsCharacters/MonMothma.png",
+        
         "src/Assets/StarWarsCharacters/NienNunb.png",
         "src/Assets/StarWarsCharacters/ObiWanKenobi.png",
         "src/Assets/StarWarsCharacters/WedgeAntilles.png",
@@ -110,9 +113,10 @@ public class CharacterInformation {
     };
     
     //THIS FUNCTION RETURNS A 2D ARRAY THAT CREATES A RELATIONSHIP BETWEEN NAME AND IMAGE
-    public String[][] generateCharacterInfo(){
+    public static String[][] generateCharacterInfo(){
         
         String[][] characterInfo = new String[40][2];
+        int j = 0;
         
         for (int i = 0; i < characterInfo.length; i++) {
             
@@ -122,7 +126,8 @@ public class CharacterInformation {
                 
             }else{
                 
-                characterInfo[i] = new String[]{STAR_TREK_NAMES[i], STAR_TREK_IMAGES[i]};
+                characterInfo[i] = new String[]{STAR_TREK_NAMES[j], STAR_TREK_IMAGES[j]};
+                j++;
                 
             }
             

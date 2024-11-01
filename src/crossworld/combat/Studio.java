@@ -197,9 +197,6 @@ public class Studio {
     
     public void EnqueueProcess(){
         
-        
-        
-        
         int characterLevel = AssignPriorityLevel(this.character);
         
        try{

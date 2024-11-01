@@ -65,13 +65,15 @@ public class ArtificialIntelligence extends Thread {
     private JTextArea STQ3; 
     private JTextArea STRQ;
     
+    private String[][] characterInformation;
+    
     
 //    private GUI gui;
     
     
 
     
-    public ArtificialIntelligence(){
+    public ArtificialIntelligence(String[][] characterInfoArray){
         
         
         
@@ -100,6 +102,8 @@ public class ArtificialIntelligence extends Thread {
         this.STQ3 = new JTextArea();
         this.STRQ = new JTextArea();
 //        this.gui = new GUI();
+
+        this.characterInformation = characterInfoArray;
         
         
         
@@ -338,12 +342,15 @@ public class ArtificialIntelligence extends Thread {
                 }
                 actividadAI.setText("Esperando");
                 textField.setText(outcome);
-                idStarwars.setText(Double.toString(secondFighter.getID()));
+                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
                 skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
                 hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
                 agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
                 strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
-                idStartrek.setText(Double.toString(firstFighter.getID()));
+                    System.out.println("FIRST FIGHTER NAME");
+                    System.out.println(this.characterInformation[23][0]);
+//                    System.out.println(firstFighter.getID());
+                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
                 skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
                 hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
                 agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));

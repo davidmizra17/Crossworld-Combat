@@ -6,6 +6,7 @@ package Views;
 
 import crossworld.combat.Administrator;
 import crossworld.combat.ArtificialIntelligence;
+import crossworld.combat.CharacterInformation;
 import crossworld.combat.CreateCharacter;
 import crossworld.combat.Studio;
 import java.lang.System.Logger;
@@ -42,8 +43,8 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        
-        this.AI = new ArtificialIntelligence();
+        String[][] temp = CharacterInformation.generateCharacterInfo();
+        this.AI = new ArtificialIntelligence(temp);
         
         
         this.newCharacter = new CreateCharacter();
@@ -61,101 +62,112 @@ public class GUI extends javax.swing.JFrame {
             
             ID_Counter++;            
             character_starwars[i] = newCharacter.NewCharacter("STAR WARS", ID_Counter);
+            this.starwars.setCharacter(character_starwars[i]);
+            this.starwars.EnqueueProcess();
             
         }
-        
+//        System.out.println("COLA DE PRIORIDAD 1 DE STARWARS");
+//        this.starwars.getPq().getReadyQueues()[0].printQueue();
         for (int i = 0; i < character_startrek.length; i++) {
             
             ID_Counter++;
             character_startrek[i] = newCharacter.NewCharacter("STAR TREK", ID_Counter);
+            this.startrek.setCharacter(character_startrek[i]);
+            this.startrek.EnqueueProcess();
             
         }
         
+        System.out.println("COLA DE PRIORIDAD 1 DE STARTREK");
+        System.out.println(this.startrek.getPq().getReadyQueues()[0].getFront());
         
+        
+        
+        
+                   //PASAR EL PERSONAJE i (PROCESO) COMO PARAMETRO AL METODO ENQUEUE PROCESS Y HACER EL ENCOLAMIENTO DENTRO DEL LOOP?? DONE
                    
-                    this.starwars.setCharacter(character_starwars[0]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[1]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[2]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[3]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[4]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[5]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[6]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[7]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[8]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[9]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[10]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[11]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[12]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[13]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[14]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[15]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[16]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[17]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[18]);
-                    this.starwars.EnqueueProcess();
-                    this.starwars.setCharacter(character_starwars[19]);
-                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[0]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[1]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[2]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[3]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[4]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[5]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[6]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[7]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[8]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[9]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[10]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[11]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[12]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[13]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[14]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[15]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[16]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[17]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[18]);
+//                    this.starwars.EnqueueProcess();
+//                    this.starwars.setCharacter(character_starwars[19]);
+//                    this.starwars.EnqueueProcess();
 
                     
                     
-                    this.startrek.setCharacter(character_startrek[0]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[1]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[2]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[3]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[4]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[5]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[6]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[7]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[8]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[9]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[10]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[11]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[12]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[13]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[14]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[15]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[16]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[17]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[18]);
-                    this.startrek.EnqueueProcess();
-                    this.startrek.setCharacter(character_startrek[19]);
-                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[0]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[1]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[2]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[3]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[4]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[5]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[6]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[7]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[8]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[9]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[10]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[11]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[12]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[13]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[14]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[15]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[16]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[17]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[18]);
+//                    this.startrek.EnqueueProcess();
+//                    this.startrek.setCharacter(character_startrek[19]);
+//                    this.startrek.EnqueueProcess();
 
                     
                     Semaphore s = new Semaphore(0);
