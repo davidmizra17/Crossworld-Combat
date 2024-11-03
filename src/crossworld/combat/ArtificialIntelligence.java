@@ -313,7 +313,7 @@ public class ArtificialIntelligence extends Thread {
         return SWQ1;
     }
 
-    public void setSWQ1(JTextArea AVQ1) {
+    public void setSWQ1(JTextArea SWQ1) {
         this.SWQ1 = SWQ1;
     }
     
@@ -341,23 +341,26 @@ public class ArtificialIntelligence extends Thread {
                     this.victoryStarTrek++;
                 }
                 actividadAI.setText("Esperando");
-                textField.setText(outcome);
-                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
-                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
-                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
-                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
-                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
-                    System.out.println("FIRST FIGHTER NAME");
-                    System.out.println(this.characterInformation[23][0]);
-//                    System.out.println(firstFighter.getID());
-                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
-                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
-                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
-                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
-                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
-                victoriasStarWars.setText(Integer.toString(victoryStarWars));
-                victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
+//                textField.setText(outcome);
+//                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
+//                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
+//                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
+//                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
+//                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
+//                    System.out.println("FIRST FIGHTER NAME");
+//                    System.out.println(this.characterInformation[23][0]);
+////                    System.out.println(firstFighter.getID());
+//                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
+//                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
+//                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
+//                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
+//                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
+//                victoriasStarWars.setText(Integer.toString(victoryStarWars));
+//                victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
+                  
                 printQueues();
+                
+                
                 
                 System.out.println("-------------------");
                 
@@ -549,8 +552,12 @@ public class ArtificialIntelligence extends Thread {
     }
     
      public void printQueues(){
-    
+         
+//        System.out.println("THIS IS PRINTING THE NUMBER 1 PRIORITY QUEUE FOR STARWARS");
+//         System.out.println(this.admin.getStarwars().getPq().getReadyQueues()[0].printQueue());
+//         System.out.println("---------------------------------------------------------------------");
         this.SWQ1.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[0].printQueue());
+       
         this.SWQ2.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[1].printQueue());
         this.SWQ3.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[2].printQueue());
         this.SWRQ.setText((String)this.admin.getStarwars().getReinforcementQueue().printQueue());

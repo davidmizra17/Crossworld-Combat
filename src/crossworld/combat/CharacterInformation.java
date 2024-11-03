@@ -11,7 +11,6 @@ package crossworld.combat;
 public class CharacterInformation {
     
     public static final String[] STAR_WARS_NAMES = {
-        
         "Luke Skywalker", 
         "Leia Organa", 
         "Han Solo", 
@@ -35,7 +34,6 @@ public class CharacterInformation {
     };
     
     public static final String[] STAR_TREK_NAMES = {
-        
         "James T. Kirk", 
         "Spock", 
         "Leonard 'Bones' McCoy", 
@@ -120,7 +118,7 @@ public class CharacterInformation {
         
         for (int i = 0; i < characterInfo.length; i++) {
             
-            if(i < STAR_WARS_IMAGES.length){
+            if(i < 20){
                 
                 characterInfo[i] = new String[]{STAR_WARS_NAMES[i], STAR_WARS_IMAGES[i]};
                 

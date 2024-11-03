@@ -63,7 +63,7 @@ public class GUI extends javax.swing.JFrame {
             ID_Counter++;            
             character_starwars[i] = newCharacter.NewCharacter("STAR WARS", ID_Counter);
             this.starwars.setCharacter(character_starwars[i]);
-            this.starwars.EnqueueProcess();
+            this.starwars.EnqueueProcess(this.starwars.character);
             
         }
 //        System.out.println("COLA DE PRIORIDAD 1 DE STARWARS");
@@ -73,12 +73,10 @@ public class GUI extends javax.swing.JFrame {
             ID_Counter++;
             character_startrek[i] = newCharacter.NewCharacter("STAR TREK", ID_Counter);
             this.startrek.setCharacter(character_startrek[i]);
-            this.startrek.EnqueueProcess();
+            this.startrek.EnqueueProcess(this.startrek.character);
             
         }
         
-        System.out.println("COLA DE PRIORIDAD 1 DE STARTREK");
-        System.out.println(this.startrek.getPq().getReadyQueues()[0].getFront());
         
         
         
@@ -125,9 +123,9 @@ public class GUI extends javax.swing.JFrame {
 //                    this.starwars.EnqueueProcess();
 //                    this.starwars.setCharacter(character_starwars[19]);
 //                    this.starwars.EnqueueProcess();
-
-                    
-                    
+//
+//                    
+//                    
 //                    this.startrek.setCharacter(character_startrek[0]);
 //                    this.startrek.EnqueueProcess();
 //                    this.startrek.setCharacter(character_startrek[1]);
@@ -201,10 +199,6 @@ public class GUI extends javax.swing.JFrame {
 //        getAI().testFunc();
 //getAdmin().start();
 //getAI().start();
-
-     
-
-        
 
         
         

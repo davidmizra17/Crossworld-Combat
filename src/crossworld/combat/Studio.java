@@ -12,13 +12,13 @@ import java.util.Random;
  */
 public class Studio {
     
-    private String name;
+    public String name;
     
-    private Character character;
+    public Character character;
     
-    private PriorityQueue pq;
+    public PriorityQueue pq;
     
-    private Queue<Character> reinforcementQueue;
+    public Queue<Character> reinforcementQueue;
   
    public Studio()
    {
@@ -195,13 +195,13 @@ public class Studio {
 
    
     
-    public void EnqueueProcess(){
+    public void EnqueueProcess(Character character){
         
-        int characterLevel = AssignPriorityLevel(this.character);
+        int characterLevel = AssignPriorityLevel(character);
         
        try{
            pq.getQueueSemaphores()[characterLevel - 1].acquire();
-           pq.getReadyQueues()[characterLevel - 1].enqueue(this.character);
+           pq.getReadyQueues()[characterLevel - 1].enqueue(character);
            
        } catch (InterruptedException e) {
             e.printStackTrace();
