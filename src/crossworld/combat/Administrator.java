@@ -101,8 +101,9 @@ public class Administrator extends Thread{
         while(true){
             
             setFighters();
-            if(getCycle_counter() == 8) setStarvationCounter();
-            sem.release();
+            getSem().release();
+//            if(getCycle_counter() == 8) setStarvationCounter();
+            
 //            getAi().
             
         }

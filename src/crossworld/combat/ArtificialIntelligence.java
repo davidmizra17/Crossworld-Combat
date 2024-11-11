@@ -139,11 +139,6 @@ public class ArtificialIntelligence extends Thread {
         this.actividadAI = new JTextField();
         
         
-        
-        
-        
-        
-        
     }
 
     public JTextField getActividadAI() {
@@ -327,7 +322,8 @@ public class ArtificialIntelligence extends Thread {
                 sleep(TimeSleep);
                 actividadAI.setText("Decidiendo");
                 sleep(500);
-                 getAdmin().setFighters();
+                getSem().acquire();
+                getAdmin().setFighters();
 
                 String outcome = fightOutcome();
                 
@@ -335,28 +331,26 @@ public class ArtificialIntelligence extends Thread {
                 System.out.println("Fight Outcome:\n");
                 System.out.println(outcome);
                 
-                if(outcome == "Winner is Star Wars"){
+                if(outcome.equals("Winner is Star Wars")){
                     this.victoryStarWars++;
-                } else if (outcome == "Winner is Star Trek"){
+                } else if (outcome.equals("Winner is Star Trek")){
                     this.victoryStarTrek++;
                 }
                 actividadAI.setText("Esperando");
-//                textField.setText(outcome);
-//                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
-//                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
-//                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
-//                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
-//                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
-//                    System.out.println("FIRST FIGHTER NAME");
-//                    System.out.println(this.characterInformation[23][0]);
-////                    System.out.println(firstFighter.getID());
-//                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
-//                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
-//                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
-//                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
-//                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
-//                victoriasStarWars.setText(Integer.toString(victoryStarWars));
-//                victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
+                textField.setText(outcome);
+                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
+                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
+                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
+                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
+                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
+                   
+                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
+                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
+                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
+                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
+                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
+                victoriasStarWars.setText(Integer.toString(victoryStarWars));
+                victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                   
                 printQueues();
                 
