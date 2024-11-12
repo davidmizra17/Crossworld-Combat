@@ -21,7 +21,9 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 public class ArtificialIntelligence extends Thread {
     
-    private Semaphore sem;
+    private Semaphore sync;
+    
+    private Semaphore readyAI;
     
     private Character firstFighter;
     
@@ -29,7 +31,9 @@ public class ArtificialIntelligence extends Thread {
     
     private Lista<Character> winners;
     
-    private Administrator admin;
+    public Administrator admin;
+    
+    public String outcome;
     
 
     private int cycle_counter;
@@ -68,12 +72,9 @@ public class ArtificialIntelligence extends Thread {
     private String[][] characterInformation;
     
     
-//    private GUI gui;
-    
-    
 
     
-    public ArtificialIntelligence(String[][] characterInfoArray){
+    public ArtificialIntelligence(String[][] characterInfoArray, Semaphore sync, Semaphore readyAI){
         
         
         
@@ -101,45 +102,33 @@ public class ArtificialIntelligence extends Thread {
         this.STQ2= new JTextArea();
         this.STQ3 = new JTextArea();
         this.STRQ = new JTextArea();
-//        this.gui = new GUI();
 
         this.characterInformation = characterInfoArray;
+        this.admin = admin;
+        this.sync = sync;
+        this.readyAI = readyAI;
         
         
         
     };
 
-   
-
-   
-    
-    public ArtificialIntelligence(Character firstFighter, Character secondFighter, Administrator admin){
-        
-        this.sem = new Semaphore(0);
-        this.firstFighter = firstFighter;
-        this.secondFighter = secondFighter;
-        this.admin = admin;
-        this.winners = new Lista();
-        this.cycle_counter = 0;
-        
-        //INITIALIZE JTEXTFIELD VARIABLES
-        this.textField = new JTextField();
-        this.skillsStarwars = new JTextField();
-        this.skillsStartrek = new JTextField();
-        this.hpStarwars = new JTextField();
-        this.hpStartrek = new JTextField();
-        this.agilityStarwars = new JTextField();
-        this.agilityStartrek = new JTextField();
-        this.strengthStarwars = new JTextField();
-        this.strengthStartrek = new JTextField();
-        this.idStarwars = new JTextField();
-        this.idStartrek = new JTextField();
-        this.victoriasStarWars = new JTextField();
-        this.victoriasStarTrek = new JTextField();
-        this.actividadAI = new JTextField();
-        
-        
+    public Semaphore getReadyAI() {
+        return readyAI;
     }
+
+    public void setReadyAI(Semaphore readyAI) {
+        this.readyAI = readyAI;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(String outcome) {
+        this.outcome = outcome;
+    }
+    
+    
 
     public JTextField getActividadAI() {
         return actividadAI;
@@ -235,12 +224,12 @@ public class ArtificialIntelligence extends Thread {
     }
 
    
-    public Semaphore getSem() {
-        return sem;
+    public Semaphore getSync() {
+        return sync;
     }
 
-    public void setSem(Semaphore sem) {
-        this.sem = sem;
+    public void setSync(Semaphore sync) {
+        this.sync = sync;
     }
 
     public Character getFirstFighter() {
@@ -318,26 +307,40 @@ public class ArtificialIntelligence extends Thread {
         
         while(true){
             try {
+                getSync().acquire();
+                
+                System.out.println("AI THREAD ID: " + Thread.currentThread().getName());
                     
                 sleep(TimeSleep);
                 actividadAI.setText("Decidiendo");
                 sleep(500);
-                getSem().acquire();
+               
+                String s = "so far so good";
+                
                 getAdmin().setFighters();
+                
 
-                String outcome = fightOutcome();
+                setOutcome(fightOutcome());
                 
-                SwingUtilities.invokeLater(() -> {
-                System.out.println("Fight Outcome:\n");
-                System.out.println(outcome);
-                
-                if(outcome.equals("Winner is Star Wars")){
-                    this.victoryStarWars++;
-                } else if (outcome.equals("Winner is Star Trek")){
-                    this.victoryStarTrek++;
-                }
+//                SwingUtilities.invokeLater(() -> {
+                    System.out.println("GOT SEMAPHORE");
+                    System.out.println(getOutcome());
+                    String temp = getOutcome();
+                    if(temp.equals("Winner is Star Wars")){
+                            
+                        this.victoryStarWars++;
+                            
+                    } else if (temp.equals("Winner is Star Trek")){
+                            
+                        this.victoryStarTrek++;
+                            
+                    }   
+                    
                 actividadAI.setText("Esperando");
-                textField.setText(outcome);
+//                textField.setText(outcome);
+                    System.out.println("second fighter id if not null up next: ");
+                if(secondFighter != null)System.out.println(secondFighter.getID());
+                
                 idStarwars.setText(characterInformation[secondFighter.getID()][0]);
                 skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
                 hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
@@ -351,14 +354,11 @@ public class ArtificialIntelligence extends Thread {
                 strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
                 victoriasStarWars.setText(Integer.toString(victoryStarWars));
                 victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
-                  
-                printQueues();
                 
-                
-                
+                System.out.println("SERA QUE LLEGA HASTA ACA LA VERGA ESTA?");
                 System.out.println("-------------------");
                 
-                });
+//                });
                 
                 
                 this.cycle_counter++;
@@ -376,6 +376,9 @@ public class ArtificialIntelligence extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            getReadyAI().release();
+//            Thread.yield();
             
         }
     }
@@ -475,7 +478,6 @@ public class ArtificialIntelligence extends Thread {
         
         double winnerCase = 0.4;
         double tiedCase = 0.27;
-        double noCombatCase = 0.33;
         
         if(fightProb <= winnerCase){
             String winner = pickWinner();
@@ -483,12 +485,14 @@ public class ArtificialIntelligence extends Thread {
         }
         else if(fightProb <= winnerCase + tiedCase){
             //tie
-//            sem.acquire();
-            
+//            sync.acquire();
+            System.out.println("SIZE OF THE QUEUES" + "\n");
+            System.out.println("QUEUE OF PRIORITY LEVEL: " + firstFighter.getPriorityLevel() + " STAR TREK: " + this.admin.getStartrek().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].getSize());
             this.admin.getStartrek().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].enqueue(firstFighter);
+            System.out.println("QUEUE OF PRIORITY LEVEL: " + secondFighter.getPriorityLevel() + " STAR WARS: " + this.admin.getStarwars().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].getSize());
             this.admin.getStarwars().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].enqueue(secondFighter);
             
-//            sem.release();
+//            sync.release();
             
             return "Tie";
             
@@ -520,51 +524,45 @@ public class ArtificialIntelligence extends Thread {
         StarTrekFighter = this.firstFighter;
         StarWarsFighter = this.secondFighter;
         
-        
-        double skillTest = StarWarsFighter.getSkills() - StarTrekFighter.getSkills();
-        double healthTest = StarWarsFighter.getHealthPoints() - StarTrekFighter.getHealthPoints();
-        double strengthTest = StarWarsFighter.getStrength() - StarTrekFighter.getStrength();
-        double agilityTest = StarWarsFighter.getAgility()- StarTrekFighter.getAgility();
-        
-        if(skillTest < 0) STCounter++;
-        else SWCounter++;
+        System.out.println("CURRENT FIGHTERS IDS, ONE OF THEM WILL WIN");
+        if(firstFighter != null)System.out.println(firstFighter.getID());
+        if(secondFighter != null)System.out.println(secondFighter.getID());
         
         
-        if(healthTest < 0)STCounter++;
-        else SWCounter++;
+//        double skillTest = StarWarsFighter.getSkills() - StarTrekFighter.getSkills();
+//        double healthTest = StarWarsFighter.getHealthPoints() - StarTrekFighter.getHealthPoints();
+//        double strengthTest = StarWarsFighter.getStrength() - StarTrekFighter.getStrength();
+//        double agilityTest = StarWarsFighter.getAgility()- StarTrekFighter.getAgility();
+//        
+//        if(skillTest < 0) STCounter++;
+//        else SWCounter++;
+//        
+//        
+//        if(healthTest < 0)STCounter++;
+//        else SWCounter++;
+//        
+//        if(strengthTest < 0)STCounter++;
+//        else SWCounter++;
+//        
+//        if(agilityTest < 0)STCounter++;
+//        else SWCounter++;
+//        
+
+        Random rand1 = new Random();
+        Random rand2 = new Random();
         
-        if(strengthTest < 0)STCounter++;
-        else SWCounter++;
+        int rand_ST = rand1.nextInt();
+        int rand_SW = rand2.nextInt();
         
-        if(agilityTest < 0)STCounter++;
-        else SWCounter++;
-        
+        STCounter+= rand_ST;
+        SWCounter+= rand_SW;
         
         return STCounter > SWCounter ? "Winner is Star Trek" : "Winner is Star Wars";
         
         
     }
     
-     public void printQueues(){
-         
-//        System.out.println("THIS IS PRINTING THE NUMBER 1 PRIORITY QUEUE FOR STARWARS");
-//         System.out.println(this.admin.getStarwars().getPq().getReadyQueues()[0].printQueue());
-//         System.out.println("---------------------------------------------------------------------");
-        this.SWQ1.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[0].printQueue());
-       
-        this.SWQ2.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[1].printQueue());
-        this.SWQ3.setText((String)this.admin.getStarwars().getPq().getReadyQueues()[2].printQueue());
-        this.SWRQ.setText((String)this.admin.getStarwars().getReinforcementQueue().printQueue());
-        
-        this.STQ1.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[0].printQueue());
-        this.STQ2.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[1].printQueue());
-        this.STQ3.setText((String)this.admin.getStartrek().getPq().getReadyQueues()[2].printQueue());
-        this.STRQ.setText((String)this.admin.getStartrek().getReinforcementQueue().printQueue());
-        
-        
-        
-        
-}
+    
     
     
     

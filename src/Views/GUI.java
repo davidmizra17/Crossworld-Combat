@@ -43,8 +43,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        String[][] temp = CharacterInformation.generateCharacterInfo();
-        this.AI = new ArtificialIntelligence(temp);
+        
         
         
         this.newCharacter = new CreateCharacter();
@@ -77,39 +76,14 @@ public class GUI extends javax.swing.JFrame {
             
         }
                     
-        Semaphore s = new Semaphore(0);
-        Semaphore AI_Sem = new Semaphore(0);
+        Semaphore s = new Semaphore(1);
+        Semaphore AI_Sem = new Semaphore(1);
         
-                    
-        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s);
-        this.AI.setAdmin(admin);
-                    
+        String[][] temp = CharacterInformation.generateCharacterInfo();
         
-        
-
-        
-//        ArtificialIntelligence(crossworld.combat.Character firstFighter, crossworld.combat.Character secondFighter, Administrator admin)
-
-
-        
-        
-        
-//        getAdmin().start();
-        
-
-        
-
-        getAI().setSem(AI_Sem);
-        getAI().setAdmin(admin);
-//        getAI().setGui(this);
-//        getAdmin().setFighters();
-        String outcome = "";
-        int cycle_counter = 0;
-//        getAdmin().start();
-//        getAI().testFunc();
-//getAdmin().start();
-//getAI().start();
-
+        this.AI = new ArtificialIntelligence(temp, s, AI_Sem);
+        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, AI_Sem);
+        this.AI.setAdmin(this.admin);
         
         
     }
@@ -515,15 +489,20 @@ public class GUI extends javax.swing.JFrame {
 //        getAdmin().start();
 //        getAI().start();
 //        getAdmin().start();
-        getAI().setSWQ1(SWPriorityQ1);
-        getAI().setSWQ2(SWPriorityQ2);
-        getAI().setSWQ3(SWPriorityQ3);
-        getAI().setSWRQ(SWReinforcementQ);
+//        getAI().setSWQ1(SWPriorityQ1);
+//        getAI().setSWQ2(SWPriorityQ2);
+//        getAI().setSWQ3(SWPriorityQ3);
+//        getAI().setSWRQ(SWReinforcementQ);
+
+        getAdmin().setSWQ1(SWPriorityQ1);
+        getAdmin().setSWQ2(SWPriorityQ2);
+        getAdmin().setSWQ3(SWPriorityQ3);
+        getAdmin().setSWRQ(SWReinforcementQ);
                 
-        getAI().setSTQ1(STPriorityQ1);
-        getAI().setSTQ2(STPriorityQ2);
-        getAI().setSTQ3(STPriorityQ3);
-        getAI().setSTRQ(STReinforcementQ);
+        getAdmin().setSTQ1(STPriorityQ1);
+        getAdmin().setSTQ2(STPriorityQ2);
+        getAdmin().setSTQ3(STPriorityQ3);
+        getAdmin().setSTRQ(STReinforcementQ);
         
         getAI().setTextField(ResultadoIA);
         getAI().setIdStarwars(IDstarwars);
@@ -541,9 +520,13 @@ public class GUI extends javax.swing.JFrame {
         getAI().setActividadAI(ActividadIA);
         
         
-
-          getAI().start();
-          getAdmin().start();
+        System.out.println("INITIALIZING THREADS");
+        
+        this.AI.start();          
+        this.admin.start();
+        
+        
+        
 
 
 //          IDavatar.setText(getAI().getIdAvatar().getText());
