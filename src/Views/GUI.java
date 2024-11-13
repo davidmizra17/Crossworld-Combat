@@ -59,30 +59,32 @@ public class GUI extends javax.swing.JFrame {
         
         for (int i = 0; i < character_starwars.length; i++) {
             
-            ID_Counter++;            
+                        
             character_starwars[i] = newCharacter.NewCharacter("STAR WARS", ID_Counter);
             this.starwars.setCharacter(character_starwars[i]);
             this.starwars.EnqueueProcess(this.starwars.character);
+            ID_Counter++;
             
         }
 //        System.out.println("COLA DE PRIORIDAD 1 DE STARWARS");
 //        this.starwars.getPq().getReadyQueues()[0].printQueue();
         for (int i = 0; i < character_startrek.length; i++) {
             
-            ID_Counter++;
+            
             character_startrek[i] = newCharacter.NewCharacter("STAR TREK", ID_Counter);
             this.startrek.setCharacter(character_startrek[i]);
             this.startrek.EnqueueProcess(this.startrek.character);
+            ID_Counter++;
             
         }
                     
-        Semaphore s = new Semaphore(1);
-        Semaphore AI_Sem = new Semaphore(1);
+        Semaphore s = new Semaphore(0);
+        Semaphore admin_sem = new Semaphore(1);
         
         String[][] temp = CharacterInformation.generateCharacterInfo();
         
-        this.AI = new ArtificialIntelligence(temp, s, AI_Sem);
-        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, AI_Sem);
+        this.AI = new ArtificialIntelligence(temp, s, admin_sem);
+        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, admin_sem);
         this.AI.setAdmin(this.admin);
         
         
@@ -204,6 +206,8 @@ public class GUI extends javax.swing.JFrame {
         VictoriasStarWars = new javax.swing.JTextField();
         VictoriasStarTrek = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        STImage = new javax.swing.JLabel();
+        SWImage = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -480,6 +484,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel17.setText("Resultado del Combate");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 120, 40));
+        getContentPane().add(STImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 120, 50));
+        getContentPane().add(SWImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 120, 140));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -504,6 +510,9 @@ public class GUI extends javax.swing.JFrame {
         getAdmin().setSTQ3(STPriorityQ3);
         getAdmin().setSTRQ(STReinforcementQ);
         
+        getAdmin().setSw_image(SWImage);
+        getAdmin().setSt_image(STImage);
+        
         getAI().setTextField(ResultadoIA);
         getAI().setIdStarwars(IDstarwars);
         getAI().setSkillsStarwars(SkillsStarwars);
@@ -518,6 +527,7 @@ public class GUI extends javax.swing.JFrame {
         getAI().setVictoriasStarWars(VictoriasStarWars);
         getAI().setVictoriasStarTrek(VictoriasStarTrek);
         getAI().setActividadAI(ActividadIA);
+        
         
         
         System.out.println("INITIALIZING THREADS");
@@ -657,10 +667,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField IDstartrek;
     private javax.swing.JTextField IDstarwars;
     private javax.swing.JTextField ResultadoIA;
+    private javax.swing.JLabel STImage;
     private javax.swing.JTextArea STPriorityQ1;
     private javax.swing.JTextArea STPriorityQ2;
     private javax.swing.JTextArea STPriorityQ3;
     private javax.swing.JTextArea STReinforcementQ;
+    private javax.swing.JLabel SWImage;
     private javax.swing.JTextArea SWPriorityQ1;
     private javax.swing.JTextArea SWPriorityQ2;
     private javax.swing.JTextArea SWPriorityQ3;

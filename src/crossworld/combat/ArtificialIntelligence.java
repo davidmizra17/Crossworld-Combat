@@ -5,6 +5,7 @@
 package crossworld.combat;
 
 import Views.GUI;
+import java.awt.Image;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import javax.swing.JTextField;
@@ -17,17 +18,19 @@ import javax.swing.JTextField;
  */
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 public class ArtificialIntelligence extends Thread {
     
     private Semaphore sync;
     
-    private Semaphore readyAI;
+    private Semaphore adminSem;
     
-    private Character firstFighter;
+    public Character firstFighter;
     
-    private Character secondFighter;
+    public Character secondFighter;
     
     private Lista<Character> winners;
     
@@ -69,12 +72,15 @@ public class ArtificialIntelligence extends Thread {
     private JTextArea STQ3; 
     private JTextArea STRQ;
     
-    private String[][] characterInformation;
+    private JLabel st_image;
+    private JLabel sw_image;
+    
+    public String[][] characterInformation;
     
     
 
     
-    public ArtificialIntelligence(String[][] characterInfoArray, Semaphore sync, Semaphore readyAI){
+    public ArtificialIntelligence(String[][] characterInfoArray, Semaphore sync, Semaphore adminSem){
         
         
         
@@ -93,6 +99,9 @@ public class ArtificialIntelligence extends Thread {
         this.victoriasStarTrek = new JTextField();
         this.actividadAI = new JTextField();
         
+        this.st_image = new JLabel();
+        this.sw_image = new JLabel();
+        
         this.SWQ1 = new JTextArea();
         this.SWQ2 = new JTextArea();
         this.SWQ2 = new JTextArea();
@@ -106,18 +115,18 @@ public class ArtificialIntelligence extends Thread {
         this.characterInformation = characterInfoArray;
         this.admin = admin;
         this.sync = sync;
-        this.readyAI = readyAI;
+        this.adminSem = adminSem;
         
         
         
     };
 
-    public Semaphore getReadyAI() {
-        return readyAI;
+    public Semaphore getAdminSem() {
+        return adminSem;
     }
 
-    public void setReadyAI(Semaphore readyAI) {
-        this.readyAI = readyAI;
+    public void setAdminSem(Semaphore adminSem) {
+        this.adminSem = adminSem;
     }
 
     public String getOutcome() {
@@ -300,6 +309,24 @@ public class ArtificialIntelligence extends Thread {
     public void setSWQ1(JTextArea SWQ1) {
         this.SWQ1 = SWQ1;
     }
+
+    public JLabel getSt_image() {
+        return st_image;
+    }
+
+    public void setSt_image(JLabel st_image) {
+        this.st_image = st_image;
+    }
+
+    public JLabel getSw_image() {
+        return sw_image;
+    }
+
+    public void setSw_image(JLabel sw_image) {
+        this.sw_image = sw_image;
+    }
+    
+    
     
     
     @Override
@@ -314,17 +341,14 @@ public class ArtificialIntelligence extends Thread {
                 sleep(TimeSleep);
                 actividadAI.setText("Decidiendo");
                 sleep(500);
-               
-                String s = "so far so good";
                 
-                getAdmin().setFighters();
+//                getAdmin().setFighters();
                 
 
                 setOutcome(fightOutcome());
                 
 //                SwingUtilities.invokeLater(() -> {
-                    System.out.println("GOT SEMAPHORE");
-                    System.out.println(getOutcome());
+                
                     String temp = getOutcome();
                     if(temp.equals("Winner is Star Wars")){
                             
@@ -337,17 +361,24 @@ public class ArtificialIntelligence extends Thread {
                     }   
                     
                 actividadAI.setText("Esperando");
-//                textField.setText(outcome);
-                    System.out.println("second fighter id if not null up next: ");
-                if(secondFighter != null)System.out.println(secondFighter.getID());
+                textField.setText(temp);
+                
+//                ImageIcon icon = new ImageIcon(characterInformation[secondFighter.getID()][1]);
+//                
+//                Image img = icon.getImage().getScaledInstance(100, 110, Image.SCALE_SMOOTH);
+//                
+//                icon = new ImageIcon(img);
+                
                 
                 idStarwars.setText(characterInformation[secondFighter.getID()][0]);
+//                idStarwars.setText(String.valueOf(secondFighter.getID()));
                 skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
                 hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
                 agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
                 strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
                    
                 idStartrek.setText(characterInformation[firstFighter.getID()][0]);
+//                idStartrek.setText(String.valueOf(firstFighter.getID()));
                 skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
                 hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
                 agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
@@ -355,7 +386,7 @@ public class ArtificialIntelligence extends Thread {
                 victoriasStarWars.setText(Integer.toString(victoryStarWars));
                 victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                 
-                System.out.println("SERA QUE LLEGA HASTA ACA LA VERGA ESTA?");
+                
                 System.out.println("-------------------");
                 
 //                });
@@ -377,7 +408,7 @@ public class ArtificialIntelligence extends Thread {
                 Logger.getLogger(ArtificialIntelligence.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            getReadyAI().release();
+            getAdminSem().release();
 //            Thread.yield();
             
         }

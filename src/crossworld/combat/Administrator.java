@@ -4,11 +4,19 @@
  */
 package crossworld.combat;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,7 +26,7 @@ public class Administrator extends Thread{
     
     private Semaphore sync;
     
-    private Semaphore readyAI;
+    private Semaphore adminSem;
     
     private Studio startrek;
     
@@ -41,9 +49,15 @@ public class Administrator extends Thread{
     private JTextArea STQ3; 
     private JTextArea STRQ;
     
+    private JLabel st_image;
+    private JLabel sw_image;
+    
+    public String imagePath = "";
+    public String characterName = "";
+    
     public Administrator(){};
     
-    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore readyAI) {
+    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore adminSem) {
         
         this.sync = sync;
         
@@ -55,7 +69,7 @@ public class Administrator extends Thread{
         
         this.cycle_counter = 0;
         
-        this.readyAI = readyAI;
+        this.adminSem = adminSem;
         
         this.ai = ai;
         
@@ -69,14 +83,36 @@ public class Administrator extends Thread{
         this.STQ3 = new JTextArea();
         this.STRQ = new JTextArea();
         
+        this.st_image = new JLabel();
+        this.sw_image = new JLabel();
+        
     }
 
-    public Semaphore getReadyAI() {
-        return readyAI;
+    public JLabel getSt_image() {
+        return st_image;
     }
 
-    public void setReadyAI(Semaphore readyAI) {
-        this.readyAI = readyAI;
+    public void setSt_image(JLabel st_image) {
+        this.st_image = st_image;
+    }
+
+    public JLabel getSw_image() {
+        return sw_image;
+    }
+
+    public void setSw_image(JLabel sw_image) {
+        this.sw_image = sw_image;
+    }
+
+    
+    
+    
+    public Semaphore getAdminSem() {
+        return adminSem;
+    }
+
+    public void setAdminSem(Semaphore adminSem) {
+        this.adminSem = adminSem;
     }
 
     public JTextArea getSWQ1() {
@@ -197,19 +233,70 @@ public class Administrator extends Thread{
     @Override
     public void run(){
         
+        Map<Integer, ImageIcon> imageCache = new HashMap<>();
+
+    // Preload images for each character ID
+    for (int i = 0; i < this.ai.characterInformation.length; i++) {
+        String imagePath = this.ai.characterInformation[i][1];
+        try {
+            ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
+            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
+            imageCache.put(i, new ImageIcon(img));
+        } catch (Exception e) {
+            System.err.println("Failed to load image at " + imagePath + ": " + e.getMessage());
+        }
+    }
+        
         while(true){
+            
             try {
                 
-                getReadyAI().acquire();//            if(getCycle_counter() == 8) setStarvationCounter();
-                System.out.println("ADMINISTRATOR THREAD ID: " + Thread.currentThread().getName());
- 
-                printQueues();
+                getAdminSem().acquire();//   if(getCycle_counter() == 8) setStarvationCounter();
+                
+                setFighters();
+                
+                try {
+                    SwingUtilities.invokeAndWait(() -> {
+                        
+                        synchronized (this) {
+                            characterName = this.ai.characterInformation[this.ai.secondFighter.getID()][0];
+                            imagePath = this.ai.characterInformation[this.ai.secondFighter.getID()][1];
+                        }
+                        
+                        System.out.println("MATCHING CHARACTER: " + this.ai.characterInformation[this.ai.secondFighter.getID()][0]);
+                        System.out.println("CURRENT IMAGE PATH: " + this.ai.characterInformation[this.ai.secondFighter.getID()][1]);
+                        
+                        
+                        // Attempt to load and scale image
+                        try {
+                            
+                            ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
+//                            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
+//                            icon = new ImageIcon(img);
+                            sw_image.setIcon(icon); // Set icon to label
+                        } catch (Exception e) {
+                            System.err.println("Error loading image: " + e.getMessage());
+                            // Optionally set a default icon if the image fails to load
+                        }
+                        
+                        
+                        
+                        System.out.println("ADMINISTRATOR THREAD ID: " + Thread.currentThread().getName());
+                        
+                        printQueues();
+                        
+                    });
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 System.out.println("just before releasing the syncaphore");
                 getSync().release();
+               
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } 
 //            getAi().
 
             

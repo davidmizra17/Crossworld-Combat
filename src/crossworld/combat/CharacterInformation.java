@@ -58,54 +58,51 @@ public class CharacterInformation {
     
     public static final String[] STAR_WARS_IMAGES = {
         
-        "src/Assets/StarWarsCharacters/AdmiralAckbar.png",
-        "src/Assets/StarWarsCharacters/BibFortuna.png",
-        "src/Assets/StarWarsCharacters/BiggsDarklighter.png",
-        "src/Assets/StarWarsCharacters/BobFett.png",
-        "src/Assets/StarWarsCharacters/C-3PO_.png",
-        
-        "src/Assets/StarWarsCharacters/Chewbacca.png",
-        "src/Assets/StarWarsCharacters/DarthVader.png",
-        "src/Assets/StarWarsCharacters/EmperorPalpatine.png",
-        "src/Assets/StarWarsCharacters/Greedo.png",
-        "src/Assets/StarWarsCharacters/HanSolo.png",
-        
-        "src/Assets/StarWarsCharacters/JabbaTheHutt.png",
-        "src/Assets/StarWarsCharacters/LandoClarissian.png",
-        "src/Assets/StarWarsCharacters/Leiaorgana.png",
-        "src/Assets/StarWarsCharacters/LukeSkywalker.png",
-        "src/Assets/StarWarsCharacters/MonMothma.png",
-        
-        "src/Assets/StarWarsCharacters/NienNunb.png",
-        "src/Assets/StarWarsCharacters/ObiWanKenobi.png",
-        "src/Assets/StarWarsCharacters/WedgeAntilles.png",
-        "src/Assets/StarWarsCharacters/Yoda.png",
-        "src/Assets/StarWarsCharacters/r2d2.png"
+        "src/Assets/StarWarsCharacters/LukeSkywalker.png",       // Luke Skywalker
+        "src/Assets/StarWarsCharacters/Leiaorgana.png",          // Leia Organa
+        "src/Assets/StarWarsCharacters/HanSolo.png",             // Han Solo
+        "src/Assets/StarWarsCharacters/DarthVader.png",          // Darth Vader
+        "src/Assets/StarWarsCharacters/ObiWanKenobi.png",        // Obi-Wan Kenobi
+        "src/Assets/StarWarsCharacters/Yoda.png",                // Yoda
+        "src/Assets/StarWarsCharacters/Chewbacca.png",           // Chewbacca
+        "src/Assets/StarWarsCharacters/r2d2.png",                // R2-D2
+        "src/Assets/StarWarsCharacters/C-3PO_.png",              // C-3PO
+        "src/Assets/StarWarsCharacters/LandoClarissian.png",     // Lando Calrissian
+        "src/Assets/StarWarsCharacters/BobFett.png",             // Boba Fett
+        "src/Assets/StarWarsCharacters/EmperorPalpatine.png",    // Emperor Palpatine
+        "src/Assets/StarWarsCharacters/WedgeAntilles.png",       // Wedge Antilles
+        "src/Assets/StarWarsCharacters/AdmiralAckbar.png",       // Admiral Ackbar
+        "src/Assets/StarWarsCharacters/JabbaTheHutt.png",        // Jabba the Hutt
+        "src/Assets/StarWarsCharacters/BiggsDarklighter.png",    // Biggs Darklighter
+        "src/Assets/StarWarsCharacters/MonMothma.png",           // Mon Mothma
+        "src/Assets/StarWarsCharacters/NienNunb.png",            // Nien Nunb
+        "src/Assets/StarWarsCharacters/Greedo.png",              // Greedo
+        "src/Assets/StarWarsCharacters/BibFortuna.png"
 
     };
             
     public static final String[] STAR_TREK_IMAGES = {
         
-        "src/Assets/StarTrekCharacters/CaptainKirk.png",
-        "src/Assets/StarTrekCharacters/CarolMarcus.png",
-        "src/Assets/StarTrekCharacters/ChristineChapel.png",
-        "src/Assets/StarTrekCharacters/CommanderKoloth.png",
-        "src/Assets/StarTrekCharacters/GaryMitchell.png",
-        "src/Assets/StarTrekCharacters/GornCaptain.png",
-        "src/Assets/StarTrekCharacters/HarryMudd.png",
-        "src/Assets/StarTrekCharacters/HikaruSulu.png",
-        "src/Assets/StarTrekCharacters/JaniceRand.png",
-        "src/Assets/StarTrekCharacters/KhanSingh.png",
-        "src/Assets/StarTrekCharacters/Kor.png",
-        "src/Assets/StarTrekCharacters/LeonardMcCoy.png",
-        "src/Assets/StarTrekCharacters/MontgomeryScott.png",
-        "src/Assets/StarTrekCharacters/NyotaUhura.png",
-        "src/Assets/StarTrekCharacters/PavelChekov.png",
-        "src/Assets/StarTrekCharacters/Sarek.png",
-        "src/Assets/StarTrekCharacters/Spock.png",
-        "src/Assets/StarTrekCharacters/Stonn.png",
-        "src/Assets/StarTrekCharacters/Sybok.png",
-        "src/Assets/StarTrekCharacters/TPring.png"
+      "src/Assets/StarTrekCharacters/CaptainKirk.png",         // James T. Kirk
+       "src/Assets/StarTrekCharacters/Spock.png",               // Spock
+       "src/Assets/StarTrekCharacters/LeonardMcCoy.png",        // Leonard "Bones" McCoy
+       "src/Assets/StarTrekCharacters/MontgomeryScott.png",     // Montgomery "Scotty" Scott
+       "src/Assets/StarTrekCharacters/HikaruSulu.png",          // Hikaru Sulu
+       "src/Assets/StarTrekCharacters/NyotaUhura.png",          // Nyota Uhura
+       "src/Assets/StarTrekCharacters/PavelChekov.png",         // Pavel Chekov
+       "src/Assets/StarTrekCharacters/ChristineChapel.png",     // Christine Chapel
+       "src/Assets/StarTrekCharacters/KhanSingh.png",           // Khan Noonien Singh
+       "src/Assets/StarTrekCharacters/TPring.png",              // T'Pring
+       "src/Assets/StarTrekCharacters/HarryMudd.png",           // Harry Mudd
+       "src/Assets/StarTrekCharacters/GornCaptain.png",         // Gorn Captain
+       "src/Assets/StarTrekCharacters/GaryMitchell.png",        // Gary Mitchell
+       "src/Assets/StarTrekCharacters/Sarek.png",               // Sarek
+       "src/Assets/StarTrekCharacters/JaniceRand.png",          // Janice Rand
+       "src/Assets/StarTrekCharacters/Sybok.png",               // Sybok
+       "src/Assets/StarTrekCharacters/CarolMarcus.png",         // Carol Marcus
+       "src/Assets/StarTrekCharacters/Stonn.png",               // Stonn
+       "src/Assets/StarTrekCharacters/Kor.png",                 // Kor
+       "src/Assets/StarTrekCharacters/CommanderKoloth.png" 
             
 
     };
