@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
@@ -43,7 +44,7 @@ public class Administrator extends Thread{
     private JTextArea SWQ2; 
     private JTextArea SWQ3;
     private JTextArea SWRQ;
-    
+    private JTextField idStarwars;
     private JTextArea STQ1; 
     private JTextArea STQ2; 
     private JTextArea STQ3; 
@@ -83,6 +84,8 @@ public class Administrator extends Thread{
         this.STQ3 = new JTextArea();
         this.STRQ = new JTextArea();
         
+        this.idStarwars = new JTextField();
+        
         this.st_image = new JLabel();
         this.sw_image = new JLabel();
         
@@ -104,8 +107,13 @@ public class Administrator extends Thread{
         this.sw_image = sw_image;
     }
 
-    
-    
+    public JTextField getIdStarwars() {
+        return idStarwars;
+    }
+
+    public void setIdStarwars(JTextField idStarwars) {
+        this.idStarwars = idStarwars;
+    }
     
     public Semaphore getAdminSem() {
         return adminSem;
@@ -239,6 +247,8 @@ public class Administrator extends Thread{
     for (int i = 0; i < this.ai.characterInformation.length; i++) {
         String imagePath = this.ai.characterInformation[i][1];
         try {
+            System.out.println("DEBUGGEANDO CON TULULO");
+            System.out.println(imagePath);
             ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
             Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
             imageCache.put(i, new ImageIcon(img));
@@ -258,6 +268,8 @@ public class Administrator extends Thread{
                 try {
                     SwingUtilities.invokeAndWait(() -> {
                         
+                        idStarwars.setText(this.ai.characterInformation[this.ai.secondFighter.getID()][0]);
+                        
                         synchronized (this) {
                             characterName = this.ai.characterInformation[this.ai.secondFighter.getID()][0];
                             imagePath = this.ai.characterInformation[this.ai.secondFighter.getID()][1];
@@ -273,6 +285,7 @@ public class Administrator extends Thread{
                             ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
 //                            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
 //                            icon = new ImageIcon(img);
+                            sw_image.setIcon(icon); // Set icon to label
                             sw_image.setIcon(icon); // Set icon to label
                         } catch (Exception e) {
                             System.err.println("Error loading image: " + e.getMessage());

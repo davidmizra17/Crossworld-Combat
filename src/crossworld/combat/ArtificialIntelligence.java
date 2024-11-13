@@ -370,7 +370,7 @@ public class ArtificialIntelligence extends Thread {
 //                icon = new ImageIcon(img);
                 
                 
-                idStarwars.setText(characterInformation[secondFighter.getID()][0]);
+                
 //                idStarwars.setText(String.valueOf(secondFighter.getID()));
                 skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
                 hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));

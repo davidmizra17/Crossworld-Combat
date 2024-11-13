@@ -514,7 +514,7 @@ public class GUI extends javax.swing.JFrame {
         getAdmin().setSt_image(STImage);
         
         getAI().setTextField(ResultadoIA);
-        getAI().setIdStarwars(IDstarwars);
+        getAdmin().setIdStarwars(IDstarwars);
         getAI().setSkillsStarwars(SkillsStarwars);
         getAI().setHpStarwars(HPstarwars);
         getAI().setAgilityStarwars(Agilitystarwars);

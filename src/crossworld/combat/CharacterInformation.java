@@ -71,7 +71,7 @@ public class CharacterInformation {
         "src/Assets/StarWarsCharacters/BobFett.png",             // Boba Fett
         "src/Assets/StarWarsCharacters/EmperorPalpatine.png",    // Emperor Palpatine
         "src/Assets/StarWarsCharacters/WedgeAntilles.png",       // Wedge Antilles
-        "src/Assets/StarWarsCharacters/AdmiralAckbar.png",       // Admiral Ackbar
+        "https://lumiere-a.akamaihd.net/v1/images/databank_ackbar_01_169_55137220.jpeg?region=0%2C49%2C1560%2C780",       // Admiral Ackbar
         "src/Assets/StarWarsCharacters/JabbaTheHutt.png",        // Jabba the Hutt
         "src/Assets/StarWarsCharacters/BiggsDarklighter.png",    // Biggs Darklighter
         "src/Assets/StarWarsCharacters/MonMothma.png",           // Mon Mothma
