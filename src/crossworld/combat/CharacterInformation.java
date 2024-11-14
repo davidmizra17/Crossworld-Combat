@@ -58,26 +58,26 @@ public class CharacterInformation {
     
     public static final String[] STAR_WARS_IMAGES = {
         
-        "src/Assets/StarWarsCharacters/LukeSkywalker.png",       // Luke Skywalker
+        "src/Assets/StarWarsCharacters/LukeSkywalker_copy.png",       // Luke Skywalker
         "src/Assets/StarWarsCharacters/Leiaorgana.png",          // Leia Organa
-        "src/Assets/StarWarsCharacters/HanSolo.png",             // Han Solo
+        "src/Assets/StarWarsCharacters/HanSolo_copy.png",             // Han Solo
         "src/Assets/StarWarsCharacters/DarthVader.png",          // Darth Vader
         "src/Assets/StarWarsCharacters/ObiWanKenobi.png",        // Obi-Wan Kenobi
-        "src/Assets/StarWarsCharacters/Yoda.png",                // Yoda
+        "src/Assets/StarWarsCharacters/Yoda_new_copy_one.png",                // Yoda
         "src/Assets/StarWarsCharacters/Chewbacca.png",           // Chewbacca
         "src/Assets/StarWarsCharacters/r2d2.png",                // R2-D2
         "src/Assets/StarWarsCharacters/C-3PO_.png",              // C-3PO
         "src/Assets/StarWarsCharacters/LandoClarissian.png",     // Lando Calrissian
         "src/Assets/StarWarsCharacters/BobFett.png",             // Boba Fett
-        "src/Assets/StarWarsCharacters/EmperorPalpatine.png",    // Emperor Palpatine
-        "src/Assets/StarWarsCharacters/WedgeAntilles.png",       // Wedge Antilles
-        "https://lumiere-a.akamaihd.net/v1/images/databank_ackbar_01_169_55137220.jpeg?region=0%2C49%2C1560%2C780",       // Admiral Ackbar
+        "src/Assets/StarWarsCharacters/EmperorPalpatine_copy.png",    // Emperor Palpatine
+        "src/Assets/StarWarsCharacters/WedgeAntilles_copy.png",       // Wedge Antilles
+        "rc/Assets/StarWarsCharacters/AdmiralAckbar_copy.png",       // Admiral Ackbar
         "src/Assets/StarWarsCharacters/JabbaTheHutt.png",        // Jabba the Hutt
-        "src/Assets/StarWarsCharacters/BiggsDarklighter.png",    // Biggs Darklighter
+        "src/Assets/StarWarsCharacters/BiggsDarklighter_copy.png",    // Biggs Darklighter
         "src/Assets/StarWarsCharacters/MonMothma.png",           // Mon Mothma
-        "src/Assets/StarWarsCharacters/NienNunb.png",            // Nien Nunb
-        "src/Assets/StarWarsCharacters/Greedo.png",              // Greedo
-        "src/Assets/StarWarsCharacters/BibFortuna.png"
+        "src/Assets/StarWarsCharacters/NienNunb_copy.png",            // Nien Nunb
+        "src/Assets/StarWarsCharacters/Greedo_copy.png",              // Greedo
+        "src/Assets/StarWarsCharacters/BibFortuna_copy.png"
 
     };
             

@@ -66,8 +66,7 @@ public class GUI extends javax.swing.JFrame {
             ID_Counter++;
             
         }
-//        System.out.println("COLA DE PRIORIDAD 1 DE STARWARS");
-//        this.starwars.getPq().getReadyQueues()[0].printQueue();
+
         for (int i = 0; i < character_startrek.length; i++) {
             
             
@@ -716,124 +715,5 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton simulationStart;
     // End of variables declaration//GEN-END:variables
 
-//    public CreateCharacter getNewCharacter() {
-//        return newCharacter;
-//    }
-//
-//    public void setNewCharacter(CreateCharacter newCharacter) {
-//        this.newCharacter = newCharacter;
-//    }
-//
-//    public int getID_Counter() {
-//        return ID_Counter;
-//    }
-//
-//    public void setID_Counter(int ID_Counter) {
-//        this.ID_Counter = ID_Counter;
-//    }
-//
-//    public JTextField getActividadIA() {
-//        return ActividadIA;
-//    }
-//
-//    public void setActividadIA(JTextField ActividadIA) {
-//        this.ActividadIA = ActividadIA;
-//    }
-//
-//    public JTextField getAgilityavatar() {
-//        return Agilityavatar;
-//    }
-//
-//    public void setAgilityavatar(JTextField Agilityavatar) {
-//        this.Agilityavatar = Agilityavatar;
-//    }
-//
-//    public JTextField getAgilityrs() {
-//        return Agilityrs;
-//    }
-//
-//    public void setAgilityrs(JTextField Agilityrs) {
-//        this.Agilityrs = Agilityrs;
-//    }
-//
-//    public JTextField getHPavatar() {
-//        return HPavatar;
-//    }
-//
-//    public void setHPavatar(JTextField HPavatar) {
-//        this.HPavatar = HPavatar;
-//    }
-//
-//    public JTextField getHPrs() {
-//        return HPrs;
-//    }
-//
-//    public void setHPrs(JTextField HPrs) {
-//        this.HPrs = HPrs;
-//    }
-//
-//    public JTextField getIDavatar() {
-//        return IDavatar;
-//    }
-//
-//    public void setIDavatar(JTextField IDavatar) {
-//        this.IDavatar = IDavatar;
-//    }
-//
-//    public JTextField getIDrs() {
-//        return IDrs;
-//    }
-//
-//    public void setIDrs(JTextField IDrs) {
-//        this.IDrs = IDrs;
-//    }
-//
-//    public JTextField getResultadoIA() {
-//        return ResultadoIA;
-//    }
-//
-//    public void setResultadoIA(JTextField ResultadoIA) {
-//        this.ResultadoIA = ResultadoIA;
-//    }
-//
-//    public JTextField getSkillsAvatar() {
-//        return SkillsAvatar;
-//    }
-//
-//    public void setSkillsAvatar(JTextField SkillsAvatar) {
-//        this.SkillsAvatar = SkillsAvatar;
-//    }
-//
-//    public JTextField getSkillsrs() {
-//        return Skillsrs;
-//    }
-//
-//    public void setSkillsrs(JTextField Skillsrs) {
-//        this.Skillsrs = Skillsrs;
-//    }
-//
-//    public JTextField getStrengthavatar() {
-//        return Strengthavatar;
-//    }
-//
-//    public void setStrengthavatar(JTextField Strengthavatar) {
-//        this.Strengthavatar = Strengthavatar;
-//    }
-//
-//    public JTextField getStrengthrs() {
-//        return Strengthrs;
-//    }
-//
-//    public void setStrengthrs(JTextField Strengthrs) {
-//        this.Strengthrs = Strengthrs;
-//    }
-//
-//    public JButton getTimeControl() {
-//        return TimeControl;
-//    }
-//
-//    public void setTimeControl(JButton TimeControl) {
-//        this.TimeControl = TimeControl;
-//    }
 }
 

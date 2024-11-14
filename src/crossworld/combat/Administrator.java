@@ -241,22 +241,6 @@ public class Administrator extends Thread{
     @Override
     public void run(){
         
-        Map<Integer, ImageIcon> imageCache = new HashMap<>();
-
-    // Preload images for each character ID
-    for (int i = 0; i < this.ai.characterInformation.length; i++) {
-        String imagePath = this.ai.characterInformation[i][1];
-        try {
-            System.out.println("DEBUGGEANDO CON TULULO");
-            System.out.println(imagePath);
-            ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
-            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
-            imageCache.put(i, new ImageIcon(img));
-        } catch (Exception e) {
-            System.err.println("Failed to load image at " + imagePath + ": " + e.getMessage());
-        }
-    }
-        
         while(true){
             
             try {
@@ -282,19 +266,17 @@ public class Administrator extends Thread{
                         // Attempt to load and scale image
                         try {
                             
-                            ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
-//                            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
-//                            icon = new ImageIcon(img);
-                            sw_image.setIcon(icon); // Set icon to label
+//                            ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
+                            ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
+                            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
+                            icon = new ImageIcon(img);
+
                             sw_image.setIcon(icon); // Set icon to label
                         } catch (Exception e) {
                             System.err.println("Error loading image: " + e.getMessage());
                             // Optionally set a default icon if the image fails to load
                         }
-                        
-                        
-                        
-                        System.out.println("ADMINISTRATOR THREAD ID: " + Thread.currentThread().getName());
+
                         
                         printQueues();
                         
@@ -303,7 +285,7 @@ public class Administrator extends Thread{
                     Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                System.out.println("just before releasing the syncaphore");
+                
                 getSync().release();
                
                 

@@ -342,9 +342,6 @@ public class ArtificialIntelligence extends Thread {
                 actividadAI.setText("Decidiendo");
                 sleep(500);
                 
-//                getAdmin().setFighters();
-                
-
                 setOutcome(fightOutcome());
                 
 //                SwingUtilities.invokeLater(() -> {
@@ -362,16 +359,6 @@ public class ArtificialIntelligence extends Thread {
                     
                 actividadAI.setText("Esperando");
                 textField.setText(temp);
-                
-//                ImageIcon icon = new ImageIcon(characterInformation[secondFighter.getID()][1]);
-//                
-//                Image img = icon.getImage().getScaledInstance(100, 110, Image.SCALE_SMOOTH);
-//                
-//                icon = new ImageIcon(img);
-                
-                
-                
-//                idStarwars.setText(String.valueOf(secondFighter.getID()));
                 skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
                 hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
                 agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
@@ -387,7 +374,7 @@ public class ArtificialIntelligence extends Thread {
                 victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                 
                 
-                System.out.println("-------------------");
+                
                 
 //                });
                 
@@ -515,15 +502,11 @@ public class ArtificialIntelligence extends Thread {
             return winner;
         }
         else if(fightProb <= winnerCase + tiedCase){
-            //tie
-//            sync.acquire();
-            System.out.println("SIZE OF THE QUEUES" + "\n");
-            System.out.println("QUEUE OF PRIORITY LEVEL: " + firstFighter.getPriorityLevel() + " STAR TREK: " + this.admin.getStartrek().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].getSize());
+            
             this.admin.getStartrek().getPq().getReadyQueues()[firstFighter.getPriorityLevel()-1].enqueue(firstFighter);
-            System.out.println("QUEUE OF PRIORITY LEVEL: " + secondFighter.getPriorityLevel() + " STAR WARS: " + this.admin.getStarwars().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].getSize());
             this.admin.getStarwars().getPq().getReadyQueues()[secondFighter.getPriorityLevel()-1].enqueue(secondFighter);
             
-//            sync.release();
+
             
             return "Tie";
             
@@ -558,26 +541,7 @@ public class ArtificialIntelligence extends Thread {
         System.out.println("CURRENT FIGHTERS IDS, ONE OF THEM WILL WIN");
         if(firstFighter != null)System.out.println(firstFighter.getID());
         if(secondFighter != null)System.out.println(secondFighter.getID());
-        
-        
-//        double skillTest = StarWarsFighter.getSkills() - StarTrekFighter.getSkills();
-//        double healthTest = StarWarsFighter.getHealthPoints() - StarTrekFighter.getHealthPoints();
-//        double strengthTest = StarWarsFighter.getStrength() - StarTrekFighter.getStrength();
-//        double agilityTest = StarWarsFighter.getAgility()- StarTrekFighter.getAgility();
-//        
-//        if(skillTest < 0) STCounter++;
-//        else SWCounter++;
-//        
-//        
-//        if(healthTest < 0)STCounter++;
-//        else SWCounter++;
-//        
-//        if(strengthTest < 0)STCounter++;
-//        else SWCounter++;
-//        
-//        if(agilityTest < 0)STCounter++;
-//        else SWCounter++;
-//        
+
 
         Random rand1 = new Random();
         Random rand2 = new Random();

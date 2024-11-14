@@ -5,6 +5,7 @@
 package crossworld.combat;
 
 import Views.GUI;
+import java.io.File;
 import java.util.Random;
 
 /**
@@ -20,6 +21,11 @@ public class CrossWorldCombat {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        File file = new File("src/Assets/StarWarsCharacters/BibFortuna_copy.png");
+        System.out.println("File exists: " + file.exists());
+        System.out.println("File can be read: " + file.canRead());
+
         
         
         GUI ui = new GUI();
