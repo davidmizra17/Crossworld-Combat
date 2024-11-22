@@ -6,6 +6,7 @@ package crossworld.combat;
 
 import Views.GUI;
 import java.awt.Image;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import javax.swing.JTextField;
@@ -22,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+
 public class ArtificialIntelligence extends Thread {
     
     private Semaphore sync;
@@ -75,12 +77,12 @@ public class ArtificialIntelligence extends Thread {
     private JLabel st_image;
     private JLabel sw_image;
     
-    public String[][] characterInformation;
+    public Map<Integer, String[]> characterInformation;
     
     
 
     
-    public ArtificialIntelligence(String[][] characterInfoArray, Semaphore sync, Semaphore adminSem){
+    public ArtificialIntelligence(Map<Integer, String[]> characterInfoMap, Semaphore sync, Semaphore adminSem){
         
         
         
@@ -112,7 +114,7 @@ public class ArtificialIntelligence extends Thread {
         this.STQ3 = new JTextArea();
         this.STRQ = new JTextArea();
 
-        this.characterInformation = characterInfoArray;
+        this.characterInformation = characterInfoMap;
         this.admin = admin;
         this.sync = sync;
         this.adminSem = adminSem;
@@ -364,7 +366,7 @@ public class ArtificialIntelligence extends Thread {
                 agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
                 strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
                    
-                idStartrek.setText(characterInformation[firstFighter.getID()][0]);
+                idStartrek.setText(characterInformation.get(firstFighter.getID())[0]);
 //                idStartrek.setText(String.valueOf(firstFighter.getID()));
                 skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
                 hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));

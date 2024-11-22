@@ -11,6 +11,7 @@ import crossworld.combat.CreateCharacter;
 import crossworld.combat.Studio;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.util.Map;
 import java.util.concurrent.Semaphore;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -35,7 +36,7 @@ public class GUI extends javax.swing.JFrame {
     private Studio starwars;
     private Studio startrek;
     private CreateCharacter newCharacter;
-    private int ID_Counter;
+    
     
     public GUI(){
         
@@ -43,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        
+        int ID_Counter = 0;
         
         
         this.newCharacter = new CreateCharacter();
@@ -76,14 +77,15 @@ public class GUI extends javax.swing.JFrame {
             ID_Counter++;
             
         }
+       
                     
         Semaphore s = new Semaphore(0);
         Semaphore admin_sem = new Semaphore(1);
         
-        String[][] temp = CharacterInformation.generateCharacterInfo();
+        Map temp = CharacterInformation.generateCharacterInfo();
         
         this.AI = new ArtificialIntelligence(temp, s, admin_sem);
-        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, admin_sem);
+        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, admin_sem, ID_Counter);
         this.AI.setAdmin(this.admin);
         
         
@@ -165,6 +167,8 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         SWReinforcementQ = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        swNameField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         simulationStart = new javax.swing.JButton();
@@ -180,6 +184,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         STReinforcementQ = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
+        stNameField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         TimeControl = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -247,6 +252,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel14.setText("Cola de refuerzo");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 120, 40));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        swNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swNameFieldActionPerformed(evt);
+            }
+        });
+        jPanel2.add(swNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 30, 140, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 610));
 
@@ -312,6 +325,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel16.setText("Cola de refuerzo");
         jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 120, 40));
+        jPanel5.add(stNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 110, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 460, 610));
 
@@ -512,6 +526,9 @@ public class GUI extends javax.swing.JFrame {
         getAdmin().setSw_image(SWImage);
         getAdmin().setSt_image(STImage);
         
+        getAdmin().setStNameField(stNameField);
+        getAdmin().setSwNameField(swNameField);
+        
         getAI().setTextField(ResultadoIA);
         getAdmin().setIdStarwars(IDstarwars);
         getAI().setSkillsStarwars(SkillsStarwars);
@@ -623,6 +640,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_VictoriasStarTrekVetoableChange
 
+    private void swNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_swNameFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +719,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -714,6 +736,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton simulationStart;
+    private javax.swing.JTextField stNameField;
+    private javax.swing.JTextField swNameField;
     // End of variables declaration//GEN-END:variables
 
 }

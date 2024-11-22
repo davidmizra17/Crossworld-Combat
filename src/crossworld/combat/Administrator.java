@@ -45,6 +45,8 @@ public class Administrator extends Thread{
     private JTextArea SWQ3;
     private JTextArea SWRQ;
     private JTextField idStarwars;
+    private JTextField swNameField;
+    private JTextField stNameField;
     private JTextArea STQ1; 
     private JTextArea STQ2; 
     private JTextArea STQ3; 
@@ -56,9 +58,11 @@ public class Administrator extends Thread{
     public String imagePath = "";
     public String characterName = "";
     
+    public int global_id;
+    
     public Administrator(){};
     
-    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore adminSem) {
+    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore adminSem, int global_id) {
         
         this.sync = sync;
         
@@ -73,6 +77,8 @@ public class Administrator extends Thread{
         this.adminSem = adminSem;
         
         this.ai = ai;
+        
+        this.global_id = global_id;
         
         this.SWQ1 = new JTextArea();
         this.SWQ2 = new JTextArea();
@@ -186,6 +192,31 @@ public class Administrator extends Thread{
     public void setSTRQ(JTextArea STRQ) {
         this.STRQ = STRQ;
     }
+
+    public JTextField getSwNameField() {
+        return swNameField;
+    }
+
+    public void setSwNameField(JTextField swNameField) {
+        this.swNameField = swNameField;
+    }
+
+    public JTextField getStNameField() {
+        return stNameField;
+    }
+
+    public void setStNameField(JTextField stNameField) {
+        this.stNameField = stNameField;
+    }
+
+    public int getGlobal_id() {
+        return global_id;
+    }
+
+    public void setGlobal_id(int global_id) {
+        this.global_id = global_id;
+    }
+    
     
     
     
@@ -252,21 +283,19 @@ public class Administrator extends Thread{
                 try {
                     SwingUtilities.invokeAndWait(() -> {
                         
-                        idStarwars.setText(this.ai.characterInformation[this.ai.secondFighter.getID()][0]);
+                        swNameField.setText(this.ai.characterInformation.get(this.ai.secondFighter.getID())[0]);
+                        idStarwars.setText(String.valueOf(this.ai.secondFighter.getID()));
+                       
                         
-                        synchronized (this) {
-                            characterName = this.ai.characterInformation[this.ai.secondFighter.getID()][0];
-                            imagePath = this.ai.characterInformation[this.ai.secondFighter.getID()][1];
-                        }
-                        
-                        System.out.println("MATCHING CHARACTER: " + this.ai.characterInformation[this.ai.secondFighter.getID()][0]);
-                        System.out.println("CURRENT IMAGE PATH: " + this.ai.characterInformation[this.ai.secondFighter.getID()][1]);
+                        System.out.println("MATCHING CHARACTER: " + this.ai.characterInformation.get(this.ai.secondFighter.getID())[0]);
+                        System.out.println("CURRENT IMAGE PATH: " + this.ai.characterInformation.get(this.ai.secondFighter.getID())[1]);
                         
                         
                         // Attempt to load and scale image
                         try {
                             
 //                            ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
+                            imagePath = this.ai.characterInformation.get(this.ai.secondFighter.getID())[1];
                             ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
                             Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
                             icon = new ImageIcon(img);
@@ -279,7 +308,8 @@ public class Administrator extends Thread{
 
                         
                         printQueues();
-                        
+                        cycle_counter++;
+                        if(cycle_counter % 2 == 0)addCharacterToSim(global_id);
                     });
                 } catch (InvocationTargetException ex) {
                     Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
@@ -292,7 +322,7 @@ public class Administrator extends Thread{
             } catch (InterruptedException ex) {
                 Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
             } 
-//            getAi().
+
 
             
         }
@@ -300,6 +330,18 @@ public class Administrator extends Thread{
     
 }
     
+    public void addCharacterToSim(int id){
+        
+        Random random = new Random();
+        double rand = random.nextDouble();
+        
+        if(rand <= 0.8){
+            System.out.println("PASO LA PROBABILIDAD CON PROOBABILIDAD: " + rand);
+        }
+        
+        
+        
+    }
     
      public void printQueues(){
 

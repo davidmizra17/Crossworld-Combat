@@ -4,6 +4,9 @@
  */
 package crossworld.combat;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author davidmizrahi
@@ -57,7 +60,6 @@ public class CharacterInformation {
 };
     
     public static final String[] STAR_WARS_IMAGES = {
-        
         "src/Assets/StarWarsCharacters/LukeSkywalker_copy.png",       // Luke Skywalker
         "src/Assets/StarWarsCharacters/Leiaorgana.png",          // Leia Organa
         "src/Assets/StarWarsCharacters/HanSolo_copy.png",             // Han Solo
@@ -78,11 +80,9 @@ public class CharacterInformation {
         "src/Assets/StarWarsCharacters/NienNunb_copy.png",            // Nien Nunb
         "src/Assets/StarWarsCharacters/Greedo_copy.png",              // Greedo
         "src/Assets/StarWarsCharacters/BibFortuna_copy.png"
-
     };
             
     public static final String[] STAR_TREK_IMAGES = {
-        
       "src/Assets/StarTrekCharacters/CaptainKirk.png",         // James T. Kirk
        "src/Assets/StarTrekCharacters/Spock.png",               // Spock
        "src/Assets/StarTrekCharacters/LeonardMcCoy.png",        // Leonard "Bones" McCoy
@@ -103,25 +103,49 @@ public class CharacterInformation {
        "src/Assets/StarTrekCharacters/Stonn.png",               // Stonn
        "src/Assets/StarTrekCharacters/Kor.png",                 // Kor
        "src/Assets/StarTrekCharacters/CommanderKoloth.png" 
-            
-
     };
     
-    //THIS FUNCTION RETURNS A 2D ARRAY THAT CREATES A RELATIONSHIP BETWEEN NAME AND IMAGE
-    public static String[][] generateCharacterInfo(){
+    public static final String[] CHARACTER_ROSTER = {
+        "Ahsoka Tano",
+        "Jean-Luc Picard",
+        "Qui-Gon Jinn",
+        "Data",
+        "Plo Koon",
+        "Worf",
+        "Asajj Ventress",
+        "Q",
+        "Savage Opress",
+        "Seven of Nine",
+        "Mace Windu",
+        "Beverly Crusher",
+        "Ki-Adi-Mundi",
+        "Tasha Yar",
+        "Cad Bane",
+        "Benjamin Sisko",
+        "Maz Kanata",
+        "Ezri Dax",
+        "General Hux",
+        "Geordi La Forge"
+    };
+    
+    //
+    
+    //THIS FUNCTION RETURNS A HASHMAP THAT CREATES A RELATIONSHIP BETWEEN ID AND NAME AND IMAGE
+    public static Map<Integer, String[]> generateCharacterInfo(){
         
-        String[][] characterInfo = new String[40][2];
+        Map<Integer, String[]> characterInfo = new HashMap<>();
+        int n = STAR_WARS_NAMES.length + STAR_TREK_NAMES.length;
         int j = 0;
         
-        for (int i = 0; i < characterInfo.length; i++) {
-            
-            if(i < 20){
+        for (int i = 0; i < n; i++) {
+         
+            if(!characterInfo.containsKey(i) && i < 20){
                 
-                characterInfo[i] = new String[]{STAR_WARS_NAMES[i], STAR_WARS_IMAGES[i]};
+                characterInfo.put(i, new String[]{STAR_WARS_NAMES[i], STAR_WARS_IMAGES[i]});
                 
-            }else{
+            }else if(!characterInfo.containsKey(i) && i >= 20){
                 
-                characterInfo[i] = new String[]{STAR_TREK_NAMES[j], STAR_TREK_IMAGES[j]};
+                characterInfo.put(i , new String[]{STAR_TREK_NAMES[j], STAR_TREK_IMAGES[j]});
                 j++;
                 
             }
