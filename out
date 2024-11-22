@@ -1,0 +1,217 @@
+* commit 22576c7b610fe556cd7d8970d7ea522a425fd3a6 (HEAD -> Juanma, origin/Juanma)
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Thu Nov 14 17:26:53 2024 -0400
+| 
+|     image delay and no-show fixed
+| 
+* commit 20dff546301f1455a2ddb0320e92080df2f546fc
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Wed Nov 13 17:07:01 2024 -0400
+| 
+|     delay bug fixed
+| 
+* commit 079406431b9d32faee7a08ba3ffca5f202f30504
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Wed Nov 13 16:05:02 2024 -0400
+| 
+|     fix bug with image implementation
+| 
+* commit 86fb52bcddec73cbb148914763af9f1308e40602
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Tue Nov 12 16:36:11 2024 -0400
+| 
+|     Correct semaphore implementation
+| 
+* commit 5b2e6e67f1b497f949f7e57b1a4c6052c89fd31b
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Mon Nov 11 14:30:26 2024 -0400
+| 
+|     minor changes in semaphore use
+| 
+* commit 15f87b2f06807d6c15a0d1925f5931f79e665dab
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sun Nov 3 09:44:25 2024 -0400
+| 
+|     bug fix: nose imprimia la cola de prioridad 1 de SW
+| 
+* commit 7b6c155d2f6a35e6cd7094b1e2f2b5ea82f62e15
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Fri Nov 1 13:11:24 2024 -0400
+| 
+|     ya se pueden acceder a los nombres de los personajes, por alguna razon se mezclan entre companias
+| 
+* commit 46d249decc62cb81dddf053c3962c5463cfb82c1
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Thu Oct 31 14:19:08 2024 -0400
+| 
+|     generate characterInfo array
+| 
+* commit 0ac6a8c36923d64e91cbd035716caa4d1a922165
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Thu Oct 31 11:46:53 2024 -0400
+| 
+|     Images Incorporations
+| 
+* commit e22332ce2c60b8c1e2d723adb19f870e6100de9b
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Tue Oct 29 17:05:43 2024 -0400
+| 
+|     file creation for image storage
+| 
+* commit 6d4a32833a88a12e74e9c9a669231d92f36228b1
+| Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| Date:   Sat Oct 26 10:59:36 2024 -0400
+| 
+|     star wars star trek
+| 
+* commit 28ff1813d70f18a7e891f4efe8aa6dd5c6a8f350
+| Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| Date:   Thu Mar 21 22:10:38 2024 -0400
+| 
+|     casi listo
+| 
+* commit f59f8ffb72c15b7581f32d2b9aebda71bd4ebe32
+| Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| Date:   Thu Mar 21 22:01:47 2024 -0400
+| 
+|     casi listo
+| 
+* commit 99d81ef393f5ac4c61474b90f765ca938eb2f3ae
+| Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| Date:   Thu Mar 21 12:09:50 2024 -0400
+| 
+|     pruebas
+| 
+* commit 6eeab5716648d93b6915635ff96ff739b2ef8841
+| Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| Date:   Wed Mar 20 22:03:05 2024 -0400
+| 
+|     pruebas
+| 
+* commit bb88c33648294bf6f30d7c61de1d4863b8143741
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Wed Mar 20 18:02:09 2024 -0400
+| 
+|     🧵 AI methods during thread execution + GUI
+|   
+*   commit f5c6614a52b1a01c67b46e22345a7b0ba9c74545
+|\  Merge: f695c7b 81e1bd0
+| | Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| | Date:   Tue Mar 19 09:53:00 2024 -0400
+| | 
+| |     Merge branch 'Juanma' of https://github.com/davidmizra17/Crossworld-Combat into david
+| |     
+| |     resolving merge conflict
+| | 
+| * commit 81e1bd031bca629f39151d3ef938cd8f60d3ce4f
+| | Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| | Date:   Mon Mar 18 20:54:04 2024 -0400
+| | 
+| |     Interface
+| | 
+* | commit f695c7bb060af5ae3bd0da6cf3b1c2fb1fbb834e
+| | Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| | Date:   Tue Mar 19 09:15:34 2024 -0400
+| | 
+| |     ✅ Continued GUI tests
+| | 
+* | commit b9ad95f7fee5495bc19cfdec09aedf5a0c62a691
+|/  Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+|   Date:   Mon Mar 18 18:21:53 2024 -0400
+|   
+|       🚑️ Fixed AI functionality
+| 
+* commit 385610a89b7319a54ddabb3a1fc0da489ec6195d
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Fri Mar 15 12:00:46 2024 -0400
+| 
+|     ✅ Functionality tests GUI
+|   
+*   commit d1b97b106d6928bb3c869946e98b2ef8d024cfd8
+|\  Merge: ae95783 15d305f
+| | Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| | Date:   Thu Mar 14 22:57:28 2024 -0400
+| | 
+| |     Merge branch 'Juanma' of https://github.com/davidmizra17/Crossworld-Combat into david
+| | 
+| * commit 15d305fa605f44b7468306753524d06a457ec442
+| | Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| | Date:   Tue Mar 12 23:20:55 2024 -0400
+| | 
+| |     create character
+| | 
+| * commit 18935d9d15604bb97a9f5fb56dc0a67e07b95d62
+| | Author: Juan Marcos Rodriguez <j.rodriguez2020@correo.unimet.edu.ve>
+| | Date:   Tue Mar 12 21:40:11 2024 -0400
+| | 
+| |     create character
+| | 
+* | commit ae957833426207307625e592d43bcca273e0108a
+|/  Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+|   Date:   Thu Mar 14 22:51:09 2024 -0400
+|   
+|       GUI functionalities
+| 
+* commit b5f338f92f351f39a033b44363e3e427f7210399
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Tue Mar 12 11:33:38 2024 -0400
+| 
+|     💄 GUI implementation
+| 
+* commit 4d651e19b6ae235f2fff1366c4e711c22bdcc1e0
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sun Mar 10 13:20:08 2024 -0400
+| 
+|     Final functionalities for each thread
+| 
+* commit f00ac345c03dfb7a0d5b291251ccb467750f8b28
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sat Mar 9 13:03:11 2024 -0400
+| 
+|     ✨ Pick winner functionality
+|     
+|     Added attributes to Character and used those to determine the winner should the case be given
+| 
+* commit c2f59e7df936eda704d258372904542eed0c87c4
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sat Mar 9 12:12:45 2024 -0400
+| 
+|     🎨 AI class methods implementation
+|     
+|     Determine fight outcome, next commit pick winner
+| 
+* commit 3f9a682841491ed26ab32ee875de24ec32a0660c
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Tue Mar 5 19:04:07 2024 -0400
+| 
+|     🚧 Classes development and reestructuring
+|     
+|     Character manipulation -> Studio, introduction to AI and Administrator
+| 
+* commit fb0baa4eacdb805f1196a9c478ec1a405f5adcb3
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sun Mar 3 18:50:14 2024 -0400
+| 
+|     🐛 Character manipulation bug
+|     
+|     null pointer exception when adding elements to their respective queue
+| 
+* commit 5423acf59c36852c4b113f92495a81aac8cc4f11
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Sat Mar 2 20:10:43 2024 -0400
+| 
+|     🎨 Character methods implementation
+|     
+|     fundamental methods for the Character class
+| 
+* commit 3ee9eba0d83eccbd33bfc8a580551944d901737c
+| Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+| Date:   Fri Mar 1 16:13:28 2024 -0400
+| 
+|     Data Structures and Character class
+| 
+* commit 153da4aa3be973ba4cd7bbe806e62163ba0f0c42
+  Author: davidmizra17 <david.mizrahi@correo.unimet.edu.ve>
+  Date:   Fri Mar 1 10:31:42 2024 -0400
+  
+      Initial commit

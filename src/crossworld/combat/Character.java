@@ -12,13 +12,13 @@ import java.util.Random;
  */
 public class Character{
     
-    private int ID;
-    private int priorityLevel;
-    private int counter;
-    private double skills;
-    private double healthPoints;
-    private double strength;
-    private double agility;
+    public int ID;
+    public int priorityLevel;
+    public int counter;
+    public double skills;
+    public double healthPoints;
+    public double strength;
+    public double agility;
     
     public Character(){
 //        this.ID = ID;

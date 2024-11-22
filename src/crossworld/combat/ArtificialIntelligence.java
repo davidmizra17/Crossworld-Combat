@@ -143,8 +143,8 @@ public class ArtificialIntelligence extends Thread {
         return actividadAI;
     }
 
-    public void setActividadAI(JTextField actividadAI) {
-        this.actividadAI = actividadAI;
+    public void setActividadAI(JTextField actihealthPointsdAI) {
+        this.actividadAI = actihealthPointsdAI;
     }
 
     public JTextArea getSWRQ() {
@@ -347,11 +347,11 @@ public class ArtificialIntelligence extends Thread {
 //                SwingUtilities.invokeLater(() -> {
                 
                     String temp = getOutcome();
-                    if(temp.equals("Winner is Star Wars")){
+                    if(temp.equals("Star Wars Wins!")){
                             
                         this.victoryStarWars++;
                             
-                    } else if (temp.equals("Winner is Star Trek")){
+                    } else if (temp.equals("Star Trek Wins!")){
                             
                         this.victoryStarTrek++;
                             
@@ -528,31 +528,59 @@ public class ArtificialIntelligence extends Thread {
     
     public String pickWinner(){
         
-        Character StarTrekFighter = new Character();
-        Character StarWarsFighter = new Character();
-        
-        int STCounter = 0;
-        int SWCounter = 0;
-        
-        
-        StarTrekFighter = this.firstFighter;
-        StarWarsFighter = this.secondFighter;
-        
-        System.out.println("CURRENT FIGHTERS IDS, ONE OF THEM WILL WIN");
-        if(firstFighter != null)System.out.println(firstFighter.getID());
-        if(secondFighter != null)System.out.println(secondFighter.getID());
+         int maxRondas = 5;
+        Random random = new Random();
+        //star trek
+        Character p1 = this.firstFighter;
+        //star wars
+        Character p2 = this.secondFighter;
 
+        for (int ronda = 1; ronda <= maxRondas; ronda++) {
+            // Simulamos un pequeño bono aleatorio en strength o agility.
+            if (random.nextInt(100) < 15) {
+                p1.strength += p1.strength * 0.1; // Bono del 10% en esta ronda
+            }
+            if (random.nextInt(100) < 15) {
+                p2.strength += p2.strength * 0.1;
+            }
 
-        Random rand1 = new Random();
-        Random rand2 = new Random();
-        
-        int rand_ST = rand1.nextInt();
-        int rand_SW = rand2.nextInt();
-        
-        STCounter+= rand_ST;
-        SWCounter+= rand_SW;
-        
-        return STCounter > SWCounter ? "Winner is Star Trek" : "Winner is Star Wars";
+            // Ataques de ambos personajes
+            double danoP1 = p1.strength - p2.agility;
+            double danoP2 = p2.strength - p1.agility;
+
+            // Evitar daño negativo
+            danoP1 = Math.max(danoP1, 0);
+            danoP2 = Math.max(danoP2, 0);
+
+            // Reducción de puntos de healthPoints por el daño infligido
+            p1.healthPoints -= danoP2;
+            p2.healthPoints -= danoP1;
+
+            // Reducción de strength para simular desgaste
+            p1.strength -= p1.strength * 0.05;
+            p2.strength -= p2.strength * 0.05;
+
+            // Comprobar si alguno ha perdido por puntos de healthPoints
+            if (p1.healthPoints <= 0 && p2.healthPoints <= 0) {
+                return null; // Empate técnico
+            } else if (p1.healthPoints <= 0) {
+                return "Star Wars Wins!"; // P2 gana
+            } else if (p2.healthPoints <= 0) {
+                return "Star Trek Wins!"; // P1 gana
+            }
+        }
+
+        // Si llega al final de las rondas, comparar las estadísticas restantes para decidir
+        double puntajeP1 = p1.healthPoints + p1.strength + p1.agility;
+        double puntajeP2 = p2.healthPoints + p2.strength + p2.agility;
+
+        if (puntajeP1 > puntajeP2) {
+            return "Star Trek Wins!";
+        } else if (puntajeP2 > puntajeP1) {
+            return "Star Wars Wins!";
+        }
+
+        return null; // Empate si los puntajes son iguales
         
         
     }

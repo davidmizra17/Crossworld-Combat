@@ -529,6 +529,7 @@ public class GUI extends javax.swing.JFrame {
         
         
         
+        
         System.out.println("INITIALIZING THREADS");
         
         this.AI.start();          
