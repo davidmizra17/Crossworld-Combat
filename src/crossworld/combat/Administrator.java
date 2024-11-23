@@ -44,7 +44,16 @@ public class Administrator extends Thread{
     private JTextArea SWQ2; 
     private JTextArea SWQ3;
     private JTextArea SWRQ;
+    private JTextField skillsStarwars;
+    private JTextField skillsStartrek;
+    private JTextField hpStarwars;
+    private JTextField hpStartrek;
+    private JTextField agilityStarwars;
+    private JTextField agilityStartrek;
+    private JTextField strengthStarwars;
+    private JTextField strengthStartrek;
     private JTextField idStarwars;
+    private JTextField idStartrek;
     private JTextField swNameField;
     private JTextField stNameField;
     private JTextArea STQ1; 
@@ -285,7 +294,20 @@ public class Administrator extends Thread{
                         
                         swNameField.setText(this.ai.characterInformation.get(this.ai.secondFighter.getID())[0]);
                         idStarwars.setText(String.valueOf(this.ai.secondFighter.getID()));
-                       
+                        
+                        getSkillsStarwars().setText(String.format("%.2f",this.ai.secondFighter.getSkills() ));
+                        getHpStarwars().setText(String.format("%.2f",this.ai.secondFighter.getHealthPoints() ));
+                        getAgilityStarwars().setText(String.format("%.2f",this.ai.secondFighter.getAgility() ));
+                        getStrengthStarwars().setText(String.format("%.2f",this.ai.secondFighter.getStrength() ));
+                        
+                        stNameField.setText(this.ai.characterInformation.get(this.ai.firstFighter.getID())[0]);
+                        getIdStartrek().setText(String.valueOf(this.ai.firstFighter.getID()));
+                        
+                        getSkillsStartrek().setText(String.format("%.2f",this.ai.firstFighter.getSkills() ));
+                        getHpStartrek().setText(String.format("%.2f",this.ai.firstFighter.getHealthPoints() ));
+                        getAgilityStartrek().setText(String.format("%.2f",this.ai.firstFighter.getAgility() ));
+                        getStrengthStartrek().setText(String.format("%.2f",this.ai.firstFighter.getStrength() ));
+                        
                         
                         System.out.println("MATCHING CHARACTER: " + this.ai.characterInformation.get(this.ai.secondFighter.getID())[0]);
                         System.out.println("CURRENT IMAGE PATH: " + this.ai.characterInformation.get(this.ai.secondFighter.getID())[1]);
@@ -400,6 +422,132 @@ public class Administrator extends Thread{
             
         }
         
+    }
+
+    /**
+     * @return the skillsStarwars
+     */
+    public JTextField getSkillsStarwars() {
+        return skillsStarwars;
+    }
+
+    /**
+     * @param skillsStarwars the skillsStarwars to set
+     */
+    public void setSkillsStarwars(JTextField skillsStarwars) {
+        this.skillsStarwars = skillsStarwars;
+    }
+
+    /**
+     * @return the skillsStartrek
+     */
+    public JTextField getSkillsStartrek() {
+        return skillsStartrek;
+    }
+
+    /**
+     * @param skillsStartrek the skillsStartrek to set
+     */
+    public void setSkillsStartrek(JTextField skillsStartrek) {
+        this.skillsStartrek = skillsStartrek;
+    }
+
+    /**
+     * @return the hpStarwars
+     */
+    public JTextField getHpStarwars() {
+        return hpStarwars;
+    }
+
+    /**
+     * @param hpStarwars the hpStarwars to set
+     */
+    public void setHpStarwars(JTextField hpStarwars) {
+        this.hpStarwars = hpStarwars;
+    }
+
+    /**
+     * @return the hpStartrek
+     */
+    public JTextField getHpStartrek() {
+        return hpStartrek;
+    }
+
+    /**
+     * @param hpStartrek the hpStartrek to set
+     */
+    public void setHpStartrek(JTextField hpStartrek) {
+        this.hpStartrek = hpStartrek;
+    }
+
+    /**
+     * @return the agilityStarwars
+     */
+    public JTextField getAgilityStarwars() {
+        return agilityStarwars;
+    }
+
+    /**
+     * @param agilityStarwars the agilityStarwars to set
+     */
+    public void setAgilityStarwars(JTextField agilityStarwars) {
+        this.agilityStarwars = agilityStarwars;
+    }
+
+    /**
+     * @return the agilityStartrek
+     */
+    public JTextField getAgilityStartrek() {
+        return agilityStartrek;
+    }
+
+    /**
+     * @param agilityStartrek the agilityStartrek to set
+     */
+    public void setAgilityStartrek(JTextField agilityStartrek) {
+        this.agilityStartrek = agilityStartrek;
+    }
+
+    /**
+     * @return the strengthStarwars
+     */
+    public JTextField getStrengthStarwars() {
+        return strengthStarwars;
+    }
+
+    /**
+     * @param strengthStarwars the strengthStarwars to set
+     */
+    public void setStrengthStarwars(JTextField strengthStarwars) {
+        this.strengthStarwars = strengthStarwars;
+    }
+
+    /**
+     * @return the strengthStartrek
+     */
+    public JTextField getStrengthStartrek() {
+        return strengthStartrek;
+    }
+
+    /**
+     * @param strengthStartrek the strengthStartrek to set
+     */
+    public void setStrengthStartrek(JTextField strengthStartrek) {
+        this.strengthStartrek = strengthStartrek;
+    }
+
+    /**
+     * @return the idStartrek
+     */
+    public JTextField getIdStartrek() {
+        return idStartrek;
+    }
+
+    /**
+     * @param idStartrek the idStartrek to set
+     */
+    public void setIdStartrek(JTextField idStartrek) {
+        this.idStartrek = idStartrek;
     }
 
 }

@@ -531,15 +531,15 @@ public class GUI extends javax.swing.JFrame {
         
         getAI().setTextField(ResultadoIA);
         getAdmin().setIdStarwars(IDstarwars);
-        getAI().setSkillsStarwars(SkillsStarwars);
-        getAI().setHpStarwars(HPstarwars);
-        getAI().setAgilityStarwars(Agilitystarwars);
-        getAI().setStrengthStarwars(Strengthstarwars);
-        getAI().setIdStartrek(IDstartrek);
-        getAI().setSkillsStartrek(SkillsStartrek);
-        getAI().setHpStartrek(HPstartrek);
-        getAI().setAgilityStartrek(Agilitystartrek);
-        getAI().setStrengthStartrek(Strengthstartrek);
+        getAdmin().setSkillsStarwars(SkillsStarwars);
+        getAdmin().setHpStarwars(HPstarwars);
+        getAdmin().setAgilityStarwars(Agilitystarwars);
+        getAdmin().setStrengthStarwars(Strengthstarwars);
+        getAdmin().setIdStartrek(IDstartrek);
+        getAdmin().setSkillsStartrek(SkillsStartrek);
+        getAdmin().setHpStartrek(HPstartrek);
+        getAdmin().setAgilityStartrek(Agilitystartrek);
+        getAdmin().setStrengthStartrek(Strengthstartrek);
         getAI().setVictoriasStarWars(VictoriasStarWars);
         getAI().setVictoriasStarTrek(VictoriasStarTrek);
         getAI().setActividadAI(ActividadIA);
