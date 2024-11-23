@@ -8,6 +8,7 @@ import crossworld.combat.Administrator;
 import crossworld.combat.ArtificialIntelligence;
 import crossworld.combat.CharacterInformation;
 import crossworld.combat.CreateCharacter;
+import crossworld.combat.Queue;
 import crossworld.combat.Studio;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
@@ -82,10 +83,11 @@ public class GUI extends javax.swing.JFrame {
         Semaphore s = new Semaphore(0);
         Semaphore admin_sem = new Semaphore(1);
         
+        Queue<String[]> tempQueue = CharacterInformation.generateRosterQueue();
         Map temp = CharacterInformation.generateCharacterInfo();
         
         this.AI = new ArtificialIntelligence(temp, s, admin_sem);
-        this.admin = new Administrator(this.startrek, this.starwars, this.AI, s, admin_sem, ID_Counter);
+        this.admin = new Administrator(temp, this.startrek, this.starwars, this.AI, s, admin_sem, ID_Counter, tempQueue);
         this.AI.setAdmin(this.admin);
         
         
@@ -497,7 +499,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel17.setText("Resultado del Combate");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 120, 40));
-        getContentPane().add(STImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 120, 50));
+        getContentPane().add(STImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 120, 140));
         getContentPane().add(SWImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 120, 140));
 
         pack();

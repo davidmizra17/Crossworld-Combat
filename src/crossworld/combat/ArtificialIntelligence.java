@@ -361,17 +361,6 @@ public class ArtificialIntelligence extends Thread {
                     
                 actividadAI.setText("Esperando");
                 textField.setText(temp);
-//                skillsStarwars.setText(String.format("%.2f",secondFighter.getSkills() ));
-//                hpStarwars.setText(String.format("%.2f",secondFighter.getHealthPoints()));
-//                agilityStarwars.setText(String.format("%.2f",secondFighter.getAgility()));
-//                strengthStarwars.setText(String.format("%.2f",secondFighter.getStrength()));
-//                   
-//                idStartrek.setText(characterInformation.get(firstFighter.getID())[0]);
-////                idStartrek.setText(String.valueOf(firstFighter.getID()));
-//                skillsStartrek.setText(String.format("%.2f",firstFighter.getSkills()));
-//                hpStartrek.setText(String.format("%.2f",firstFighter.getHealthPoints()));
-//                agilityStartrek.setText(String.format("%.2f",firstFighter.getAgility()));
-//                strengthStartrek.setText(String.format("%.2f",firstFighter.getStrength()));
                 victoriasStarWars.setText(Integer.toString(victoryStarWars));
                 victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                 

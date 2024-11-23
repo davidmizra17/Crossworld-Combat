@@ -65,7 +65,7 @@ public class CharacterInformation {
         "src/Assets/StarWarsCharacters/HanSolo_copy.png",             // Han Solo
         "src/Assets/StarWarsCharacters/DarthVader.png",          // Darth Vader
         "src/Assets/StarWarsCharacters/ObiWanKenobi.png",        // Obi-Wan Kenobi
-        "src/Assets/StarWarsCharacters/Yoda_new_copy_one.png",                // Yoda
+        "src/Assets/StarWarsCharacters/Yoda_copy.png",                // Yoda
         "src/Assets/StarWarsCharacters/Chewbacca.png",           // Chewbacca
         "src/Assets/StarWarsCharacters/r2d2.png",                // R2-D2
         "src/Assets/StarWarsCharacters/C-3PO_.png",              // C-3PO
@@ -128,6 +128,29 @@ public class CharacterInformation {
         "Geordi La Forge"
     };
     
+    public static final String[] ROSTER_IMAGES = {
+        "src/Assets/characterPool/AhsokaTano.jpeg",
+        "src/Assets/characterPool/Jean-LucPicard.jpeg",
+        "src/Assets/characterPool/Qui-GonJinn.jpeg",
+        "src/Assets/characterPool/Data.jpeg",
+        "src/Assets/characterPool/PloKoon.jpeg",
+        "src/Assets/characterPool/Worf.jpeg",
+        "src/Assets/characterPool/AsajjVentress.jpeg",
+        "src/Assets/characterPool/Q.jpeg",
+        "src/Assets/characterPool/SavageOpress.jpeg",
+        "src/Assets/characterPool/SevenofNine.jpeg",
+        "src/Assets/characterPool/MaceWindu.jpeg",
+        "src/Assets/characterPool/BeverlyCrusher.jpeg",
+        "src/Assets/characterPool/Ki-Adi-Mundi.jpeg",
+        "src/Assets/characterPool/TashaYar.jpeg",
+        "src/Assets/characterPool/CadBane.jpeg",
+        "src/Assets/characterPool/BenjaminSisko.jpeg",
+        "src/Assets/characterPool/MazKanata.jpeg",
+        "src/Assets/characterPool/EzriDax.jpeg",
+        "src/Assets/characterPool/GeneralHux.jpeg",
+        "src/Assets/characterPool/GeordiLaForge.jpeg",  
+    };
+    
     //
     
     //THIS FUNCTION RETURNS A HASHMAP THAT CREATES A RELATIONSHIP BETWEEN ID AND NAME AND IMAGE
@@ -152,6 +175,17 @@ public class CharacterInformation {
             
         }
         return characterInfo;
+    }
+    
+    public static Queue<String[]> generateRosterQueue(){
+        
+        Queue<String[]> q = new Queue<>();
+        for (int i = 0; i < 20; i++) {
+            q.enqueue(new String[]{CHARACTER_ROSTER[i], ROSTER_IMAGES[i]});
+            
+        }
+        
+        return q;
     }
     
   

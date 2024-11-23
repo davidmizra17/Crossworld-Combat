@@ -20,8 +20,14 @@ public class Character{
     public double strength;
     public double agility;
     
-    public Character(){
-//        this.ID = ID;
+    public Character(){}
+    
+    public Character(int ID, int priorityLevel, int counter){
+        
+       this.ID = ID;
+       this.priorityLevel = priorityLevel;
+       this.counter = counter;
+        
     }
 
     public double getSkills() {
@@ -56,17 +62,6 @@ public class Character{
         this.agility = agility;
     }
     
-    
-    
-    
-    public Character(int ID, int priorityLevel, int counter){
-        
-        this.ID = ID;
-        this.priorityLevel = priorityLevel;
-        this.counter = counter;
-        
-    }
-
     public int getID() {
         return ID;
     }

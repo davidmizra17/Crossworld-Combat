@@ -64,14 +64,18 @@ public class Administrator extends Thread{
     private JLabel st_image;
     private JLabel sw_image;
     
-    public String imagePath = "";
+    public String swImagePath = "";
+    public String stImagePath = "";
     public String characterName = "";
+    
+    public Queue<String[]> rosterQueue;
+    public Map<Integer, String[]> characterInfoMap;
     
     public int global_id;
     
     public Administrator(){};
     
-    public Administrator(Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore adminSem, int global_id) {
+    public Administrator(Map<Integer, String[]> characterInfoMap, Studio startrek, Studio starwars, ArtificialIntelligence ai, Semaphore sync, Semaphore adminSem, int global_id, Queue<String[]> rosterQueue) {
         
         this.sync = sync;
         
@@ -86,6 +90,9 @@ public class Administrator extends Thread{
         this.adminSem = adminSem;
         
         this.ai = ai;
+        
+        this.rosterQueue = rosterQueue;
+        this.characterInfoMap = characterInfoMap;
         
         this.global_id = global_id;
         
@@ -316,13 +323,21 @@ public class Administrator extends Thread{
                         // Attempt to load and scale image
                         try {
                             
-//                            ImageIcon icon = imageCache.get(this.ai.secondFighter.getID());
-                            imagePath = this.ai.characterInformation.get(this.ai.secondFighter.getID())[1];
-                            ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
-                            Image img = icon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
-                            icon = new ImageIcon(img);
+                            //set star wars image
+                            swImagePath = this.ai.characterInformation.get(this.ai.secondFighter.getID())[1];
+                            ImageIcon swIcon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(swImagePath));
+                            Image swImg = swIcon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
+                            swIcon = new ImageIcon(swImg);
+                             
+                            sw_image.setIcon(swIcon); // Set icon to label
+                            
+                            //set star trek image
+                            stImagePath = this.ai.characterInformation.get(this.ai.firstFighter.getID())[1];
+                            ImageIcon stIcon = new ImageIcon(Toolkit.getDefaultToolkit().createImage(stImagePath));
+                            Image stImg = stIcon.getImage().getScaledInstance(120, 140, Image.SCALE_SMOOTH);
+                            stIcon = new ImageIcon(stImg);
 
-                            sw_image.setIcon(icon); // Set icon to label
+                            st_image.setIcon(stIcon); // Set icon to label
                         } catch (Exception e) {
                             System.err.println("Error loading image: " + e.getMessage());
                             // Optionally set a default icon if the image fails to load
@@ -331,7 +346,7 @@ public class Administrator extends Thread{
                         
                         printQueues();
                         cycle_counter++;
-                        if(cycle_counter % 2 == 0)addCharacterToSim(global_id);
+                        if(cycle_counter % 2 == 0)addCharacterToSim();
                     });
                 } catch (InvocationTargetException ex) {
                     Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
@@ -352,13 +367,32 @@ public class Administrator extends Thread{
     
 }
     
-    public void addCharacterToSim(int id){
+    public void addCharacterToSim(){
         
         Random random = new Random();
         double rand = random.nextDouble();
         
+        CreateCharacter newCharacter = new CreateCharacter();
+        Character newStarWars = new Character();
+        Character newStarTrek = new Character();
+        
         if(rand <= 0.8){
-            System.out.println("PASO LA PROBABILIDAD CON PROOBABILIDAD: " + rand);
+            
+            
+            newStarWars = newCharacter.NewCharacter("STAR WARS", global_id);
+            this.starwars.setCharacter(newStarWars);
+            this.starwars.EnqueueProcess(this.starwars.character);
+            characterInfoMap.put(global_id, rosterQueue.dequeue());
+            
+            global_id+= 1;
+            newStarTrek = newCharacter.NewCharacter("STAR TREK", global_id);
+            
+            this.startrek.setCharacter(newStarTrek);
+            this.startrek.EnqueueProcess(this.startrek.character);
+            characterInfoMap.put(global_id, rosterQueue.dequeue());
+            
+            System.out.println("SE AGREGARON 2 PERSONAJES NUEVOS A LA SIMULACION");
+            
         }
         
         
