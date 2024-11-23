@@ -34,7 +34,7 @@ public class ArtificialIntelligence extends Thread {
     
     public Character secondFighter;
     
-    private Lista<Character> winners;
+    public Lista<Character> winners;
     
     public Administrator admin;
     
@@ -118,6 +118,8 @@ public class ArtificialIntelligence extends Thread {
         this.admin = admin;
         this.sync = sync;
         this.adminSem = adminSem;
+        
+        this.winners = new Lista<Character>();
         
         
         
@@ -345,6 +347,7 @@ public class ArtificialIntelligence extends Thread {
                 sleep(500);
                 
                 setOutcome(fightOutcome());
+                starvationCounters();
                 
 //                SwingUtilities.invokeLater(() -> {
                 
@@ -364,13 +367,8 @@ public class ArtificialIntelligence extends Thread {
                 victoriasStarWars.setText(Integer.toString(victoryStarWars));
                 victoriasStarTrek.setText(Integer.toString(victoryStarTrek));
                 
-                
-                
-                
-//                });
-                
-                
                 this.cycle_counter++;
+                
                 
                 Random random = new Random();
         
@@ -517,6 +515,22 @@ public class ArtificialIntelligence extends Thread {
         
     }
     
+    public void starvationCounters(){
+        firstFighter.ID++;
+        secondFighter.ID++;
+        
+        if(firstFighter.ID == 8 && firstFighter.priorityLevel != 0){
+            firstFighter.ID = 0;
+            getAdmin().getStartrek().getPq().getReadyQueues()[firstFighter.priorityLevel - 1].enqueue(firstFighter);
+            
+        }
+        
+        if(secondFighter.ID == 8 && secondFighter.priorityLevel != 0){
+            secondFighter.ID = 0;
+            getAdmin().getStarwars().getPq().getReadyQueues()[secondFighter.priorityLevel - 1].enqueue(firstFighter);
+        }
+    }
+    
     public String pickWinner(){
         
          int maxRondas = 5;
@@ -555,8 +569,10 @@ public class ArtificialIntelligence extends Thread {
             if (p1.healthPoints <= 0 && p2.healthPoints <= 0) {
                 return null; // Empate técnico
             } else if (p1.healthPoints <= 0) {
+                winners.agregarElemento(p2);
                 return "Star Wars Wins!"; // P2 gana
             } else if (p2.healthPoints <= 0) {
+                winners.agregarElemento(p1);
                 return "Star Trek Wins!"; // P1 gana
             }
         }
@@ -566,8 +582,10 @@ public class ArtificialIntelligence extends Thread {
         double puntajeP2 = p2.healthPoints + p2.strength + p2.agility;
 
         if (puntajeP1 > puntajeP2) {
+            winners.agregarElemento(p1);
             return "Star Trek Wins!";
         } else if (puntajeP2 > puntajeP1) {
+            winners.agregarElemento(p2);
             return "Star Wars Wins!";
         }
 

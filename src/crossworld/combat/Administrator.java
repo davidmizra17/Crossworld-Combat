@@ -345,8 +345,8 @@ public class Administrator extends Thread{
 
                         
                         printQueues();
-                        cycle_counter++;
-                        if(cycle_counter % 2 == 0)addCharacterToSim();
+                        
+                        if(getCycle_counter() % 2 == 0)addCharacterToSim();
                     });
                 } catch (InvocationTargetException ex) {
                     Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
